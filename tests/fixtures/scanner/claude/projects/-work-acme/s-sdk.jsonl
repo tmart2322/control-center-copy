@@ -1,0 +1,2 @@
+{"type": "user", "isSidechain": false, "sessionId": "s-sdk", "cwd": "/work/acme", "gitBranch": "HEAD", "entrypoint": "sdk-ts", "timestamp": "2026-03-10T17:00:00.000Z", "uuid": "u-00033", "message": {"role": "user", "content": "scanner run"}, "origin": {"kind": "human"}}
+{"type": "assistant", "isSidechain": false, "sessionId": "s-sdk", "cwd": "/work/acme", "gitBranch": "HEAD", "entrypoint": "sdk-ts", "timestamp": "2026-03-10T17:01:00.000Z", "uuid": "u-00034", "message": {"role": "assistant", "content": [{"type": "text", "text": "ok"}], "stop_reason": "end_turn"}}

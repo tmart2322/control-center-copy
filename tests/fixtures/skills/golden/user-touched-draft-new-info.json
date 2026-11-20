@@ -1,0 +1,34 @@
+{
+  "verb": "reply",
+  "title": "Reply to Dana: confirm 3pm Friday and welcome Lee",
+  "why": "Dana asked to move Friday's demo to 3pm and add Lee from IT",
+  "confidence": "likely",
+  "alternatives": [],
+  "draft": null,
+  "plan": null,
+  "effort": { "youMin": 3, "agentMin": 0 },
+  "startBy": { "at": null, "reasoning": "Reply today so the invite can move before Friday" },
+  "sources": ["ev_change", "msg_b", "cal_demo2"],
+  "asks": [{ "question": "Can the Friday invite move to 3pm MT?", "to": "you", "blocking": false }],
+  "completeness": 80,
+  "update": {
+    "summary": "Dana asked to push Friday to 3pm and add Lee → proposal updates the time and welcomes Lee",
+    "triggeredBy": ["ev_change"],
+    "diff": [{ "field": "draft", "before": "all set for Friday at 2pm MT", "after": "3pm MT on Friday works, and great to have Lee join" }],
+    "draftPolicy": "proposal",
+    "proposal": {
+      "doc": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              { "type": "text", "text": "Hey Dana, 3pm MT on Friday works, and great to have Lee join. We'll walk through the unified profile and the agent handoff, and I'll bring the architecture diagram we sketched." }
+            ]
+          }
+        ]
+      },
+      "rationale": "Keeps your wording; updates the time and adds Lee"
+    }
+  }
+}

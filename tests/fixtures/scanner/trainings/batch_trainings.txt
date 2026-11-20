@@ -1,0 +1,58 @@
+Retrieved 4 messages:
+
+Message ID: 18e0000000000001
+Subject: FY27 Compliance Training Is Here
+From: Chief Legal Officer <clo@example.com>
+Date: Tue, 18 Aug 2026 14:00:00 +0000
+Message-ID: <t1@mail.example.com>
+To: ME <me@example.com>
+Web Link: https://mail.google.com/mail/u/0/#all/18e0000000000001
+
+--- BODY ---
+Please complete all assigned modules by Friday, Oct. 16. Modules are assigned in ACT (Astro's Course Tracker) through Okta.
+
+Start here: https://readiness.my.site.com/act/s/assignments
+Trail: https://trailhead.salesforce.com/content/employee/trails/annual-compliance-training-executive
+LOE: 2.5hrs
+
+---
+
+Message ID: 18e0000000000002
+Subject: Action Required: You Have Overdue Consumption Simulation Assignments
+From: Field Readiness <fieldreadiness@example.com>
+Date: Thu, 23 Jul 2026 15:00:00 +0000
+Message-ID: <t2@mail.example.com>
+To: ME <me@example.com>
+Web Link: https://mail.google.com/mail/u/0/#all/18e0000000000002
+
+--- BODY ---
+You have overdue assignments. Open the module: https://click.mail.example.com/?qs=abcdef1234567890abcdef
+Modules 1 to 4 are assigned in Forge. https://forge.example.com/modules/consumption-simulation
+
+---
+
+Message ID: 18e0000000000003
+Subject: Your Salesforce Credential Automated Maintenance Reminder
+From: Trailhead Help <trailheadhelp@example.com>
+Date: Thu, 22 Oct 2026 12:00:00 +0000
+Message-ID: <t3@mail.example.com>
+To: ME <me@example.com>
+Web Link: https://mail.google.com/mail/u/0/#all/18e0000000000003
+
+--- BODY ---
+Your credentials need maintenance.
+
+Certification Status Next Required Maintenance Badge Completion Due Date Salesforce Certified Data Cloud Consultant 1 Maintenance Behind Data Cloud Spring Release Notes December 4, 2026 Salesforce Certified AI Associate 1 Maintenance Behind AI Spring Release Notes December 4, 2026
+
+---
+
+Message ID: 18e0000000000004
+Subject: The Daily: required reading
+From: Employee Comms <employeecomms@example.com>
+Date: Thu, 22 Oct 2026 13:00:00 +0000
+Message-ID: <t4@mail.example.com>
+To: all@example.com
+Web Link: https://mail.google.com/mail/u/0/#all/18e0000000000004
+
+--- BODY ---
+Mandatory reading in today's newsletter. Due Oct 30.

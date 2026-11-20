@@ -1,0 +1,38 @@
+{
+  "id": "afd360-estimator",
+  "name": "AFD360 Estimator (export)",
+  "description": "Refresh and export an existing Data 360 + Agentforce estimate with the deterministic afd360 engine (the only calculator). New estimates use the afd360-estimate-new session tool.",
+  "icon": "calculator",
+  "version": 1,
+  "launch": {
+    "kind": "cli",
+    "cwd": "~/.claude/skills/afd360-estimator",
+    "argv": ["python3", "scripts/cli.py", "export", "{{estimatePath}}", "--format", "{{format}}", "--out", "{{runDir}}/estimate.{{format}}"],
+    "timeoutSec": 300
+  },
+  "input": {
+    "fields": [
+      { "key": "estimatePath", "type": "file", "label": "estimate.yaml", "required": true, "accept": [".yaml", ".yml"], "multiple": false, "help": "Usually ~/Projects/afd360-estimates/<customer>/estimate.yaml" },
+      { "key": "format", "type": "enum", "label": "Format", "required": true, "default": "json", "options": [{ "value": "json", "label": "JSON" }, { "value": "txt", "label": "Text" }, { "value": "csv", "label": "CSV" }] },
+      { "key": "model", "type": "string", "label": "Pricing model id", "required": false, "pattern": "^[a-z0-9_.-]{1,60}$" },
+      { "key": "account", "type": "entity_ref", "entity": "account", "label": "Account (for linking the run)", "required": false }
+    ]
+  },
+  "output": {
+    "kind": "artifact",
+    "artifacts": [
+      { "pathTemplate": "{{runDir}}/estimate.{{format}}", "label": "Estimate export", "revealable": true }
+    ]
+  },
+  "health": { "type": "file", "path": "~/.claude/skills/afd360-estimator/scripts/cli.py" },
+  "progress": { "protocol": "none" },
+  "estimatedDuration": { "minSec": 1, "maxSec": 60 },
+  "privacy": {
+    "note": "Deterministic local Python CLI. The export is written to a Control Center run folder via --out, never next to the estimate. No network calls.",
+    "dataClass": "customer",
+    "network": "localhost-only",
+    "writes": ["~/Library/Application Support/control-center/tool-runs"],
+    "externalCalls": [],
+    "requiresConfirm": false
+  }
+}

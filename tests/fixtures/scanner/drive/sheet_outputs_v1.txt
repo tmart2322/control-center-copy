@@ -1,0 +1,2 @@
+Values for 'Outputs'!A1:Z300:
+Credits | 12000

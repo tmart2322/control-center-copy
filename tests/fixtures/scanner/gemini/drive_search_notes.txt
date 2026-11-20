@@ -1,0 +1,2 @@
+Found 1 files for me@example.com matching 'name contains 'Notes by Gemini'':
+- Name: "INT: ACME_CORP deal planning - 2026/03/10 08:00 PDT - Notes by Gemini" (ID: 1GeminiNotesDocId0000000000000, Type: application/vnd.google-apps.document, Size: 1200, Created: 2026-03-10T15:31:00.000Z, Modified: 2026-03-10T15:31:20.000Z, Last Edited By: Pat Example <me@example.com>) Link: https://docs.google.com/document/d/1GeminiNotesDocId0000000000000/edit?usp=drivesdk

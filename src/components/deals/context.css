@@ -1,0 +1,82 @@
+/*
+ * Context pages (Deals, Briefs, Time): the few rules Tailwind utilities can't express cleanly.
+ * Tokens from src/styles/brand.css only. Layout reacts to #cc-main (the `main` container), never the viewport.
+ */
+
+/* Hairline between rows (mockup `.row + .row`); a selected row and its neighbour drop it. */
+[data-context-page] [data-crow] + [data-crow]::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: -1px;
+  height: 1px;
+  background: var(--color-line);
+  pointer-events: none;
+}
+[data-context-page] [data-crow][data-selected]::before,
+[data-context-page] [data-crow][data-selected] + [data-crow]::before {
+  display: none;
+}
+
+/* Prose in the reading panes: 68ch measure, 18 px, calm links. */
+[data-context-page] .cx-prose {
+  max-width: 68ch;
+  font-size: var(--text-body-lg);
+  line-height: var(--text-body-lg--line-height);
+  color: var(--color-fg);
+}
+[data-context-page] .cx-prose p { margin: 0 0 12px; text-wrap: pretty; }
+[data-context-page] .cx-prose p:last-child { margin-bottom: 0; }
+[data-context-page] .cx-prose ul, [data-context-page] .cx-prose ol { margin: 4px 0 12px; padding-left: 20px; }
+[data-context-page] .cx-prose ul { list-style: disc; }
+[data-context-page] .cx-prose ol { list-style: decimal; }
+[data-context-page] .cx-prose li { margin-bottom: 4px; }
+[data-context-page] .cx-prose a { color: var(--color-link); text-decoration: underline; text-underline-offset: 0.2em; }
+[data-context-page] .cx-prose strong { color: var(--color-fg-heading); font-weight: 700; }
+[data-context-page] .cx-prose h1, [data-context-page] .cx-prose h2, [data-context-page] .cx-prose h3 {
+  margin: 16px 0 8px;
+  font-size: var(--text-body-lg);
+  font-weight: 700;
+  color: var(--color-fg-heading);
+}
+[data-context-page] .cx-prose code {
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-muted);
+  padding: 0 4px;
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+}
+
+/* Meters (quarter log): track + fill, the fill takes the state colour of its row. */
+[data-context-page] .cx-meter { position: relative; height: 8px; border-radius: 999px; background: var(--color-surface-sunken); overflow: hidden; }
+[data-context-page] .cx-meter > i { position: absolute; inset: 0 auto 0 0; border-radius: 999px; background: var(--cx-fill, var(--color-accent)); }
+[data-context-page] .cx-meter[data-tone="warning"] { --cx-fill: var(--color-warning-500); }
+[data-context-page] .cx-meter[data-tone="danger"] { --cx-fill: var(--color-danger-500); }
+[data-context-page] .cx-meter[data-tone="success"] { --cx-fill: var(--color-success-500); }
+@media (prefers-reduced-motion: no-preference) {
+  [data-context-page] .cx-meter > i { transition: width 200ms ease-out; }
+}
+
+/* Deals pipeline (summary + chart): the segment colours are state, by how sure a deal is (memory: colour is an
+   indicator). Won = done (green), Commit = the near-certain "now" pipe (accent blue), Best case = the same hue,
+   lighter, Pipeline = neutral. Validated with the dataviz palette script against both surfaces (#fff, #161d28):
+   adjacent pairs pass CVD and normal-vision separation; the table view carries every value. */
+[data-context-page] [data-pipe] {
+  --pipe-tier-0: var(--color-success-500);
+  --pipe-tier-1: var(--color-accent);
+  --pipe-tier-2: light-dark(#7abaf7, #0176d3);
+  --pipe-tier-3: light-dark(#79818c, #4a5363);
+}
+
+/* Time ▸ Ledger (LedgerOverview.tsx): the colours are state (memory: colour is an indicator, never one per account).
+   In Org62 = done (green), not in Org62 yet / on its way = waiting (neutral), suggested = the app's (AI), needs input
+   = needs you (amber). Validated with the dataviz palette script on #fff and #161d28: adjacent pairs pass CVD and
+   normal-vision separation and 3:1 against the surface (the neutral reads gray on purpose: waiting is no hue); every
+   value is also printed beside its mark, and the chart has a table view. */
+[data-context-page] [data-ledger] {
+  --ledger-org62: var(--color-success-500);
+  --ledger-rest: light-dark(#79818c, #717b8a);
+  --ledger-suggested: var(--color-ai-500);
+  --ledger-needs: var(--color-warning-500);
+}

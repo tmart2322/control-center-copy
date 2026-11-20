@@ -1,0 +1,82 @@
+/*
+ * The activity-row grid (Time ▸ Log hours and Ledger). Rows lay out by the width of their own list (`.rows`, a
+ * container), not the window's, so they wrap instead of cutting off with the docked panel open or closed:
+ *
+ *   ≥ 68rem   one line     when · hours · description · opportunity · task type · CF/CR · status
+ *   ≥ 44rem   two lines    when · hours · description · status / task type · opportunity · CF/CR
+ *   < 44rem   three lines  when · hours · CF/CR · status / description / task type · opportunity
+ *
+ * Widths in rem only; colours come from the tokens on the elements (no colour here).
+ */
+.rows {
+  container: rows / inline-size;
+}
+
+.grid {
+  display: grid;
+  align-items: center;
+  column-gap: 0.5rem;
+  row-gap: 0.125rem;
+  grid-template-columns: 15rem 3.5rem auto minmax(0, 1fr);
+  grid-template-areas:
+    'when hours cfcr status'
+    'desc desc desc desc'
+    'type type opp opp';
+}
+
+.when {
+  grid-area: when;
+}
+.hours {
+  grid-area: hours;
+}
+.desc {
+  grid-area: desc;
+}
+.opp {
+  grid-area: opp;
+}
+.type {
+  grid-area: type;
+}
+.cfcr {
+  grid-area: cfcr;
+}
+.status {
+  grid-area: status;
+}
+
+/* the column labels: only once the row is one or two lines (below that each field names itself) */
+.head {
+  display: none;
+}
+/* labels of cells that sit on a row's second line until the row is one line */
+.wideOnly {
+  display: none;
+}
+
+@container rows (min-width: 44rem) {
+  .grid {
+    grid-template-columns: 15rem 3.5rem minmax(0, 1fr) 8rem;
+    grid-template-areas:
+      'when hours desc status'
+      'type type opp cfcr';
+  }
+  .head {
+    display: grid;
+  }
+}
+
+/* 63rem of columns + 3rem of gaps + the row's 2rem padding: one line from 68rem (1,088 px) */
+@container rows (min-width: 68rem) {
+  .grid {
+    grid-template-columns: 15rem 3.5rem minmax(12rem, 2fr) minmax(10rem, 1.5fr) 9.5rem 5rem 8rem;
+    grid-template-areas: 'when hours desc opp type cfcr status';
+  }
+  .wideOnly {
+    display: inline;
+  }
+  .narrowOnly {
+    display: none;
+  }
+}

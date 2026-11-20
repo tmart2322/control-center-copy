@@ -1,0 +1,58 @@
+# deps / build
+node_modules/
+.next/
+.next-before-update*/
+out/
+dist/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+__pycache__/
+*.pyc
+.DS_Store
+*.log
+
+# secrets
+.env
+.env.*
+!.env.example
+
+# private data: Org62 IDs, customer names, transcripts (never commit)
+docs/research/
+docs/q3-catchup/
+docs/dc-sweep/
+tools/activity-autopilot/config/
+fixtures/private/
+
+# local claude worktrees
+.claude/worktrees/
+
+# licensed / generated brand assets (copied by scripts/sync-brand-assets.mjs)
+public/fonts/
+public/icons/
+
+# screenshots
+.shots/
+
+# playwright
+test-results/
+playwright-report/
+
+# design mockups (may contain real data; local only)
+public/mockups/
+
+# per-person Claude Code settings (launch.json stays shared)
+.claude/settings.local.json
+
+# keys and certificates
+*.pem
+*.key
+*.p12
+!tests/fixtures/**/*.key
+
+# editors
+.vscode/
+.idea/
+
+# share zips (built into dist/)
+*.zip

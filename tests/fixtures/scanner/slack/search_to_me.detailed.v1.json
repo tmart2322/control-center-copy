@@ -1,0 +1,5 @@
+{
+  "_note": "Recorded shape of mcp__slack__slack_search_public_and_private (query to:me, response_format detailed, include_context false) on 2026-11-05. Every name, id, link and text replaced with placeholders.",
+  "results": "# Search Results for: to:me\n\n## Messages (2 results)\n### Result 1 of 2\nChannel: DM (ID: D0DM00009)\nParticipants: PERSON_A (ID: U0PERSONA), ME (ID: U0ME00001)\nFrom: PERSON_A <person_a@example.com> (ID: U0PERSONA) \nTime: 2026-11-05 08:42:14 MST\nMessage_ts: 1793893334.322509\nPermalink: [link](https:\\/\\/example.slack.com\\/archives\\/D0DM00009\\/p1793893334322509)\nText: \nadded you to the oppty\n\n---\n\n### Result 2 of 2\nChannel: DM (ID: D0DM00009)\nParticipants: PERSON_A (ID: U0PERSONA), ME (ID: U0ME00001)\nFrom: PERSON_A <person_a@example.com> (ID: U0PERSONA) \nTime: 2026-11-05 08:40:54 MST\nMessage_ts: 1793893254.216309\nPermalink: [link](https:\\/\\/example.slack.com\\/archives\\/D0DM00009\\/p1793893254216309)\nText: \nyes, I can do the slides and you do the demo\n\n---\n\n",
+  "pagination_info": "For the next page of results use cursor `Q1VSUkVOVF9QQUdFOjI=`\n"
+}

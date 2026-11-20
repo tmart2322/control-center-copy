@@ -1,0 +1,299 @@
+/*
+ * Command Center brand tokens v2: dark-first, Salesforce brand without the Lightning chrome.
+ * Source: docs/research/14-visual-system-dark.md §6.2 (contrast-checked; `npm run contrast` re-checks the §6.3 pairs).
+ * Usage: app/globals.css → `@import "tailwindcss"; @import "../src/styles/brand.css";`
+ * Theme: dark by default. <html data-theme="light"> opts into light; data-theme="system" follows the OS.
+ * Density: roomy by default; <html data-density="compact"> opts in. Text size: <html data-text="sm|lg"> (15 / 18 px root).
+ * Colour is an indicator, never identity (DESIGN-V2 principle 8): blue = the one action / now / selection,
+ * red / amber / green = status (always with an icon or word), violet = AI. Accounts, people and sources stay neutral;
+ * the categorical hues below are for charts and labels, never to map an account or a source to a hue.
+ * Orchestrator-owned visual contract: component lanes use these tokens only, with no raw hex.
+ */
+
+/* ───────────────────────── 1. Fonts ───────────────────────── */
+/* Salesforce Sans (Monotype, licensed to Salesforce): files in public/fonts via scripts/sync-brand-assets.mjs.
+   Missing files fall back to system-ui, which is exactly what Lightning (SLDS 2) renders. */
+@font-face { font-family: "Salesforce Sans"; font-style: normal; font-weight: 300; font-display: swap; src: url("/fonts/SalesforceSans-Light.ttf") format("truetype"); }
+@font-face { font-family: "Salesforce Sans"; font-style: italic; font-weight: 300; font-display: swap; src: url("/fonts/SalesforceSans-LightItalic.ttf") format("truetype"); }
+@font-face { font-family: "Salesforce Sans"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/SalesforceSans-Regular.ttf") format("truetype"); }
+@font-face { font-family: "Salesforce Sans"; font-style: italic; font-weight: 400; font-display: swap; src: url("/fonts/SalesforceSans-Italic.ttf") format("truetype"); }
+@font-face { font-family: "Salesforce Sans"; font-style: normal; font-weight: 700; font-display: swap; src: url("/fonts/SalesforceSans-Bold.ttf") format("truetype"); }
+@font-face { font-family: "Salesforce Sans"; font-style: italic; font-weight: 700; font-display: swap; src: url("/fonts/SalesforceSans-BoldItalic.ttf") format("truetype"); }
+/* Optional display face from the Brand Central Asset Library. Uncomment ONLY once the file exists.
+@font-face { font-family: "Avant Garde for Salesforce"; font-style: normal; font-weight: 600; font-display: swap; src: url("/fonts/AvantGardeForSalesforce-Demi.woff2") format("woff2"); }
+*/
+
+/* ──────────────── 2. Theme switch ──────────────── */
+/* Every colour token is light-dark(LIGHT, DARK), resolved per element from its color-scheme. Dark is the default.
+   data-theme works on any element, so a subtree can preview the other theme (settings preview, /dev/kit/ui).
+   A themed subtree must set its own text colour (`text-fg`): inherited `color` was resolved by the parent. */
+:root { color-scheme: dark; }
+[data-theme="dark"] { color-scheme: dark; }
+[data-theme="light"] { color-scheme: light; }
+[data-theme="system"] { color-scheme: light dark; }
+
+@theme {
+  /* Only on-system colours: drop Tailwind's default palette. */
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* ── Fonts ── */
+  --font-sans: "Salesforce Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Avant Garde for Salesforce", "Salesforce Sans", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;   /* keys, IDs, tool rows only */
+
+  /* ── Type: same names as v1, base 16 px (size / line-height). Nothing under 12 px. ── */
+  --text-micro: 0.75rem;      --text-micro--line-height: 1rem;          /* 12/16 kbd, counts, axis labels */
+  --text-caption: 0.875rem;   --text-caption--line-height: 1.25rem;     /* 14/20 metadata, badges, table headers, labels */
+  --text-body: 1rem;          --text-body--line-height: 1.5rem;         /* 16/24 default: rows, cells, buttons, chat */
+  --text-body-lg: 1.125rem;   --text-body-lg--line-height: 1.75rem;     /* 18/28 row + card titles, drafts */
+  --text-lead: 1.25rem;       --text-lead--line-height: 1.75rem;        /* 20/28 Home row titles, section heads (mockup --t-lead) */
+  --text-title: 1.375rem;     --text-title--line-height: 1.75rem;       /* 22/28 panel, sheet and dialog titles */
+  --text-heading: 1.75rem;    --text-heading--line-height: 2.25rem;     /* 28/36 page title */
+  --text-heading-lg: 2.25rem; --text-heading-lg--line-height: 2.75rem;  /* 36/44 hero numbers, Today date line */
+  --text-display: 3rem;       --text-display--line-height: 3.5rem;      /* 48/56 rare */
+  --text-display-lg: 3.75rem; --text-display-lg--line-height: 4.25rem;  /* 60/68 rarer */
+  --tracking-eyebrow: 0.06em;
+  --tracking-display: -0.015em;
+
+  /* ── Surfaces, text, lines, focus ── */
+  --color-bg: light-dark(#f3f6fa, #0e141e);              /* L0 canvas */
+  --color-surface: light-dark(#ffffff, #161d28);         /* L1 panels, cards, list containers */
+  --color-surface-raised: light-dark(#ffffff, #1f2733);  /* L2 menus, popovers, side sheet, hovered card */
+  --color-surface-overlay: light-dark(#ffffff, #28313f); /* L3 dialogs, ⌘K palette, toasts */
+  --color-surface-muted: light-dark(#edf0f6, #1b232f);   /* hover / subtle fill on L1 (rows, table header) */
+  --color-surface-sunken: light-dark(#e2e7ed, #2e3745);  /* neutral badge, pressed, kbd (never faint text on it) */
+  --color-surface-input: light-dark(#ffffff, #111721);   /* inputs, composer well */
+  --color-surface-inverse: light-dark(#032d60, #dde5f2); /* tooltips */
+  --color-on-inverse: light-dark(#ffffff, #0d1624);
+  --color-sidebar: light-dark(#eaeef4, #0b1019);         /* the dimmed left sidebar (mockup cc.css) */
+  --color-fg-heading: light-dark(#001e5b, #f3f7fc);      /* headings */
+  --color-fg: light-dark(#1d2735, #e5eaf2);              /* body text */
+  --color-muted: light-dark(#455162, #bcc5d1);           /* secondary text, metadata */
+  --color-faint: light-dark(#606a78, #969fac);           /* tertiary: timestamps, placeholders, ≥14px only */
+  --color-disabled: light-dark(#999fa8, #686f7b);        /* disabled text/icons (exempt from contrast) */
+  --color-line: light-dark(#dde2e8, #2d3541);            /* hairlines, dividers (decorative) */
+  --color-line-strong: light-dark(#c8ced7, #424b59);     /* card/panel edges */
+  --color-line-input: light-dark(#79818c, #717b8a);      /* input + toggle borders (≥3:1) */
+  --color-accent: light-dark(#0176d3, #4dc1fe);          /* primary action fill (1 per view) */
+  --color-accent-hover: light-dark(#0b5cab, #7dcfff);
+  --color-on-accent: light-dark(#ffffff, #061531);       /* label on accent fill (bold) */
+  --color-link: light-dark(#0b5cab, #7dcfff);            /* links, quiet buttons, active nav text */
+  --color-focus: light-dark(#0176d3, #85d2ff);           /* focus ring (2px outline, 2px offset) */
+  --color-selected: light-dark(#e1f1ff, #1f374a);        /* selected row / active chip / selected tab bg */
+  --color-on-solid: light-dark(#ffffff, #061531);        /* text on any {tone}-600 fill except warning */
+  --color-on-warning: light-dark(#1d2735, #061531);      /* text on warning-600 */
+  --color-scrim: light-dark(#0f172a66, #000000a3);       /* modal backdrop (not a text pair) */
+
+  /* ── Status: 50 bg · 100 hover · 200 border · 500 dot · 600 fill · 700 text ── */
+  --color-danger-50: light-dark(#ffefed, #42221f);       /* tint bg (badge, tag, callout) */
+  --color-danger-100: light-dark(#ffdfdb, #572824);      /* tint hover / soft border */
+  --color-danger-200: light-dark(#ffbfb7, #80403a);      /* border */
+  --color-danger-500: light-dark(#d55850, #ef7f75);      /* dot, bar, icon, chart mark (≥3:1) */
+  --color-danger-600: light-dark(#ba3532, #ff9b91);      /* solid fill (+ on-solid) */
+  --color-danger-700: light-dark(#972f2a, #ffbab2);      /* text on 50 or any surface */
+  --color-warning-50: light-dark(#fdf2e1, #3a290b);
+  --color-warning-100: light-dark(#f8e5c7, #4b3301);
+  --color-warning-200: light-dark(#edcc95, #6f4f07);
+  --color-warning-500: light-dark(#b68100, #d29922);
+  --color-warning-600: light-dark(#f5af00, #e4b154);     /* solid fill (+ on-warning) */
+  --color-warning-700: light-dark(#775300, #efc785);
+  --color-success-50: light-dark(#e8f9eb, #18341f);
+  --color-success-100: light-dark(#d3f1d9, #184224);
+  --color-success-200: light-dark(#abe1b6, #29633a);
+  --color-success-500: light-dark(#19a050, #59bd76);
+  --color-success-600: light-dark(#00823d, #7bd191);
+  --color-success-700: light-dark(#006a31, #a0e0ae);
+  --color-info-50: light-dark(#ebf5ff, #192e45);
+  --color-info-100: light-dark(#d8eaff, #1a395b);
+  --color-info-200: light-dark(#b0d5ff, #2c5786);
+  --color-info-500: light-dark(#2d88e2, #5ea9f9);
+  --color-info-600: light-dark(#006cc3, #86bfff);
+  --color-info-700: light-dark(#0059a1, #aad2ff);
+
+  /* ── AI (violet; pair with ONE sparkle and the agentic gradient) ── */
+  --color-ai-50: light-dark(#f9efff, #35253f);           /* tint bg (badge, tag, callout) */
+  --color-ai-100: light-dark(#f2e0fe, #442c52);          /* tint hover / soft border */
+  --color-ai-200: light-dark(#e2c3f8, #664679);          /* border */
+  --color-ai-500: light-dark(#a666cb, #c189e4);          /* dot, bar, icon, chart mark (≥3:1) */
+  --color-ai-600: light-dark(#8c47b2, #d5a3f5);          /* solid fill (+ on-solid) */
+  --color-ai-700: light-dark(#713c90, #e2bcfc);          /* text on 50 or any surface */
+
+  /* ── Categorical (charts, labels): 50 bg · 100 hover · 200 border · 500 dot · 700 text.
+     Never assign these to an account, person or source (DESIGN-V2 principle 8).
+     Chart order: cloud, coral, teal, purple, gold, pink, indigo, green. ── */
+  --color-cloud-50: light-dark(#e8f6ff, #0f3042);
+  --color-cloud-100: light-dark(#d0edff, #043d57);
+  --color-cloud-200: light-dark(#9edaff, #105c80);
+  --color-cloud-500: light-dark(#0091ca, #30b1f0);
+  --color-cloud-700: light-dark(#005f87, #95d7ff);
+  --color-indigo-50: light-dark(#f0f3ff, #252a46);
+  --color-indigo-100: light-dark(#e0e7ff, #2d345c);
+  --color-indigo-200: light-dark(#c2cfff, #465187);
+  --color-indigo-500: light-dark(#697be5, #899dfc);
+  --color-indigo-700: light-dark(#414da5, #becbff);
+  --color-purple-50: light-dark(#f5f1ff, #302742);
+  --color-purple-100: light-dark(#ebe3ff, #3d2f57);
+  --color-purple-200: light-dark(#d7c6ff, #5c4980);
+  --color-purple-500: light-dark(#946cd8, #b090f0);
+  --color-purple-700: light-dark(#64419a, #d5c2ff);
+  --color-pink-50: light-dark(#ffeff2, #412129);
+  --color-pink-100: light-dark(#ffdee4, #552733);
+  --color-pink-200: light-dark(#ffbcca, #7e3e4e);
+  --color-pink-500: light-dark(#d25579, #ec7c98);
+  --color-pink-700: light-dark(#942c4d, #ffb7c6);
+  --color-coral-50: light-dark(#fff0eb, #42231a);
+  --color-coral-100: light-dark(#ffe0d7, #56291d);
+  --color-coral-200: light-dark(#ffc0ae, #7f4130);
+  --color-coral-500: light-dark(#d45c3a, #ee8264);
+  --color-coral-700: light-dark(#963214, #ffbba8);
+  --color-gold-50: light-dark(#fbf3e1, #382a0b);
+  --color-gold-100: light-dark(#f5e6c6, #483500);
+  --color-gold-200: light-dark(#e9ce94, #6c5105);
+  --color-gold-500: light-dark(#b08500, #cc9d1f);
+  --color-gold-700: light-dark(#735600, #eaca84);
+  --color-green-50: light-dark(#e9f8ea, #1b331d);
+  --color-green-100: light-dark(#d5f1d6, #1d4121);
+  --color-green-200: light-dark(#b0e0b2, #306236);
+  --color-green-500: light-dark(#349f46, #64bc6e);
+  --color-green-700: light-dark(#006b20, #a5dfa9);
+  --color-teal-50: light-dark(#e2f9f6, #033430);
+  --color-teal-100: light-dark(#c7f2ec, #00423d);
+  --color-teal-200: light-dark(#92e3d9, #00635c);
+  --color-teal-500: light-dark(#009b90, #00beb1);
+  --color-teal-700: light-dark(#00665f, #7fe2d7);
+  /* v1 compat (one release): source-* is now teal-*. There is no teal-600, so source-600 maps to the dot tone. */
+  --color-source-50: var(--color-teal-50);
+  --color-source-100: var(--color-teal-100);
+  --color-source-200: var(--color-teal-200);
+  --color-source-500: var(--color-teal-500);
+  --color-source-600: var(--color-teal-500);
+  --color-source-700: var(--color-teal-700);
+
+  /* ── Brand ramp (compat: keeps bg-brand-600 + text-white passing in both themes) ── */
+  --color-brand-50: light-dark(#eef6ff, #152d43);
+  --color-brand-100: light-dark(#d6ebff, #133857);
+  --color-brand-200: light-dark(#acd6ff, #145080);
+  --color-brand-300: light-dark(#7abaf7, #13619d);
+  --color-brand-400: light-dark(#479eea, #006cb4);
+  --color-brand-500: light-dark(#0f88dd, #0072be);
+  --color-brand-600: #0176d3;                            /* Salesforce Blue, both themes: white text 4.63:1 */
+  --color-brand-700: light-dark(#0b5cab, #85c4ff);       /* text/link */
+  --color-brand-800: light-dark(#014486, #a6d3ff);
+  --color-brand-900: light-dark(#032d60, #c4e2ff);
+  --color-brand-950: light-dark(#001e5b, #dceeff);
+
+  /* ── Neutral ramp (compat for ink-*; dark reverses like SLDS) ── */
+  --color-ink-50: light-dark(#f0f6fd, #131922);
+  --color-ink-100: light-dark(#e5eaf2, #1d232d);
+  --color-ink-200: light-dark(#d4d9e1, #2a313b);
+  --color-ink-300: light-dark(#b9bec6, #3e4650);
+  --color-ink-400: light-dark(#9a9fa6, #575e69);
+  --color-ink-500: light-dark(#7c8188, #79818c);
+  --color-ink-600: light-dark(#5f646a, #979fab);
+  --color-ink-700: light-dark(#494d54, #b3bbc8);
+  --color-ink-800: light-dark(#32363c, #ccd5e2);
+  --color-ink-900: light-dark(#1c2025, #e1eaf7);
+
+  /* ── Salesforce brand constants: logo tile, illustration, gradients. Never text. ── */
+  --color-sf-cloud: #1ab9ff;      /* SLDS cloud-blue-70; stand-in for the 2026 Cloud Blue [hex unverified] */
+  --color-sf-blue: #0176d3;       /* Salesforce Blue, SLDS blue-50 */
+  --color-sf-navy: #032d60;       /* SLDS brand-20 */
+  --color-sf-midnight: #001e5b;   /* heading navy, SLDS brand-15 */
+
+  /* ── Standard object tiles (white glyph). v2 ObjectTile renders neutral; these stay for compat. ── */
+  --color-std-account: #5867e8;  --color-std-opportunity: #ff5d2d;  --color-std-event: #cb65ff;
+  --color-std-task: #3ba755;     --color-std-email: #939393;        --color-std-user: #107cad;
+  --color-std-report: #06a59a;   --color-std-timesheet: #5867e8;    --color-std-data-cloud: #5a1ba9;
+
+  /* ── Radius: no pill buttons. rounded-full only for dots, avatars, counts, toggles. ── */
+  --radius-sm: 0.375rem;   /* 6  badges, tags, kbd */
+  --radius-md: 0.625rem;   /* 10 buttons, inputs, menus, chips, tabs */
+  --radius-lg: 1rem;       /* 16 panels, cards, side sheet, list containers */
+  --radius-xl: 1.5rem;     /* 24 dialogs, ⌘K, hero card */
+  --radius-2xl: 1.5rem;
+
+  /* ── Shadows: invisible on dark, so dark uses a 1px light ring + deep shadow, floating layers only ── */
+  --shadow-header: 0 1px 0 0 var(--color-line);
+  --shadow-card:   0 1px 2px 0 light-dark(#0f172a0f, #0000), 0 1px 3px 0 light-dark(#0f172a14, #0000), inset 0 1px 0 0 light-dark(#0000, #ffffff0a);
+  --shadow-raise:  0 0 0 1px light-dark(#0f172a0f, #ffffff12), 0 4px 12px -2px light-dark(#0f172a1f, #00000066);
+  --shadow-pop:    0 0 0 1px light-dark(#0f172a14, #ffffff14), 0 12px 28px -6px light-dark(#0f172a2e, #0000008c);
+  --shadow-modal:  0 0 0 1px light-dark(#0f172a14, #ffffff1a), 0 24px 56px -12px light-dark(#0f172a40, #000000b3);
+  --shadow-dock:   0 -1px 0 0 var(--color-line);
+  --shadow-focus:  0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-focus);
+
+  --container-measure: 68ch;   /* max-w-measure: prose */
+  /* Spacing: Tailwind's --spacing: 0.25rem (4 px grid). */
+}
+
+/* ──────────────── 3. Non-utility tokens: gradients, atmosphere, chrome, density, motion ──────────────── */
+:root {
+  --gradient-brand: linear-gradient(105deg, #032d60 0%, #0176d3 50%, #1ab9ff 100%);                /* logo tile only */
+  --gradient-agentic-border: linear-gradient(to right, #e3bbff 5%, #98bdff 25%, #99defc 100%);     /* SLDS 2 agentic */
+  --gradient-agentic-halo: linear-gradient(90deg, rgb(2 80 217 / 0.1) 0%, rgb(26 185 255 / 0.1) 35.51%, rgb(150 2 199 / 0.1) 71%, rgb(2 80 217 / 0.1) 97.5%);
+  --gradient-agentic-mesh:
+    radial-gradient(at 2% 50%, #1abaff 0, transparent 70%), radial-gradient(at 32% 16%, #c861ff 0, transparent 70%),
+    radial-gradient(at 11% 16%, #0253d4 0, transparent 70%), radial-gradient(at 44% 68%, #024fd4 0, transparent 70%),
+    radial-gradient(at 12% 78%, #1abaff 0, transparent 70%), radial-gradient(at 65% 89%, #c861ff 0, transparent 70%);
+  /* The 2026 "atmosphere": one soft cloud + violet glow at the top of the canvas (≤ 12 % alpha; replaces the Lightning band). */
+  --app-backdrop:
+    radial-gradient(70rem 32rem at 8% -12rem, light-dark(rgb(26 185 255 / 0.10), rgb(26 185 255 / 0.12)), transparent 70%),
+    radial-gradient(56rem 28rem at 92% -14rem, light-dark(rgb(144 80 233 / 0.05), rgb(144 80 233 / 0.10)), transparent 70%);
+
+  /* Chrome + density: roomy by default ("fewer things"); data-density="compact" opts back in. Use as h-(--row-h). */
+  --header-h: 3.5rem;   --nav-h: 3rem;   --utility-h: 2.5rem;
+  --sidebar-w: 14.5rem; --topbar-h: 4rem;   /* v2 shell: dimmed sidebar + topbar (mockup cc.css) */
+  --row-h: 2.75rem;     --row-h-2: 4rem;
+  --panel-p: 1.5rem;    --gap: 1.5rem;
+
+  /* Motion */
+  --dur-quick: 100ms;  --dur-prompt: 200ms;  --dur-slow: 400ms;  --toast-short: 4.8s;  --toast-long: 9.6s;
+}
+:root[data-density="compact"] {
+  --header-h: 3rem; --nav-h: 2.5rem; --utility-h: 2rem; --topbar-h: 3.5rem;
+  --row-h: 2.25rem; --row-h-2: 3.25rem; --panel-p: 1rem; --gap: 1rem;
+}
+/* Text size: every token is rem, so the root size scales the whole ramp (zoom-safe; no viewport-fluid type). */
+:root[data-text="sm"] { font-size: 93.75%; }   /* 15 px root */
+:root[data-text="lg"] { font-size: 112.5%; }   /* 18 px root */
+
+/* ──────────────── 4. Base ──────────────── */
+@layer base {
+  html { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    margin: 0; min-height: 100vh;
+    background: var(--app-backdrop), var(--color-bg); background-attachment: fixed;
+    color: var(--color-fg); font-size: var(--text-body); line-height: var(--text-body--line-height);
+    font-variant-numeric: tabular-nums;
+  }
+  h1, h2, h3, h4 { color: var(--color-fg-heading); font-weight: 700; text-wrap: balance; }
+  p, li { text-wrap: pretty; }
+  a { color: var(--color-link); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+  :focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+  ::selection { background: color-mix(in oklab, var(--color-accent) 35%, transparent); }
+  ::placeholder { color: var(--color-faint); }
+  code, kbd, samp, pre { font-family: var(--font-mono); }
+  @media (prefers-reduced-motion: reduce) { *, ::before, ::after { transition-duration: 0ms !important; animation: none !important; } }
+}
+
+/* ──────────────── 5. Utilities ──────────────── */
+/* Section label. v2 is sentence case (DESIGN-V2: no ALL-CAPS eyebrows): 14 px bold, muted. The name stays for compat. */
+@utility eyebrow {
+  font-size: var(--text-caption); line-height: var(--text-caption--line-height);
+  font-weight: 700; color: var(--color-muted);
+}
+/* Display face (Avant Garde if installed): one line per view, ≥ 28 px; never numbers, buttons or the wordmark. */
+@utility display { font-family: var(--font-display); letter-spacing: var(--tracking-display); }
+@utility bg-gradient-brand { background-image: var(--gradient-brand); }
+/* The atmosphere glow on its own, for a surface that sits over the canvas. */
+@utility bg-atmosphere { background-image: var(--app-backdrop); }
+/* AI tile / AI send button: SLDS agentic mesh on Cosmos blue. */
+@utility bg-agentic { background-color: #0253d4; background-image: var(--gradient-agentic-mesh); color: #ffffff; }
+/* AI-drafted region or proposal card: 1px agentic gradient border on the surface colour. */
+@utility border-agentic {
+  border: 1px solid transparent;
+  background: linear-gradient(var(--color-surface), var(--color-surface)) padding-box, var(--gradient-agentic-border) border-box;
+}
+/* shadow-focus, shadow-card, … come from the --shadow-* theme tokens; no @utility needed. */

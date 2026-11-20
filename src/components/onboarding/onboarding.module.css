@@ -1,0 +1,681 @@
+/*
+ * Onboarding (B-079): a bare, full-height frame (no sidebar or topbar) with the Settings three-pane pattern:
+ * step list · one step (label-left rows) · what it changes. The page never scrolls; each pane scrolls on its own,
+ * and every step fits without it at 1920 × 1000 and 2560 × 1300. Tokens from src/styles/brand.css only; colour is
+ * state (blue = the one action / current step, green = done, amber = needs sign-in), never identity.
+ */
+
+.frame {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+.root {
+  container: onboarding / inline-size;
+  display: grid;
+  grid-template-rows: 64px minmax(0, 1fr);
+  height: 100%;
+  min-height: 0;
+}
+
+/* ── top bar ───────────────────────────────────────────────────────────────────────────────── */
+.top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--color-line);
+  min-width: 0;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.mark {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex: none;
+  border-radius: var(--radius-lg, 8px);
+  background-image: var(--gradient-brand);
+  color: var(--color-white);
+  font-size: var(--text-caption);
+  line-height: 1;
+  font-weight: 700;
+}
+.brandName {
+  font-weight: 700;
+  color: var(--color-fg-heading);
+  white-space: nowrap;
+}
+.brandSep {
+  color: var(--color-faint);
+}
+.brandStep {
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+.topRight {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--color-muted);
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  white-space: nowrap;
+}
+
+/* ── three panes ───────────────────────────────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  min-height: 0;
+  grid-template-columns: 240px minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+}
+.grid > .aside {
+  display: none;
+}
+@container onboarding (min-width: 1100px) {
+  .grid {
+    grid-template-columns: 264px minmax(0, 1fr) 400px;
+  }
+  .grid > .aside {
+    display: block;
+  }
+}
+@container onboarding (min-width: 1600px) {
+  .grid {
+    grid-template-columns: 288px minmax(0, 1fr) clamp(440px, 28cqw, 560px);
+  }
+}
+/* Wide: the form stops growing; the explanation pane takes the rest (no empty bands at 2560). */
+@container onboarding (min-width: 2200px) {
+  .grid {
+    grid-template-columns: 320px minmax(0, 1240px) minmax(0, 1fr);
+  }
+}
+
+.nav,
+.aside {
+  min-height: 0;
+  overflow: auto;
+  scrollbar-gutter: stable;
+}
+.nav {
+  border-right: 1px solid var(--color-line);
+  padding: 24px 12px 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.aside {
+  border-left: 1px solid var(--color-line);
+  background: var(--color-surface);
+  padding: 32px 32px 48px;
+}
+
+/* ── step list ─────────────────────────────────────────────────────────────────────────────── */
+.stepItem {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  column-gap: 12px;
+  align-items: start;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  text-align: left;
+  color: var(--color-fg);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.stepItem:hover:not(:disabled) {
+  background: var(--color-surface-muted);
+}
+.stepItem[aria-current='step'] {
+  background: var(--color-selected);
+}
+.stepItem:disabled {
+  cursor: default;
+}
+.stepNum {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid var(--color-line-strong);
+  color: var(--color-muted);
+  font-size: var(--text-caption);
+  font-weight: 700;
+  line-height: 1;
+}
+.stepItem[aria-current='step'] .stepNum {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+.stepItem[data-done='true'] .stepNum {
+  border-color: var(--color-success-200);
+  background: var(--color-success-50);
+  color: var(--color-success-700);
+}
+.stepText {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.stepLabel {
+  font-weight: 700;
+  color: var(--color-fg-heading);
+  line-height: 28px;
+}
+.stepItem:disabled .stepLabel {
+  color: var(--color-muted);
+  font-weight: 400;
+}
+.stepSum {
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  color: var(--color-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.navFoot {
+  margin-top: auto;
+  padding: 16px 12px 0;
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  color: var(--color-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ── the step ──────────────────────────────────────────────────────────────────────────────── */
+.main {
+  container: spane / inline-size;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  min-height: 0;
+  min-width: 0;
+}
+.scroll {
+  min-height: 0;
+  overflow: auto;
+  scrollbar-gutter: stable;
+}
+.sec {
+  padding: 0 40px 8px;
+  max-width: 1240px;
+}
+/* tighter blocks than Settings, so every step fits 1920 × 1000 without scrolling */
+.sec > div {
+  padding-top: 14px;
+}
+.head {
+  padding: 18px 0 8px;
+  border-bottom: 1px solid var(--color-line);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 24px;
+  row-gap: 4px;
+  align-items: center;
+}
+.head h1 {
+  font-size: var(--text-heading);
+  line-height: var(--text-heading--line-height);
+}
+/* the heading takes focus on each step (screen readers hear the new step); no ring for a non-control */
+.head h1:focus {
+  outline: none;
+}
+.head p {
+  grid-column: 1 / -1;
+  color: var(--color-muted);
+  max-width: 80ch;
+}
+.headActs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 40px;
+  border-top: 1px solid var(--color-line);
+  background: var(--color-bg);
+}
+.footState {
+  color: var(--color-muted);
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.footRight {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.errLine {
+  color: var(--color-danger-700);
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+}
+
+/* the weights as two columns of label-left rows when there is room (fits 1920 × 1000) */
+.weightGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 40px;
+}
+.weightGrid > div {
+  grid-template-columns: minmax(180px, 280px) minmax(0, 1fr);
+  column-gap: 24px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.rulesCompact td {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.weightGrid > div:first-child {
+  border-top: 0;
+}
+@container spane (min-width: 1040px) {
+  .weightGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .weightGrid > div {
+    grid-template-columns: minmax(150px, 220px) minmax(0, 1fr);
+  }
+  .weightGrid > div:nth-child(2) {
+    border-top: 0;
+  }
+}
+
+.hint {
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  color: var(--color-muted);
+}
+.hint b {
+  color: var(--color-fg);
+}
+.note {
+  margin-top: 16px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  color: var(--color-muted);
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+}
+.note b {
+  color: var(--color-fg);
+}
+
+/* ── sources ───────────────────────────────────────────────────────────────────────────────── */
+.srcList {
+  display: flex;
+  flex-direction: column;
+}
+.src {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 24px;
+  row-gap: 4px;
+  padding: 10px 0;
+  border-top: 1px solid var(--color-line);
+}
+.src:first-child {
+  border-top: 0;
+}
+.srcName {
+  font-weight: 700;
+  color: var(--color-fg-heading);
+}
+.srcVia {
+  font-weight: 400;
+  color: var(--color-muted);
+  font-size: var(--text-caption);
+}
+.srcReads {
+  grid-column: 1;
+  color: var(--color-muted);
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+}
+.srcState {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  max-width: 360px;
+  text-align: right;
+}
+.srcMsg {
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  color: var(--color-muted);
+}
+.cmd {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.cmd code {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 6px 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-surface-input, var(--color-surface));
+  color: var(--color-fg);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: var(--text-caption);
+}
+
+/* ── history ───────────────────────────────────────────────────────────────────────────────── */
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+@container spane (min-width: 980px) {
+  .options {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.opt {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px;
+  border-radius: var(--radius-lg, 10px);
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-surface);
+  cursor: pointer;
+  text-align: left;
+}
+.opt:hover {
+  border-color: var(--color-line-input);
+}
+.opt[aria-checked='true'] {
+  border-color: var(--color-accent);
+  box-shadow: inset 0 0 0 1px var(--color-accent);
+  background: var(--color-selected);
+}
+.optDays {
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+  font-weight: 700;
+  color: var(--color-fg-heading);
+}
+.optCost {
+  color: var(--color-fg);
+}
+.optSub {
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  color: var(--color-muted);
+}
+.optWarn {
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  color: var(--color-warning-700);
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+/* ── review ────────────────────────────────────────────────────────────────────────────────── */
+.sum {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.card {
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-lg, 10px);
+  background: var(--color-surface);
+  padding: 16px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.cardHead {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.cardHead h2 {
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+}
+.cardHead button {
+  margin-left: auto;
+}
+.kv {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 16px;
+  row-gap: 4px;
+}
+.kv dt {
+  color: var(--color-muted);
+}
+.kv dd {
+  color: var(--color-fg);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.wide {
+  grid-column: 1 / -1;
+}
+.next {
+  margin: 0;
+  padding-left: 20px;
+  list-style: decimal;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--color-fg);
+}
+
+/* ── explanation pane ──────────────────────────────────────────────────────────────────────── */
+.aside > * {
+  max-width: 68ch;
+}
+.aside h2 {
+  font-size: var(--text-title);
+  line-height: var(--text-title--line-height);
+  margin-bottom: 12px;
+}
+.aside h3 {
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+  margin: 24px 0 6px;
+}
+.aside p,
+.aside li {
+  color: var(--color-muted);
+}
+.aside p + p {
+  margin-top: 10px;
+}
+.aside ul {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.aside b {
+  color: var(--color-fg);
+}
+.costTbl {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+.costTbl th,
+.costTbl td {
+  text-align: left;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-fg);
+}
+.costTbl th {
+  font-size: var(--text-caption);
+  color: var(--color-muted);
+  font-weight: 700;
+}
+.costTbl td:last-child,
+.costTbl th:last-child {
+  text-align: right;
+}
+.costTbl tr[data-on='true'] td {
+  font-weight: 700;
+}
+
+/* ── done / set up already ─────────────────────────────────────────────────────────────────── */
+.done {
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  padding: 48px 24px;
+}
+.doneCard {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.doneCard h1 {
+  font-size: var(--text-heading);
+  line-height: var(--text-heading--line-height);
+}
+.doneCard p {
+  color: var(--color-muted);
+}
+.doneActs {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* ── your ids, under Slack and Org62 on the Sources step ───────────────────────────────────── */
+.idRow {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  margin-top: 4px;
+}
+.srcList > .idRow {
+  padding: 10px 0;
+  border-top: 1px solid var(--color-line);
+}
+.idLabel {
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  font-weight: 700;
+  color: var(--color-fg);
+}
+.idNote {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  min-width: 0;
+  flex: 1 1 240px;
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  color: var(--color-muted);
+}
+.idBusy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.idHint,
+.idErr {
+  flex: 1 1 100%;
+  margin: 0;
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  color: var(--color-muted);
+}
+.idHint b {
+  color: var(--color-fg);
+}
+.idErr {
+  color: var(--color-danger-700);
+}
+
+/* ── Role step (D-55): persona cards ──────────────────────────────────────────────────────── */
+.personas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.preview {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 6px;
+  border-radius: var(--radius-sm, 4px);
+  border: 1px solid var(--color-line-strong);
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  font-weight: 700;
+  color: var(--color-muted);
+  vertical-align: 2px;
+}
+
+/* ── Sources step: the Available group's Activate toggle ──────────────────────────────────── */
+.activate {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  font-weight: 700;
+  color: var(--color-fg);
+  cursor: pointer;
+}
+.srcToggle {
+  grid-column: 1 / -1;
+}

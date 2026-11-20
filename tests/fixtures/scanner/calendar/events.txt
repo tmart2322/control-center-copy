@@ -1,0 +1,110 @@
+Successfully retrieved 9 events from calendar 'primary' for me@example.com:
+- "ACME_CORP Discovery Call" (Starts: 2026-03-10T09:00:00-07:00, Ends: 2026-03-10T09:45:00-07:00)
+  Description: No Description
+  Location: No Location
+  Creator: <ae.one@example.com>
+  Organizer: <ae.one@example.com>
+  Meeting Link: https://meet.google.com/abc-defg-hij
+  Attendees: me@example.com, ae.one@example.com, cust.one@customer.example
+  Attendee Details: me@example.com: accepted
+    ae.one@example.com: accepted (organizer)
+    cust.one@customer.example: accepted
+  Attachments: None
+  ID: evt_attended | Link: https://www.google.com/calendar/event?eid=evt_attended
+- "INT: ACME_CORP deal planning" (Starts: 2026-03-10T08:00:00-07:00, Ends: 2026-03-10T08:30:00-07:00)
+  Description: No Description
+  Location: No Location
+  Creator: <se.two@example.com>
+  Organizer: <se.two@example.com>
+  Meeting Link: https://meet.google.com/zzz-yyyy-xxx
+  Attendees: me@example.com, se.two@example.com, ae.one@example.com
+  Attendee Details: me@example.com: declined
+    se.two@example.com: accepted (organizer)
+    ae.one@example.com: accepted
+  Attachments: INT: ACME_CORP deal planning - 2026/03/10 08:00 PDT - Recording
+    File URL: https://drive.google.com/file/d/1RecordingFileId00000000000000/view?usp=drive_web
+    File ID: 1RecordingFileId00000000000000
+    MIME Type: video/mp4
+    INT: ACME_CORP deal planning - 2026/03/10 08:00 PDT - Notes by Gemini
+    File URL: https://docs.google.com/document/d/1GeminiNotesDocId0000000000000/edit?usp=drive_web
+    File ID: 1GeminiNotesDocId0000000000000
+    MIME Type: application/vnd.google-apps.document
+  ID: evt_declined | Link: https://www.google.com/calendar/event?eid=evt_declined
+- "Partner enablement webinar" (Starts: 2026-03-10T07:00:00-07:00, Ends: 2026-03-10T07:30:00-07:00)
+  Description: No Description
+  Location: No Location
+  Creator: <host@partner.example>
+  Organizer: <host@partner.example>
+  Meeting Link: https://meet.google.com/ppp-qqqq-rrr
+  Attendees: me@example.com, host@partner.example
+  Attendee Details: me@example.com: needsAction
+    host@partner.example: accepted (organizer)
+  Attachments: None
+  ID: evt_noresp | Link: https://www.google.com/calendar/event?eid=evt_noresp
+- "Customer A sync" (Starts: 2026-03-10T10:00:00-07:00, Ends: 2026-03-10T10:30:00-07:00)
+  Description: No Description
+  Location: No Location
+  Creator: <ae.one@example.com>
+  Organizer: <ae.one@example.com>
+  Meeting Link: https://meet.google.com/aaa-bbbb-ccc
+  Attendees: me@example.com, ae.one@example.com
+  Attendee Details: me@example.com: accepted
+    ae.one@example.com: accepted (organizer)
+  Attachments: None
+  ID: evt_overlap_a | Link: https://www.google.com/calendar/event?eid=evt_overlap_a
+- "Customer B sync" (Starts: 2026-03-10T10:00:00-07:00, Ends: 2026-03-10T10:30:00-07:00)
+  Description: No Description
+  Location: No Location
+  Creator: <se.two@example.com>
+  Organizer: <se.two@example.com>
+  Meeting Link: https://meet.google.com/ddd-eeee-fff
+  Attendees: me@example.com, se.two@example.com
+  Attendee Details: me@example.com: accepted
+    se.two@example.com: accepted (organizer)
+  Attachments: None
+  ID: evt_overlap_b | Link: https://www.google.com/calendar/event?eid=evt_overlap_b
+- "ACME_CORP architecture review" (Starts: 2026-03-10T09:50:00-07:00, Ends: 2026-03-10T10:05:00-07:00)
+  Description: Review the zero-copy flow. Notes: https://docs.google.com/document/d/1PrepDocId000000000000000000/edit
+  Location: No Location
+  Creator: <ae.one@example.com>
+  Organizer: <ae.one@example.com>
+  Meeting Link: https://meet.google.com/ggg-hhhh-iii
+  Attendees: me@example.com, ae.one@example.com, cust.one@customer.example
+  Attendee Details: me@example.com: tentative
+    ae.one@example.com: accepted (organizer)
+    cust.one@customer.example: accepted
+  Attachments: None
+  ID: evt_tentative | Link: https://www.google.com/calendar/event?eid=evt_tentative
+- "Out of office - offsite" (Starts: 2026-03-08, Ends: 2026-03-09)
+  Description: No Description
+  Location: No Location
+  Creator: <me@example.com>
+  Organizer: <me@example.com>
+  Attendees: me@example.com
+  Attendee Details: me@example.com: accepted (organizer)
+  Attachments: None
+  ID: evt_ooo | Link: https://www.google.com/calendar/event?eid=evt_ooo
+- "Stay at Example Hotel" (Starts: 2026-03-10, Ends: 2026-03-12)
+  Description: This event was created from an email you received in Gmail.
+  Location: No Location
+  Creator: <me@example.com>
+  Organizer: <me@example.com>
+  Attendees: me@example.com
+  Attendee Details: me@example.com: accepted (organizer)
+  Attachments: None
+  ID: evt_hotel | Link: https://www.google.com/calendar/event?eid=evt_hotel
+- "ACME_CORP workshop" (Starts: 2026-03-11T09:00:00-07:00, Ends: 2026-03-11T11:00:00-07:00)
+  Description: No Description
+  Location: Conference room 4
+  Creator: <ae.one@example.com>
+  Organizer: <ae.one@example.com>
+  Meeting Link: https://meet.google.com/jjj-kkkk-lll
+  Attendees: me@example.com, ae.one@example.com, cust.one@customer.example
+  Attendee Details: me@example.com: accepted
+    ae.one@example.com: accepted (organizer)
+    cust.one@customer.example: needsAction
+  Attachments: ACME_CORP workshop deck.pptx
+    File URL: https://docs.google.com/presentation/d/1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789/edit
+    File ID: 1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789
+    MIME Type: application/vnd.google-apps.presentation
+  ID: evt_future | Link: https://www.google.com/calendar/event?eid=evt_future

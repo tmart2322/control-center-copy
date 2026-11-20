@@ -1,0 +1,31 @@
+{
+  "verb": "reply",
+  "title": "Reply to Dana: keep Friday on profile + handoff, Sam on pricing",
+  "why": "Scope changed: Dana added pricing and maybe the CFO for Friday's demo",
+  "confidence": "likely",
+  "alternatives": [{ "verb": "nudge", "title": "Ask Sam to own pricing before replying", "why": "Pricing is the AE's call; align first" }],
+  "draft": {
+    "destination": { "channel": "slack", "label": "#acme-ext · thread", "threadRef": "1793700000.000100" },
+    "doc": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            { "type": "mention", "attrs": { "id": "U0DANA0001", "label": "Dana", "kind": "slack_user" } },
+            { "type": "text", "text": " happy to have your CFO join on Friday. We'll keep the demo on the unified profile and the agent handoff, and " },
+            { "type": "mention", "attrs": { "id": "U0SAM00001", "label": "Sam", "kind": "slack_user" } },
+            { "type": "text", "text": " can walk through how pricing works for the agent piece." }
+          ]
+        }
+      ]
+    }
+  },
+  "plan": null,
+  "effort": { "youMin": 4, "agentMin": 0 },
+  "startBy": { "at": "2026-11-05T11:00:00-07:00", "reasoning": "Sam needs time to prep pricing before Friday 14:00" },
+  "sources": ["ev_notes", "ev_new", "msg_2", "cal_demo"],
+  "asks": [{ "question": "Is Sam OK covering pricing on Friday?", "to": "Sam Ortiz", "blocking": false }],
+  "completeness": 85,
+  "update": null
+}

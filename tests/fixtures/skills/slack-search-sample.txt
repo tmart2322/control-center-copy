@@ -1,0 +1,296 @@
+# Search Results for: from:<@U0ALEX0001> after:2026-09-06
+
+## Messages (24 results)
+### Result 1 of 24
+Channel: DM (ID: D0DMDANA01)
+Participants: Dana Lee (ID: U0DANA0001), Alex Example (ID: U0ALEX0001)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-11-04 08:37:50 MST
+Message_ts: 1793806670.026889
+Permalink: [link](https://example.slack.com/archives/D0DMDANA01/p1793806670026889)
+Text:
+Yep got it, I'll send the deck over by EOD.
+
+---
+
+### Result 2 of 24
+Channel: Group DM (ID: C0GDMTEAM1)
+Participants: Dana Lee (ID: U0DANA0001), Sam Ortiz (ID: U0SAM00001), Alex Example (ID: U0ALEX0001)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-11-04 08:28:56 MST
+Message_ts: 1793806136.322889
+Permalink: [link](https://example.slack.com/archives/C0GDMTEAM1/p1793806136322889?thread_ts=1793800000.000100&cid=C0GDMTEAM1)
+Text:
+<@U0SAM00001|Sam Ortiz> can you present up to slide 5 and I'll take it over from slide 6 on?
+
+---
+
+### Result 3 of 24
+Channel: #team-channel (ID: C0TEAMCH01)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-11-04 07:53:22 MST
+Message_ts: 1793804002.563759
+Permalink: [link](https://example.slack.com/archives/C0TEAMCH01/p1793804002563759)
+Text:
+<@U0JORDAN01|Jordan Kim> Mind sending over the calculator repo?
+
+---
+
+### Result 4 of 24
+Channel: DM (ID: D0DMDANA01)
+Participants: Dana Lee (ID: U0DANA0001), Alex Example (ID: U0ALEX0001)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-11-03 17:00:01 MST
+Message_ts: 1793750401.590029
+Permalink: [link](https://example.slack.com/archives/D0DMDANA01/p1793750401590029)
+Text:
+Hey Dana, was at the airport, apologies. I won't be able to move it but I'll make sure to record so you can review later.
+
+---
+
+### Result 5 of 24
+Channel: #ZC:C0ACMECH01:ACME - Data Foundations (ID: C0ACMECH01)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-11-03 16:52:00 MST
+Message_ts: 1793749920.838309
+Permalink: [link](https://example.slack.com/archives/C0ACMECH01/p1793749920838309?thread_ts=1793740000.000200&cid=C0ACMECH01)
+Text:
+Reply sent
+
+---
+
+### Result 6 of 24
+Channel: #ZC:C0ACMECH01:ACME - Data Foundations (ID: C0ACMECH01)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-11-03 13:16:21 MST
+Message_ts: 1793736981.478909
+Permalink: [link](https://example.slack.com/archives/C0ACMECH01/p1793736981478909?thread_ts=1793740000.000200&cid=C0ACMECH01)
+Text:
+<@U0PRIYA001|Priya Shah> There are a few ways the platform persists tables rather than reading them through zero-copy.
+• Acceleration on the data stream caches the tables at a set frequency.
+• Transforms that land in the platform create materialized tables.
+• Graphs materialize underlying tables for lower latency.
+
+Happy to go into more detail if that helps.
+
+---
+
+### Result 7 of 24
+Channel: DM (ID: D0DMSAM001)
+Participants: Sam Ortiz (ID: U0SAM00001), Alex Example (ID: U0ALEX0001)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-11-03 10:25:49 MST
+Message_ts: 1793725549.561439
+Permalink: [link](https://example.slack.com/archives/D0DMSAM001/p1793725549561439)
+Text:
+Forwarded the invite to you if you can make it tomorrow
+
+---
+
+### Result 8 of 24
+Channel: DM (ID: D0DMSAM001)
+Participants: Sam Ortiz (ID: U0SAM00001), Alex Example (ID: U0ALEX0001)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-11-03 09:48:04 MST
+Message_ts: 1793723284.135259
+Permalink: [link](https://example.slack.com/archives/D0DMSAM001/p1793723284135259)
+Text:
+Let's go! That demo went really well :slightly_smiling_face:
+
+---
+
+### Result 9 of 24
+Channel: Group DM (ID: C0GDMTEAM1)
+Participants: Dana Lee (ID: U0DANA0001), Sam Ortiz (ID: U0SAM00001), Alex Example (ID: U0ALEX0001)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-11-02 08:24:25 MST
+Message_ts: 1793633065.150859
+Permalink: [link](https://example.slack.com/archives/C0GDMTEAM1/p1793633065150859)
+Text:
+• Demo: <https://demo.example.com/acme|demo.example.com/acme> (the script is at /script)
+• Guide: <https://demo.example.com/acme/guide|demo.example.com/acme/guide>
+
+Here are the two links. Haven't looked at them yet; will do that after my next call.
+
+---
+
+### Result 10 of 24
+Channel: DM (ID: D0DMJORD01)
+Participants: Jordan Kim (ID: U0JORDAN01), Alex Example (ID: U0ALEX0001)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-11-02 07:16:41 MST
+Message_ts: 1793629001.063919
+Permalink: [link](https://example.slack.com/archives/D0DMJORD01/p1793629001063919)
+Text:
+It worked with an incognito window if people run into that issue
+
+---
+
+### Result 11 of 24
+Channel: DM (ID: D0DMJORD01)
+Participants: Jordan Kim (ID: U0JORDAN01), Alex Example (ID: U0ALEX0001)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-11-02 06:54:37 MST
+Message_ts: 1793627677.369289
+Permalink: [link](https://example.slack.com/archives/D0DMJORD01/p1793627677369289)
+Text:
+
+
+---
+
+### Result 12 of 24
+Channel: DM (ID: D0DMJORD01)
+Participants: Jordan Kim (ID: U0JORDAN01), Alex Example (ID: U0ALEX0001)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-11-01 12:55:50 MST
+Message_ts: 1793560550.261199
+Permalink: [link](https://example.slack.com/archives/D0DMJORD01/p1793560550261199)
+Text:
+Yep accepted. Talked to Sam; he's going to do what he can to be there. And yes I'll get that over to him tonight.
+
+---
+
+### Result 13 of 24
+Channel: DM (ID: D0DMJORD01)
+Participants: Jordan Kim (ID: U0JORDAN01), Alex Example (ID: U0ALEX0001)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-11-01 12:38:24 MST
+Message_ts: 1793559504.496799
+Permalink: [link](https://example.slack.com/archives/D0DMJORD01/p1793559504496799)
+Text:
+How is the call going? Do you need me on?
+
+---
+
+### Result 14 of 24
+Channel: Group DM (ID: C0GDMTEAM1)
+Participants: Dana Lee (ID: U0DANA0001), Sam Ortiz (ID: U0SAM00001), Alex Example (ID: U0ALEX0001)
+From:  (ID: U0ALEX0001)
+Time: 2026-10-30 12:33:26 MDT
+Message_ts: 1793385206.825769
+Permalink: [link](https://example.slack.com/archives/C0GDMTEAM1/p1793385206825769)
+Text:
+Nice work Sam!
+
+---
+
+### Result 15 of 24
+Channel: DM (ID: D0DMSAM001)
+Participants: Sam Ortiz (ID: U0SAM00001), Alex Example (ID: U0ALEX0001)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-10-30 11:52:12 MDT
+Message_ts: 1793382732.397029
+Permalink: [link](https://example.slack.com/archives/D0DMSAM001/p1793382732397029)
+Text:
+Confirmed internally just to sanity check; our team is aligned that both can be done in parallel. Rather than wait 6+ months for MDM you find smaller use cases where the data is good enough and have them live in 2-3 months.
+
+---
+
+### Result 16 of 24
+Channel: DM (ID: D0DMSAM001)
+Participants: Sam Ortiz (ID: U0SAM00001), Alex Example (ID: U0ALEX0001)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-10-30 11:13:40 MDT
+Message_ts: 1793380420.438349
+Permalink: [link](https://example.slack.com/archives/D0DMSAM001/p1793380420438349)
+Text:
+Do you have a deck spun up yet?
+
+---
+
+### Result 17 of 24
+Channel: DM (ID: D0DMSAM001)
+Participants: Sam Ortiz (ID: U0SAM00001), Alex Example (ID: U0ALEX0001)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-10-30 11:05:31 MDT
+Message_ts: 1793379931.647769
+Permalink: [link](https://example.slack.com/archives/D0DMSAM001/p1793379931647769)
+Text:
+Perfect I'll get started on that. Thanks Sam!
+
+---
+
+### Result 18 of 24
+Channel: Group DM (ID: C0GDMTEAM1)
+Participants: Dana Lee (ID: U0DANA0001), Sam Ortiz (ID: U0SAM00001), Alex Example (ID: U0ALEX0001)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-10-29 13:13:40 MDT
+Message_ts: 1793301220.438350
+Permalink: [link](https://example.slack.com/archives/C0GDMTEAM1/p1793301220438350)
+Text:
+Demo user credentials: <https://share.1password.com/s#AbCdEfGhIjKlMnOp|share.1password.com/s#…>
+
+---
+
+### Result 19 of 24
+Channel: DM (ID: D0DMDANA01)
+Participants: Dana Lee (ID: U0DANA0001), Alex Example (ID: U0ALEX0001)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-10-29 10:00:00 MDT
+Message_ts: 1793289600.000300
+Permalink: [link](https://example.slack.com/archives/D0DMDANA01/p1793289600000300)
+Text:
+Okay ping me if I'm needed and I'll jump out.
+
+---
+
+### Result 20 of 24
+Channel: DM (ID: D0DMDANA01)
+Participants: Dana Lee (ID: U0DANA0001), Alex Example (ID: U0ALEX0001)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-10-29 09:30:00 MDT
+Message_ts: 1793287800.000400
+Permalink: [link](https://example.slack.com/archives/D0DMDANA01/p1793287800000400)
+Text:
+Yeah booked for the next hour, then need to start packing. Could meet tomorrow morning before I head to the office.
+
+---
+
+### Result 21 of 24
+Channel: #team-channel (ID: C0TEAMCH01)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-10-28 18:06:12 MDT
+Message_ts: 1793203572.405489
+Reply count: 2
+Permalink: [link](https://example.slack.com/archives/C0TEAMCH01/p1793203572405489?thread_ts=1793203572.405489&cid=C0TEAMCH01)
+Text:
+Hi everyone. Put together some short video walkthroughs of the assets I've been working on, plus links to them in GitHub. I'll be OOO until next Wednesday so leave comments with any feedback and I'll take a look when I get back.
+
+---
+
+### Result 22 of 24
+Channel: DM (ID: D0DMJORD01)
+Participants: Jordan Kim (ID: U0JORDAN01), Alex Example (ID: U0ALEX0001)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-10-28 14:07:08 MDT
+Message_ts: 1793189228.393549
+Permalink: [link](https://example.slack.com/archives/D0DMJORD01/p1793189228393549)
+Text:
+Okay let's see what I can get done in the next hour :running:
+
+---
+
+### Result 23 of 24
+Channel: DM (ID: D0DMJORD01)
+Participants: Jordan Kim (ID: U0JORDAN01), Alex Example (ID: U0ALEX0001)
+From: Alex Example <alex@example.com> (ID: U0ALEX0001)
+Time: 2026-10-28 14:02:05 MDT
+Message_ts: 1793188925.865749
+Permalink: [link](https://example.slack.com/archives/D0DMJORD01/p1793188925865749)
+Text:
+I'll get to that right after this next call. Should be able to fill it all in pretty quickly for you.
+
+---
+
+### Result 24 of 24
+Channel: DM (ID: D0DMOTHER1)
+Participants: Pat Other (ID: U0PATOTH01), Alex Example (ID: U0ALEX0001)
+From: Pat Other <pat@example.com> (ID: U0PATOTH01)
+Time: 2026-10-28 13:00:00 MDT
+Message_ts: 1793185200.000500
+Permalink: [link](https://example.slack.com/archives/D0DMOTHER1/p1793185200000500)
+Text:
+This one is from someone else and must be filtered out by the me-filter.
+
+---
+

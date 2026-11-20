@@ -1,0 +1,49 @@
+{
+  "_note": "Shape of the scan-org62 Q1 (OpportunityTeamMember with Opportunity fields). Placeholders only.",
+  "totalSize": 2,
+  "done": true,
+  "records": [
+    {
+      "attributes": { "type": "OpportunityTeamMember", "url": "/services/data/v68.0/sobjects/OpportunityTeamMember/00qXX0000000001AAA" },
+      "Id": "00qXX0000000001AAA",
+      "OpportunityId": "006XX0000000001AAA",
+      "TeamMemberRole": "Solutions Engineer",
+      "SystemModstamp": "2026-09-02T17:10:00.000+0000",
+      "Opportunity": {
+        "attributes": { "type": "Opportunity", "url": "/services/data/v68.0/sobjects/Opportunity/006XX0000000001AAA" },
+        "Name": "ACME – Data 360 Expansion",
+        "AccountId": "001XX0000000001AAA",
+        "Account": { "attributes": { "type": "Account" }, "Name": "ACME Corp" },
+        "StageName": "03 - Validating Benefits & Value",
+        "CloseDate": "2026-12-15",
+        "Amount": 250000,
+        "ForecastCategoryName": "Pipeline",
+        "NextStep": "SE demo of zero copy before 12/1",
+        "IsClosed": false,
+        "IsWon": false,
+        "SystemModstamp": "2026-11-05T14:00:00.000+0000"
+      }
+    },
+    {
+      "attributes": { "type": "OpportunityTeamMember", "url": "/services/data/v68.0/sobjects/OpportunityTeamMember/00qXX0000000002AAA" },
+      "Id": "00qXX0000000002AAA",
+      "OpportunityId": "006XX0000000004AAA",
+      "TeamMemberRole": "Solutions Engineer",
+      "SystemModstamp": "2026-11-05T14:30:00.000+0000",
+      "Opportunity": {
+        "attributes": { "type": "Opportunity", "url": "/services/data/v68.0/sobjects/Opportunity/006XX0000000004AAA" },
+        "Name": "GLOBEX – Agentforce Pilot",
+        "AccountId": "001XX0000000002AAA",
+        "Account": { "attributes": { "type": "Account" }, "Name": "GLOBEX Inc" },
+        "StageName": "01 - Discovery",
+        "CloseDate": "2027-03-31",
+        "Amount": 120000,
+        "ForecastCategoryName": "Pipeline",
+        "NextStep": null,
+        "IsClosed": false,
+        "IsWon": false,
+        "SystemModstamp": "2026-11-05T14:30:00.000+0000"
+      }
+    }
+  ]
+}

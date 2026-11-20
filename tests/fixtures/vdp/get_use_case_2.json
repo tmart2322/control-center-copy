@@ -1,0 +1,23 @@
+{
+  "use_case": {
+    "id": "aaaaaaa1-0000-4000-8000-000000000002",
+    "vdpId": "11111111-1111-4111-8111-111111111111",
+    "track": "agentforce",
+    "displayOrder": 1,
+    "title": "Service agent deflection",
+    "priority": "2 - Medium",
+    "division": null,
+    "persona": null,
+    "detailsInput": null,
+    "executionPhase": null,
+    "executionTargetDate": null,
+    "executionStartDate": null,
+    "executionDurationValue": null,
+    "executionDurationUnit": null,
+    "generatedFields": null,
+    "createdAt": "2026-09-01T16:00:00.000Z",
+    "updatedAt": "2026-09-01T16:00:00.000Z"
+  },
+  "vdp_slug": "acme-fy27-q4",
+  "vdp_url": "https://vdp.example.test/vdp/acme-fy27-q4"
+}

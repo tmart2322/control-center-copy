@@ -1,0 +1,51 @@
+{
+  "total": 3,
+  "count": 3,
+  "results": [
+    {
+      "id": "11111111-1111-4111-8111-111111111111",
+      "slug": "acme-fy27-q4",
+      "status": "",
+      "is_complete": false,
+      "missing": ["no_ai_generated"],
+      "is_seed": false,
+      "archived_at": null,
+      "created_at": "2026-09-01T16:00:00.000Z",
+      "updated_at": "2026-10-20T16:00:00.000Z",
+      "fiscal_year": 27,
+      "fiscal_quarter": 4,
+      "company": { "id": "c1111111-1111-4111-8111-111111111111", "name": "Acme Placeholder", "slug": "acme-placeholder", "website": null, "industry_name": "Manufacturing", "sales_segment_label": "Enterprise" },
+      "account_executives": [{ "id": "u-ae", "email": "ae.placeholder@example.com", "display_name": "AE Placeholder", "is_placeholder": false }],
+      "technical_architects": [{ "id": "u-me", "email": "me@example.com", "display_name": "Me Placeholder", "is_placeholder": false }],
+      "use_case_counts": { "d360": 1, "agentforce": 1 },
+      "rank": null,
+      "vdp_url": "https://vdp.example.test/vdp/acme-fy27-q4"
+    },
+    {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "slug": "globex-fy27-q4",
+      "is_seed": false,
+      "archived_at": null,
+      "updated_at": "2026-10-01T16:00:00.000Z",
+      "fiscal_year": null,
+      "fiscal_quarter": null,
+      "company": { "id": "c2222222-2222-4222-8222-222222222222", "name": "Globex Placeholder", "slug": "globex-placeholder" },
+      "account_executives": [],
+      "technical_architects": [],
+      "vdp_url": "https://vdp.example.test/vdp/globex-fy27-q4"
+    },
+    {
+      "id": "33333333-3333-4333-8333-333333333333",
+      "slug": "someone-elses-vdp",
+      "is_seed": false,
+      "archived_at": null,
+      "updated_at": "2026-10-01T16:00:00.000Z",
+      "fiscal_year": 27,
+      "fiscal_quarter": 3,
+      "company": { "id": "c3333333-3333-4333-8333-333333333333", "name": "Initech Placeholder", "slug": "initech-placeholder" },
+      "account_executives": [{ "email": "other.ae@example.com", "display_name": "Other AE" }],
+      "technical_architects": [{ "email": "other.ta@example.com", "display_name": "Other TA" }],
+      "vdp_url": "https://vdp.example.test/vdp/someone-elses-vdp"
+    }
+  ]
+}

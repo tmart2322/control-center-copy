@@ -1,0 +1,36 @@
+{
+  "id": "afd360-estimate-new",
+  "name": "AFD360 Estimate (new, conversational)",
+  "description": "Open a Claude Code session in the estimates repo that uses the afd360-estimator skill to build a new estimate for a customer.",
+  "icon": "calculator",
+  "version": 1,
+  "launch": {
+    "kind": "claude_session",
+    "repoPath": "~/Projects/afd360-estimates",
+    "promptTemplate": "Use the afd360-estimator skill: build an estimate for {{customer}}. Context: {{context}}"
+  },
+  "input": {
+    "fields": [
+      { "key": "customer", "type": "string", "label": "Customer", "required": true, "maxLength": 200, "prefill": "{{workItem.account.name}}" },
+      { "key": "opp", "type": "entity_ref", "entity": "opp", "label": "Opportunity", "required": false },
+      { "key": "context", "type": "text", "label": "Signals and context", "required": false, "maxLength": 8000 }
+    ]
+  },
+  "output": {
+    "kind": "artifact",
+    "artifacts": [
+      { "pathTemplate": "~/Projects/afd360-estimates/{{customer}}/estimate.yaml", "label": "estimate.yaml", "revealable": true }
+    ]
+  },
+  "health": { "type": "file", "path": "~/.claude/skills/afd360-estimator/SKILL.md" },
+  "progress": { "protocol": "none" },
+  "estimatedDuration": { "minSec": 600, "maxSec": 3600 },
+  "privacy": {
+    "note": "Opens a new Claude Code session you manage in the Claude Desktop Code tab. The session writes estimate files in the local estimates repo; it does not send anything externally.",
+    "dataClass": "customer",
+    "network": "localhost-only",
+    "writes": ["~/Projects/afd360-estimates"],
+    "externalCalls": [{ "service": "Claude Code session", "kind": "llm" }],
+    "requiresConfirm": true
+  }
+}

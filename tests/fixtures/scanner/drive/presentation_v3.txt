@@ -1,0 +1,24 @@
+Presentation Details for me@example.com:
+- Title: ACME_CORP workshop deck
+- Presentation ID: 1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789
+- URL: https://docs.google.com/presentation/d/1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789/edit
+- Total Slides: 4
+- Page Size: 18288000 x 10287000 EMU
+
+Slides Breakdown:
+  Slide 1: ID p_title, 2 element(s), text: 
+    > ACME_CORP and Data 360
+    > Workshop, March 11
+  Slide 2: ID p_agenda, 6 element(s), text: 
+    > Agenda
+    > Goals
+    > Architecture
+    > Demo
+    > Next steps
+  Slide 3: ID p_arch, 9 element(s), text: 
+    > Architecture
+    > Snowflake zero-copy to Data 360
+    > Identity resolution
+  Slide 4: ID p_privconn, 4 element(s), text: 
+    > Private Connect for GCP
+    > Network route and approval steps

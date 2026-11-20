@@ -1,0 +1,68 @@
+/* Chat motion: only what answers the stream or the user (caret, running tool dot, an undo landing). */
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: -0.16em;
+  border-radius: 1px;
+  background: var(--color-brand-600);
+  animation: caretBlink 1.05s steps(1, end) infinite;
+}
+
+@keyframes caretBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.running {
+  animation: running 1.1s ease-in-out infinite;
+}
+
+@keyframes running {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.75);
+  }
+}
+
+/* A receipt line flips to "Undone": a short wash so the eye sees which line changed. */
+.landed {
+  animation: landed 700ms ease-out;
+}
+
+@keyframes landed {
+  from {
+    background-color: var(--color-brand-50);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+/* Thin, quiet scrollbars inside the dock. */
+.scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+  overscroll-behavior: contain;
+}
+
+.vertical {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret,
+  .running,
+  .landed {
+    animation: none;
+  }
+}

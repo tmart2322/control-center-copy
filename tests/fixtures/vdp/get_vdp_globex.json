@@ -1,0 +1,28 @@
+{
+  "vdp": {
+    "id": "22222222-2222-4222-8222-222222222222",
+    "slug": "globex-fy27-q4",
+    "companyId": "c2222222-2222-4222-8222-222222222222",
+    "isSeed": false,
+    "createdAt": "2026-09-10T16:00:00.000Z",
+    "updatedAt": "2026-10-01T16:00:00.000Z",
+    "archivedAt": null,
+    "fiscalYear": null,
+    "fiscalQuarter": null,
+    "salesforceAccountId": "001PLACEHOLDER0002",
+    "salesforceOpportunityId": null,
+    "company": { "id": "c2222222-2222-4222-8222-222222222222", "name": "Globex Placeholder", "slug": "globex-placeholder" },
+    "salesSegment": null,
+    "collaborators": [{ "user": { "email": "me@example.com", "displayName": "Me Placeholder" }, "role": "owner" }],
+    "accountExecutives": [],
+    "technicalArchitects": [],
+    "createdByUser": null,
+    "lastActivity": { "at": "2026-10-01T16:00:00.000Z", "actor": null },
+    "vdp_url": "https://vdp.example.test/vdp/globex-fy27-q4",
+    "use_cases_index": [],
+    "assets": [{ "id": "as-1", "title": "Discovery deck", "url": "https://docs.example.com/presentation/d/PLACEHOLDER", "type": "Deck", "description": null }],
+    "asset_count": 1,
+    "executive_summary": null,
+    "stakeholders": []
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "_note": "Recorded shape of mcp__slack__slack_read_channel (DM, limit 2, detailed) on 2026-11-05. Placeholders only.",
+  "messages": "Channel: DM (D0DM00009)\n\n=== Message from PERSON_A <person_a@example.com> (U0PERSONA) at 2026-11-05 08:42:14 MST === \nMessage TS: 1793893334.322509\nadded you to the oppty\n\n=== Message from PERSON_A <person_a@example.com> (U0PERSONA) at 2026-11-05 08:40:54 MST === \nMessage TS: 1793893254.216309\nyes, I can do the slides and you do the demo",
+  "pagination_info": "There are more messages available. To view the next page, use cursor: `bmV4dF90czoxNzkzODkzMDcwMDI2ODg5`\n"
+}

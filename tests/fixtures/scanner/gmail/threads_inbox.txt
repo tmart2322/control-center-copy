@@ -1,0 +1,40 @@
+Thread ID: 18f00000000000b1
+Subject: Re: ACME_CORP data cloud workshop agenda
+Messages: 2
+
+=== Message 1 ===
+From: AE_1 <ae.one@example.com>
+Date: Tue, 10 Mar 2026 16:05:00 +0000
+Message-ID: <msg-0001@mail.example.com>
+
+Hi ME,
+
+Can you send the updated deck for the workshop by Thursday?
+
+=== Message 2 ===
+From: ME <me@example.com>
+Date: Tue, 10 Mar 2026 16:55:00 +0000
+Message-ID: <msg-0004@mail.example.com>
+
+On it. Sending the deck this afternoon.
+
+Thread ID: 18f00000000000a1
+Subject: Deck attached: ACME_CORP workshop
+Messages: 1
+
+=== Message 1 ===
+From: CUSTOMER_1 <cust.one@customer.example>
+Date: Tue, 10 Mar 2026 16:20:00 +0000
+Message-ID: <msg-0002@mail.customer.example>
+
+Please see attached the revised requirements.
+
+Thread ID: 18f0000000000003
+Subject: The Daily: weekly roundup
+Messages: 1
+
+=== Message 1 ===
+From: Employee Comms <employeecomms@example.com>
+Date: Tue, 10 Mar 2026 16:40:00 +0000
+
+Welcome to The Daily

@@ -1,0 +1,118 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`review canvas render > matches the autopilot sections and format 1`] = `
+"::: {.callout}
+**FY27 Q4** · deadline ![](slack_date:2027-01-29) (85 days) · **2.0 CR / 2.0 CF h logged** of ~250 · 3 drafts to review (2.5 h) · 4 approved, waiting to be loaded
+Updated 2026-11-05 18:00 UTC by the activity autopilot. Drafts only: nothing here is written to Org62 for you.
+:::
+
+**How to use:** tick a box to approve it as shown. To change something, add \`=>\` at the end of the line: \`=> skip\`, \`=> Customer Discovery\`, \`=> 1.5h\`, \`=> 006…\` (Related To), or combine them, e.g. \`=> Workshop, 1h\`. The next run (weekdays 5:30pm, Fri 9am) picks up your ticks and builds the batch below.
+
+# :inbox_tray: Ready to load into Org62 (4)
+
+4 approved events, 6.25 h. Pick one way to load them. Each one disappears from here once the read-back finds it in Org62.
+
+1. **Slackbot:** paste the prompt below into Slackbot (it can write to Org62; Claude can't).
+2. **Data Loader:** Insert → Event → the newest \`batch-*.csv\` in \`~/Library/Application Support/control-center/autopilot/outbox/\`.
+3. **One by one:** click a link, check the form, Save.
+
+\`\`\`
+Create these Org62 Events for me (owner 005PLACEHOLDER0001), Record Type **Solutions Event** (012PLACEHOLDER0001). For each row set Subject, StartDateTime and EndDateTime (UTC as given), SE_Task_Type__c, Duration__c (Time(Hrs)), WhatId (Related To) and Meeting_Type__c when present. Do not set DurationInMinutes or Remote__c. Before creating anything, check for an existing Event of mine with the same Subject and start, skip duplicates, show me the final list and wait for my "yes".
+
+| # | Subject | Start (UTC) | End (UTC) | SE Task Type | Time(Hrs) | WhatId | Meeting Type |
+|---|---|---|---|---|---|---|---|
+| 1 | ACME / design session | 2026-11-02T16:00 | 2026-11-02T17:00 | Customer Discovery | 1 | 006PLACEHOLDER0001 |  |
+| 2 | Globex planning | 2026-11-02T18:00 | 2026-11-02T18:45 | Account Planning | 0.75 | 006PLACEHOLDER0002 |  |
+| 3 | Demo tooling build | 2026-11-03T19:00 | 2026-11-03T22:30 | Asset Creation | 3.5 | (none) |  |
+| 4 | Future meeting | 2026-11-09T16:00 | 2026-11-09T17:00 | Customer Discovery | 1 | 006PLACEHOLDER0001 |  |
+\`\`\`
+
+- [open #101](https://example.lightning.force.com/lightning/o/Event/new?recordTypeId=012PLACEHOLDER0001&defaultFieldValues=Subject=ACME%20%7C%20design%20session,StartDateTime=2026-11-02T16%3A00%3A00.000Z,EndDateTime=2026-11-02T17%3A00%3A00.000Z,SE_Task_Type__c=Customer%20Discovery,Duration__c=1,WhatId=006PLACEHOLDER0001) ACME / design session · 11/02 09:00 · 1h · Customer Discovery
+- [open #102](https://example.lightning.force.com/lightning/o/Event/new?recordTypeId=012PLACEHOLDER0001&defaultFieldValues=Subject=Globex%20planning,StartDateTime=2026-11-02T18%3A00%3A00.000Z,EndDateTime=2026-11-02T18%3A45%3A00.000Z,SE_Task_Type__c=Account%20Planning,Duration__c=0.75,WhatId=006PLACEHOLDER0002) Globex planning · 11/02 11:00 · 0.75h · Account Planning
+- [open #103](https://example.lightning.force.com/lightning/o/Event/new?recordTypeId=012PLACEHOLDER0001&defaultFieldValues=Subject=Demo%20tooling%20build,StartDateTime=2026-11-03T19%3A00%3A00.000Z,EndDateTime=2026-11-03T22%3A30%3A00.000Z,SE_Task_Type__c=Asset%20Creation,Duration__c=3.5) Demo tooling build · 11/03 12:00 · 3.5h · Asset Creation
+- [open #109](https://example.lightning.force.com/lightning/o/Event/new?recordTypeId=012PLACEHOLDER0001&defaultFieldValues=Subject=Future%20meeting,StartDateTime=2026-11-09T16%3A00%3A00.000Z,EndDateTime=2026-11-09T17%3A00%3A00.000Z,SE_Task_Type__c=Customer%20Discovery,Duration__c=1,WhatId=006PLACEHOLDER0001) Future meeting · 11/09 09:00 · 1h · Customer Discovery
+
+# :warning: Needs your input (1)
+
+- [ ] #202 · Tue 11/03 11:00 · 0.5h · Initech sync · Account Planning · ⚠️ Related To? · ⚠️ NEEDS WhatId: pick an opp from candidates
+
+# :calendar: Review: meetings (1, 0.5 h)
+
+### Week of ![](slack_date:2026-11-02) · 1 · 0.5 h
+
+- [ ] #201 · Tue 11/03 09:00 · 0.5h · ACME readout · Customer Presentation · ACME - Data 360 Expansion
+
+# :hammer_and_wrench: Review: estimated work blocks (1, 1.5 h)
+
+Off-calendar work inferred from Claude Code activity and Drive edits. **\`~\` hours are guesses.** Fix them with \`=> 2h\`. Rows without a Related To are in *Needs your input*: add \`=> 006…\` or \`=> skip\`.
+
+- [ ] #203 · Wed 11/04 09:00 · ~1.5h · ACME: off-calendar build/prep · Solution Creation · ACME - Data 360 Expansion · _hands-on 1.5 h (claude_hands_on)_
+
+# :crystal_ball: Coming up (1)
+
+Pre-classified. They move to review after they happen. Tick early to approve them in advance.
+
+- [ ] #204 · Tue 11/10 09:00 · 1h · Upcoming workshop · Workshop / Data Cloud Workshop · ACME - Data 360 Expansion
+
+# :handshake: Deal Contributions & VDP
+
+|Opportunity|Close|Your DC|VDP|Gap|
+|---|---|---|---|---|
+|ACME - Data 360 Expansion|2027-01-29|none|none|no DC|
+
+Read from Org62 2026-11-05.
+
+# :bar_chart: Hours this quarter
+
+\`\`\`data_visualization
+{"title":"Logged hours per week","chart":{"type":"bar","series":[{"name":"CR h","data":[{"label":"11/02","value":2}]},{"name":"CF h","data":[{"label":"11/02","value":2}]}],"axis_config":{"categories":["11/02"],"x_label":"Week of","y_label":"Hours"}}}
+\`\`\`
+
+|Bucket|CR (= CC) h|CF h|
+|---|---|---|
+|Logged in Org62|2.00|2.00|
+|Approved, not loaded yet|2.75|2.00|
+|To review|2.00|0.50|
+|Needs input|0.50|0.00|
+|Upcoming|1.00|1.00|
+
+Gap to ~250 CC: **248.0 h**. Calendar-backed work rarely gets there on its own. Add off-calendar deal work as work blocks.
+
+### :white_check_mark: Recently confirmed in Org62
+
+- 11/02 · ACME / design session · Customer Discovery · \`E1\`
+
+---
+Source: \`tools/activity-autopilot\` in the control-center repo."
+`;
+
+exports[`work-order canvas render > matches the autopilot format exactly 1`] = `
+"::: {.callout}
+**Slackbot: this canvas is a complete work order. Execute it in Org62 for Test User (User Id 005PLACEHOLDER0001) without asking for more context.** Rules:
+:::
+
+1. **ADD table, rows with Object = Event:** create an Event with RecordTypeId \`012PLACEHOLDER0001\` (Solutions Event), OwnerId \`005PLACEHOLDER0001\`, and Subject, StartDateTime, EndDateTime (UTC, exactly as given), SE_Task_Type__c, Duration__c, WhatId, Meeting_Type__c (only when given) and Description. Do not set DurationInMinutes or Remote__c.
+2. **Duplicates:** skip an Event row ONLY if the owner already has an Event with RecordTypeId \`012PLACEHOLDER0001\` (Solutions Event) and the same Subject and StartDateTime. "Sales Events" records (Type = AE meeting, IsChild = true) are copies of AE calendar invites, not SE time, so they are NOT duplicates. Create the row anyway. **Exception:** rows whose Description starts with \`REPLACES\` must be created even though an old Event with the same Subject/Start exists (it has the wrong, locked record type).
+3. **ADD table, rows with Object = Deal_Contribution__c:** create a Deal Contribution on Opportunity__c = the given Id, SE_Name__c \`005PLACEHOLDER0001\`, Opportunity_Role__c \`AI + Data Architect\`, Split_Percentage__c as given, record type Unlocked, Comments__c exactly as given, with every ⏎ replaced by a line break. If the owner already has a DC on that opportunity, update its Comments__c and Split_Percentage__c instead of creating a second one.
+4. **UPDATE table:** set Field = New value on the given Record Id. For Action = Delete, delete that Event **only after** the replacement row named in the Why column exists in Org62.
+5. Work through everything in batches of 25. Don't stop on an individual failure. At the end, reply with counts: created / updated / deleted / skipped as duplicate / failed (with the error for each failure).
+
+_Generated 2026-11-05 18:00 UTC by Test User's activity autopilot from calendar, Org62, Claude Code, git, Drive and Slack. Rows disappear from this canvas once the read-back finds them in Org62._
+
+# ADD (5 rows · 5.75 h of activities)
+
+|#|Object|Subject / Opportunity|StartDateTime (UTC)|EndDateTime (UTC)|SE_Task_Type__c / Role|Duration__c / Split %|WhatId / Opportunity__c|Meeting_Type__c|Description / Comments__c|
+|---|---|---|---|---|---|---|---|---|---|
+|1|Event|Legacy re-create|2026-10-05T16:00:00.000Z|2026-10-05T16:30:00.000Z|Account Planning|0.5|006PLACEHOLDER0001||REPLACES E9 (legacy record type) / CC#104 / legacy_fix 2026-10-05|
+|2|Event|ACME / design session|2026-11-02T16:00:00.000Z|2026-11-02T17:00:00.000Z|Customer Discovery|1.0|006PLACEHOLDER0001||CC#101 / calendar 2026-11-02 / CF: external attendees (acme.example)|
+|3|Event|Globex planning|2026-11-02T18:00:00.000Z|2026-11-02T18:45:00.000Z|Account Planning|0.75|006PLACEHOLDER0002||CC#102 / calendar 2026-11-02|
+|4|Event|Demo tooling build|2026-11-03T19:00:00.000Z|2026-11-03T22:30:00.000Z|Asset Creation|3.5|||CC#103 / build 2026-11-03 / evidence: git 15 commits|
+|5|Deal_Contribution__c|ACME - Data 360 Expansion|||AI + Data Architect|50|006PLACEHOLDER0001||Line one ⏎ Line two / with pipe|
+
+# UPDATE (2 rows)
+
+|#|Object|Record Id|Action / Field|New value|Current value|Why|
+|---|---|---|---|---|---|---|
+|1|Event|E7|Duration__c|1.5|(blank)|Time(Hrs) never filled: End − Start of 'Blank 'dur' / thing'|
+|2|Event|E9|Delete|n/a|Sales Engineer Events record type, no SE Task Type|Replaced by the ADD row whose Description starts with REPLACES E9|"
+`;

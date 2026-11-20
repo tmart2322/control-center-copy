@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@import "../src/styles/brand.css";
+@import "../src/styles/live.css";
+
+/* Density variants. v2 is roomy by default and <html data-density="compact"> opts in, so:
+   `compact:h-7` applies only under compact; `comfortable:h-9` applies whenever density is NOT compact
+   (the default, or the legacy data-density="comfortable"). */
+@custom-variant compact (&:where([data-density="compact"] *));
+@custom-variant comfortable (&:where(:root:not([data-density="compact"]) *));
+
+/* The cockpit never scrolls as a page; panels scroll on their own (UI-SPEC §3). */
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+@layer utilities {
+  /* Quiet scrollbars inside panels. */
+  .cc-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-line-strong) transparent;
+  }
+  .cc-scroll::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .cc-scroll::-webkit-scrollbar-thumb {
+    background: var(--color-line-strong);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+}
+
+/* Toast countdown hairline (paused on hover via animation-play-state). */
+@keyframes cc-toast-timer {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+.cc-toast-timer {
+  animation-name: cc-toast-timer;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}

@@ -1,0 +1,4 @@
+/* Dev kit only. The app shell (FE-1a) imports brand.css from app/globals.css; until that lands the kit
+   brings its own copy so specimens render with the real tokens. */
+@import "tailwindcss";
+@import "../../../../src/styles/brand.css";

@@ -1,0 +1,54 @@
+{
+  "verb": "log_activity",
+  "title": "Log 2 activities for Tue (2.5 h)",
+  "why": "Weekly logging is due Fri 12:00 PT; 2.5 h unlogged this week",
+  "confidence": "sure",
+  "alternatives": [],
+  "draft": null,
+  "plan": {
+    "kind": "activity_rows",
+    "rows": [
+      {
+        "blockId": "blk_disc",
+        "date": "2026-11-03",
+        "start": "2026-11-03T15:00:00-07:00",
+        "end": "2026-11-03T16:00:00-07:00",
+        "subject": "ACME discovery: unified profile",
+        "seTaskType": "Customer Discovery",
+        "customerFacing": true,
+        "counts": "CF+CR",
+        "relatedTo": { "type": "opportunity", "id": "opp_acme_d360", "name": "ACME Data 360 expansion" },
+        "description": "Discovery on the unified member profile and agent handoff with the ACME architecture team.",
+        "evidenceIds": ["blk_disc", "ev_disc"],
+        "confidence": "sure"
+      },
+      {
+        "blockId": "blk_build",
+        "date": "2026-11-03",
+        "start": "2026-11-03T16:00:00-07:00",
+        "end": "2026-11-03T17:30:00-07:00",
+        "subject": "ACME demo org build",
+        "seTaskType": "Solution Creation",
+        "customerFacing": false,
+        "counts": "CR",
+        "relatedTo": { "type": "opportunity", "id": "opp_acme_d360", "name": "ACME Data 360 expansion" },
+        "description": "Built the ACME demo org data model (member, claims, call history) for Friday's demo.",
+        "evidenceIds": ["blk_build", "ev_buildlog"],
+        "confidence": "likely"
+      }
+    ],
+    "skipped": [
+      { "blockId": "blk_sync", "reason": "neither type; policy says don't log" },
+      { "blockId": "blk_lunch", "reason": "personal (lunch)" },
+      { "blockId": "blk_logged", "reason": "already logged" }
+    ],
+    "handoff": "activity_editor",
+    "totalHours": 2.5
+  },
+  "effort": { "youMin": 3, "agentMin": 0 },
+  "startBy": { "at": "2026-11-07T11:00:00-07:00", "reasoning": "Before the Friday 12:00 PT deadline" },
+  "sources": ["blk_disc", "blk_build", "ev_disc", "ev_buildlog"],
+  "asks": [],
+  "completeness": 95,
+  "update": null
+}

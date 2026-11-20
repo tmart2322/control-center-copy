@@ -1,0 +1,56 @@
+Retrieved 3 messages:
+
+Message ID: 18f0000000000001
+Subject: Re: ACME_CORP data cloud workshop agenda
+From: AE_1 <ae.one@example.com>
+Date: Tue, 10 Mar 2026 16:05:00 +0000
+Message-ID: <msg-0001@mail.example.com>
+In-Reply-To: <msg-0000@mail.example.com>
+To: ME <me@example.com>
+Cc: SE_2 <se.two@example.com>
+Web Link: https://mail.google.com/mail/u/0/#all/18f0000000000001
+
+--- BODY ---
+Hi ME,
+
+Can you send the updated deck for the workshop by Thursday? I also need the architecture slide refreshed with the new Snowflake zero-copy flow.
+
+Draft is here: https://docs.google.com/presentation/d/1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789/edit
+
+demo login: workshop_user / pw: Sup3rSecret!9 (shared org)
+
+Thanks,
+AE_1
+
+On Mon, Mar 9, 2026 at 3:00 PM ME <me@example.com> wrote:
+> I'll send the deck once the architecture slide is final.
+> Thanks
+
+---
+
+Message ID: 18f0000000000002
+Subject: Deck attached: ACME_CORP workshop
+From: CUSTOMER_1 <cust.one@customer.example>
+Date: Tue, 10 Mar 2026 16:20:00 +0000
+Message-ID: <msg-0002@mail.customer.example>
+To: ME <me@example.com>
+Web Link: https://mail.google.com/mail/u/0/#all/18f0000000000002
+
+--- BODY ---
+Please see attached the revised requirements. We now also need Private Connect for GCP in scope.
+
+Regards,
+CUSTOMER_1
+
+---
+
+Message ID: 18f0000000000003
+Subject: The Daily: weekly roundup
+From: Employee Comms <employeecomms@example.com>
+Date: Tue, 10 Mar 2026 16:40:00 +0000
+Message-ID: <msg-0003@mail.example.com>
+To: all-employees@example.com
+Web Link: https://mail.google.com/mail/u/0/#all/18f0000000000003
+
+--- BODY ---
+<!DOCTYPE html><html><head><style>td{color:red}</style></head><body><table><tr><td>Welcome to <b>The Daily</b></td></tr><tr><td><a href="https://news.example.com/a">Read more</a></td></tr></table></body></html>

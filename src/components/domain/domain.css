@@ -1,0 +1,32 @@
+/*
+ * Domain-component CSS that utilities can't express. Colors come from brand.css tokens.
+ * Motion budget: one calm breathing wash while the backend re-evaluates (UI-SPEC §5.1, §10). It never
+ * blanks the text, and prefers-reduced-motion (brand.css base) turns it off.
+ */
+@keyframes cc-reeval {
+  0%, 100% { background-color: transparent; }
+  50% { background-color: var(--color-ai-50); }
+}
+.cc-reeval {
+  animation: cc-reeval 1.6s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+/*
+ * SectionColumn caps (DESIGN-V2 principle 2): N rows under 2,400 px (`cc-cap-N`), up to M at 2,400 px and
+ * wider (`cc-capw-M`). Static classes so the row count never depends on JS measuring the viewport.
+ */
+@media (width < 2400px) {
+  .cc-cap-1 > :nth-child(n + 2),
+  .cc-cap-2 > :nth-child(n + 3),
+  .cc-cap-3 > :nth-child(n + 4),
+  .cc-cap-4 > :nth-child(n + 5),
+  .cc-cap-5 > :nth-child(n + 6) { display: none; }
+}
+@media (width >= 2400px) {
+  .cc-capw-1 > :nth-child(n + 2),
+  .cc-capw-2 > :nth-child(n + 3),
+  .cc-capw-3 > :nth-child(n + 4),
+  .cc-capw-4 > :nth-child(n + 5),
+  .cc-capw-5 > :nth-child(n + 6) { display: none; }
+}

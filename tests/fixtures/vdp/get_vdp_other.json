@@ -1,0 +1,16 @@
+{
+  "vdp": {
+    "id": "33333333-3333-4333-8333-333333333333",
+    "slug": "someone-elses-vdp",
+    "fiscalYear": 27,
+    "fiscalQuarter": 3,
+    "company": { "name": "Initech Placeholder" },
+    "collaborators": [],
+    "accountExecutives": [{ "email": "other.ae@example.com", "displayName": "Other AE" }],
+    "technicalArchitects": [{ "email": "other.ta@example.com", "displayName": "Other TA" }],
+    "createdByUser": { "email": "other.ta@example.com", "displayName": "Other TA" },
+    "use_cases_index": [],
+    "assets": [],
+    "stakeholders": []
+  }
+}

@@ -1,0 +1,4 @@
+Spreadsheet: "ACME_CORP sizing" (ID: 1SheetId000000000000000000000) | Locale: en_US
+Sheets (2):
+  - "Inputs" (ID: 111) | Size: 100x10 | Conditional formats: 0
+  - "Outputs" (ID: 222) | Size: 50x6 | Conditional formats: 1

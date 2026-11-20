@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "userLabel": "Alex",
+  "source": "example",
+  "builtAt": "2026-11-05T16:00:00.000Z",
+  "window": {
+    "from": "2026-10-28T12:02:05.865Z",
+    "to": "2026-11-04T15:37:50.026Z"
+  },
+  "learnedFromMessageCount": 22,
+  "excluded": {
+    "empty": 1,
+    "linkOnly": 0,
+    "longForm": 0,
+    "secrets": 1
+  },
+  "tone": "Direct and brief; warm and upbeat with teammates; helpful, owns next steps; light humor",
+  "formality": 1,
+  "verbosity": 2,
+  "emojiUse": 1,
+  "greeting": "Hi everyone (only when opening a thread or DM; replies start with the answer)",
+  "signoff": null,
+  "phrasesToUse": [
+    "I'll … (commitment)"
+  ],
+  "phrasesToAvoid": [
+    "just circling back",
+    "gentle reminder",
+    "I hope this finds you well",
+    "per my last message",
+    "I wanted to reach out"
+  ],
+  "styleGuide": "Median message is 11.5 words (p75 23.3); 91% are one line. Leads with the answer or the ask; context after, if any. Often joins clauses with semicolons. Uses contractions throughout. Casual abbreviations: eod, ooo.",
+  "slackGuide": "Mentions the person first in group threads (14% of messages start with a mention). Bullets for lists of links/options (9%), numbered lists for multi-part questions or recommendations (0%). Emoji level 1/3 (e.g. :running: :slightly_smiling_face:); none in serious or customer messages. No sign-off on Slack. Signature moves: I'll … (commitment).",
+  "emailGuide": "Rarely emails, so infer from Slack: keep his directness, add \"Hi <first name>,\" and a one-line opener, use complete sentences, no abbreviations or emoji, close with one forward-looking line and \"Thanks,\" + first name.",
+  "customerGuide": "Account and customer channels: median 27 words; more complete sentences, answers technical questions in structured detail, routes commercial questions to the AE.",
+  "stats": {
+    "words": {
+      "p25": 8,
+      "median": 11.5,
+      "p75": 23.3,
+      "p90": 40.3
+    },
+    "shareOneLine": 0.909,
+    "shareMultiParagraph": 0.091,
+    "shareBullets": 0.091,
+    "shareNumbered": 0,
+    "shareMention": 0.136,
+    "shareStartsWithMention": 0.136,
+    "shareEmoji": 0.091,
+    "topEmoji": [
+      ":running:",
+      ":slightly_smiling_face:"
+    ],
+    "shareLinks": 0.045,
+    "shareQuestion": 0.182,
+    "shareExclamation": 0.136,
+    "shareLowercaseStart": 0.045,
+    "shareEndsWithPeriod": 0.455,
+    "semicolonsPer100Words": 0.8,
+    "shareParenthetical": 0.045,
+    "contractionsPer100Words": 4.3,
+    "shareLongForm": 0,
+    "abbreviations": [
+      {
+        "term": "eod",
+        "count": 1
+      },
+      {
+        "term": "ooo",
+        "count": 1
+      }
+    ]
+  },
+  "greetings": [
+    {
+      "form": "Hi everyone",
+      "count": 1
+    },
+    {
+      "form": "Hey <first name>",
+      "count": 1
+    }
+  ],
+  "openers": [],
+  "signatures": [
+    {
+      "phrase": "I'll … (commitment)",
+      "count": 7
+    }
+  ],
+  "commonPhrases": [
+    {
+      "phrase": "i'll get",
+      "count": 3
+    },
+    {
+      "phrase": "and i'll",
+      "count": 3
+    }
+  ],
+  "audiences": {
+    "dm": {
+      "count": 14,
+      "medianWords": 11.5,
+      "p75Words": 21,
+      "shareEmoji": 0.143,
+      "shareQuestion": 0.143,
+      "shareGreeting": 0.071,
+      "shareBullets": 0
+    },
+    "group": {
+      "count": 4,
+      "medianWords": 11,
+      "p75Words": 18,
+      "shareEmoji": 0,
+      "shareQuestion": 0.25,
+      "shareGreeting": 0,
+      "shareBullets": 0.25
+    },
+    "channel": {
+      "count": 2,
+      "medianWords": 24,
+      "p75Words": 33,
+      "shareEmoji": 0,
+      "shareQuestion": 0.5,
+      "shareGreeting": 0.5,
+      "shareBullets": 0
+    },
+    "account_channel": {
+      "count": 2,
+      "medianWords": 27,
+      "p75Words": 39.5,
+      "shareEmoji": 0,
+      "shareQuestion": 0,
+      "shareGreeting": 0,
+      "shareBullets": 0.5
+    }
+  },
+  "exemplars": [
+    {
+      "audience": "dm",
+      "text": "Yep got it, I'll send the deck over by EOD."
+    },
+    {
+      "audience": "dm",
+      "text": "Okay ping me if I'm needed and I'll jump out."
+    },
+    {
+      "audience": "dm",
+      "text": "Let's go! That demo went really well :slightly_smiling_face:"
+    },
+    {
+      "audience": "group",
+      "text": "@Sam can you present up to slide 5 and I'll take it over from slide 6 on?"
+    },
+    {
+      "audience": "channel",
+      "text": "@Jordan Mind sending over the calculator repo?"
+    }
+  ],
+  "synthesized": null
+}

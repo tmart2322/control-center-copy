@@ -1,0 +1,33 @@
+{
+  "_note": "Recorded shape of mcp__Org62-Sobject-Read__soqlQuery on Event (my Solutions Events, 2026-11-05). Ids, subjects and opp names replaced with placeholders.",
+  "totalSize": 2,
+  "done": true,
+  "records": [
+    {
+      "attributes": { "type": "Event", "url": "/services/data/v68.0/sobjects/Event/00UXX0000000001EAA" },
+      "Id": "00UXX0000000001EAA",
+      "Subject": "ACME – POV readout",
+      "StartDateTime": "2026-10-07T19:00:00.000+0000",
+      "EndDateTime": "2026-10-07T19:25:00.000+0000",
+      "Duration__c": 0.5,
+      "SE_Task_Type__c": "Customer Presentation",
+      "RecordType": { "attributes": { "type": "RecordType", "url": "/services/data/v68.0/sobjects/RecordType/012XX0000000001AAA" }, "Name": "Solutions Event" },
+      "WhatId": "006XX0000000001AAA",
+      "What": { "attributes": { "type": "Name", "url": "/services/data/v68.0/sobjects/Opportunity/006XX0000000001AAA" }, "Name": "ACME – Data 360 Expansion" },
+      "SystemModstamp": "2026-11-04T02:54:04.000+0000"
+    },
+    {
+      "attributes": { "type": "Event", "url": "/services/data/v68.0/sobjects/Event/00UXX0000000002EAA" },
+      "Id": "00UXX0000000002EAA",
+      "Subject": "BLOCK - UMBRELLA sizing",
+      "StartDateTime": "2026-10-07T22:30:00.000+0000",
+      "EndDateTime": "2026-10-07T23:30:00.000+0000",
+      "Duration__c": 1,
+      "SE_Task_Type__c": "Solution Creation",
+      "RecordType": { "attributes": { "type": "RecordType", "url": "/services/data/v68.0/sobjects/RecordType/012XX0000000001AAA" }, "Name": "Solutions Event" },
+      "WhatId": "006XX0000000003AAA",
+      "What": { "attributes": { "type": "Name", "url": "/services/data/v68.0/sobjects/Opportunity/006XX0000000003AAA" }, "Name": "UMBRELLA – Data 360 Flex Credits" },
+      "SystemModstamp": "2026-11-04T02:54:04.000+0000"
+    }
+  ]
+}

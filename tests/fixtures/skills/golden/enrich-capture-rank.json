@@ -1,0 +1,41 @@
+{
+  "title": "Message the NCE PM with the team's open questions",
+  "purpose": "Get product's answers on the NCE gaps raised at the Globex onsite",
+  "related": [
+    { "candidateId": "c_doc", "relation": "asset", "strength": "strong", "reason": "Doc 'NCE open questions' collects the team's questions; you edited it Nov 4" },
+    { "candidateId": "c_sess", "relation": "prior_work", "strength": "strong", "reason": "Claude session 'NCE gaps notes' listed 5 gaps after the onsite" },
+    { "candidateId": "c_slack", "relation": "thread", "strength": "possible", "reason": "Jordan asked about per-user memory scopes in #team-channel" }
+  ],
+  "rejected": [{ "candidateId": "c_fabric", "reason": "Agent Fabric comparison; same keyword, different product" }],
+  "link": { "accountId": null, "opportunityId": null, "initiativeId": "init_nce_gaps" },
+  "nba": {
+    "verb": "reply",
+    "title": "Message the NCE PM with the team's gap list",
+    "why": "Captured after the Globex onsite; the questions doc and gap notes are ready",
+    "confidence": "likely",
+    "alternatives": [{ "verb": "schedule", "title": "Set up 30 min with the NCE PM", "why": "Five gaps may be easier live" }],
+    "draft": {
+      "destination": { "channel": "slack", "label": "DM with the NCE PM" },
+      "doc": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              { "type": "text", "text": "Hey, I put together the team's open questions on Nimbus Context Engine after this week's onsite: " },
+              { "type": "text", "text": "NCE open questions", "marks": [{ "type": "link", "attrs": { "href": "https://docs.example.com/d/nce-open-questions" } }] },
+              { "type": "text", "text": ". The biggest gaps we hit were memory recall taking 80-120 s and no delete API. Mind if we grab 30 min to go through them?" }
+            ]
+          }
+        ]
+      }
+    },
+    "plan": null,
+    "effort": { "youMin": 3, "agentMin": 0 },
+    "startBy": { "at": null, "reasoning": "No deadline; send this week while the onsite is fresh" },
+    "sources": ["cap_nce", "c_doc", "c_sess", "c_slack"],
+    "asks": [{ "question": "Who's the NCE product manager to send this to?", "to": "you", "blocking": true }],
+    "completeness": 60,
+    "update": null
+  }
+}

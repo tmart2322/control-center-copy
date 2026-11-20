@@ -1,0 +1,1 @@
+{"pid": 1001, "sessionId": "s-busy", "cwd": "/work/acme", "startedAt": 1773162000000, "procStart": "Tue Mar 10 08:00:01 2026", "version": "2.1.318", "kind": "interactive", "entrypoint": "claude-desktop", "name": "Demo org build", "updatedAt": 1773162000000, "status": "busy", "statusUpdatedAt": 1773162000000, "waitingFor": null, "hostSessionId": "local_busy"}

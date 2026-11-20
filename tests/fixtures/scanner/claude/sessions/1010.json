@@ -1,0 +1,1 @@
+{"pid": 1010, "sessionId": "s-stale", "cwd": "/work/acme", "startedAt": 1773162000000, "procStart": "Tue Mar 10 08:00:00 2026", "version": "2.1.318", "kind": "interactive", "entrypoint": "claude-desktop", "name": null, "updatedAt": 1773162000000, "status": "busy", "statusUpdatedAt": 1773162000000, "waitingFor": null}

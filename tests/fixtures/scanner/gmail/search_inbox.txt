@@ -1,0 +1,22 @@
+Found 3 messages matching 'in:anywhere -in:sent after:1773162000 before:1773165600':
+
+📧 MESSAGES:
+  1. Message ID: 18f0000000000003
+     Web Link: https://mail.google.com/mail/u/0/#all/18f0000000000003
+     Thread ID: 18f0000000000003
+     Thread Link: https://mail.google.com/mail/u/0/#all/18f0000000000003
+
+  2. Message ID: 18f0000000000002
+     Web Link: https://mail.google.com/mail/u/0/#all/18f0000000000002
+     Thread ID: 18f00000000000a1
+     Thread Link: https://mail.google.com/mail/u/0/#all/18f00000000000a1
+
+  3. Message ID: 18f0000000000001
+     Web Link: https://mail.google.com/mail/u/0/#all/18f0000000000001
+     Thread ID: 18f00000000000b1
+     Thread Link: https://mail.google.com/mail/u/0/#all/18f00000000000b1
+
+💡 USAGE:
+  • Pass the Message IDs **as a list** to get_gmail_messages_content_batch()
+    e.g. get_gmail_messages_content_batch(message_ids=[...])
+  • Pass the Thread IDs to get_gmail_thread_content() (single) or get_gmail_threads_content_batch() (batch)

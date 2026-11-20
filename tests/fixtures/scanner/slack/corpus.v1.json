@@ -1,0 +1,35 @@
+{
+  "_note": "Synthetic Slack corpus in the recorded field shape (Channel/Participants/From/Time/Message_ts/Permalink/Text). The fake search renders it exactly like the real detailed search output. Placeholders only: ME = U0ME00001.",
+  "me": { "name": "ME", "slackId": "U0ME00001", "email": "me@example.com" },
+  "people": {
+    "U0ME00001": { "name": "ME", "email": "me@example.com" },
+    "U0PERSONB": { "name": "PERSON_B", "email": "person_b@example.com" },
+    "U0PERSONC": { "name": "PERSON_C", "email": "person_c@example.com" },
+    "U0PERSOND": { "name": "PERSON_D", "email": "person_d@example.com" },
+    "U0PERSONE": { "name": "PERSON_E", "email": "person_e@example.com" },
+    "U0PERSONF": { "name": "PERSON_F", "email": "person_f@example.com" },
+    "U0PERSONG": { "name": "PERSON_G", "email": "person_g@example.com" }
+  },
+  "channels": {
+    "D0DM00001": { "name": "DM", "type": "im", "members": ["U0PERSONB", "U0ME00001"] },
+    "D0DM00002": { "name": "DM", "type": "im", "members": ["U0PERSOND", "U0ME00001"] },
+    "D0DM00003": { "name": "DM", "type": "im", "members": ["U0PERSONF", "U0ME00001"] },
+    "D0DM00004": { "name": "DM", "type": "im", "members": ["U0PERSONG", "U0ME00001"] },
+    "D0DM00005": { "name": "DM", "type": "im", "members": ["U0PERSONE", "U0ME00001"] },
+    "C0ACME001": { "name": "#acme-account", "type": "private_channel" },
+    "C0GLOBEX1": { "name": "#globex-deal", "type": "private_channel" }
+  },
+  "messages": [
+    { "id": "weekend-ask", "channel": "D0DM00004", "from": "U0PERSONG", "ts": "1793466000.000100", "text": "Can you review the GLOBEX sizing sheet first thing Monday?" },
+    { "id": "weekend-fyi", "channel": "D0DM00004", "from": "U0PERSONG", "ts": "1793563200.000100", "text": "fyi the GLOBEX meeting moved to 2pm" },
+    { "id": "app-install", "channel": "D0DM00001", "from": "U0PERSONB", "ts": "1793808300.000100", "text": "Finally getting around to installing APP_X but the connection times out on step 3." },
+    { "id": "promise-desktop", "channel": "D0DM00001", "from": "U0ME00001", "ts": "1793809200.000100", "text": "No worries, we can get it working next week. I'm going to figure out how to distribute as a desktop app so it's easier for others to use as well." },
+    { "id": "thanks", "channel": "D0DM00001", "from": "U0PERSONB", "ts": "1793809800.000100", "text": "thanks!! 🙌" },
+    { "id": "deck-ask", "channel": "D0DM00002", "from": "U0PERSOND", "ts": "1793811600.000100", "text": "Hey, can you send me the ACME demo deck before Friday?" },
+    { "id": "deck-promise", "channel": "D0DM00002", "from": "U0ME00001", "ts": "1793811720.000100", "text": "Sure, I'll send the ACME demo deck tonight." },
+    { "id": "pricing-ask", "channel": "C0ACME001", "from": "U0PERSONC", "ts": "1793815200.000100", "text": "<@U0ME00001> can you update the pricing slide in the ACME POV deck? The customer wants the new tiers." },
+    { "id": "pricing-done", "channel": "C0ACME001", "from": "U0ME00001", "ts": "1793820600.000200", "threadTs": "1793815200.000100", "text": "Done, see deck https://docs.google.com/presentation/d/FILE_ACME_POV/edit" },
+    { "id": "secret-login", "channel": "D0DM00003", "from": "U0ME00001", "ts": "1793822400.000100", "text": "demo org login is demo@example.com / password: Hunter2-placeholder" },
+    { "id": "residency-ask", "channel": "C0ACME001", "from": "U0PERSONC", "ts": "1793890800.000300", "threadTs": "1793815200.000100", "text": "<@U0ME00001> thanks! Can you also add a slide on data residency for their EU team?" }
+  ]
+}

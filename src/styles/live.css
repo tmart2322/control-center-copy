@@ -1,0 +1,109 @@
+/*
+ * Live updates (docs/UX.md "Live updates"; src/components/lists/live-list.ts). Color is an indicator: blue marks
+ * what is new or happening now, violet marks what the AI made (drafts, suggestions). Never a flash: arrivals fade in
+ * with a tint that settles within ~3 s, rows that left elsewhere fade out in place and then collapse, a row still
+ * open in the panel stays dimmed, counts tick in place. Under reduced motion the marks are static.
+ */
+:root {
+  --live-new-tint: color-mix(in oklab, var(--color-accent) 15%, transparent);
+  --live-new-bar: var(--color-accent);
+  --live-ai-tint: color-mix(in oklab, var(--color-ai-500) 17%, transparent);
+  --live-ai-bar: var(--color-ai-500);
+}
+
+@keyframes cc-live-in {
+  0% {
+    opacity: 0;
+    background-color: var(--live-tint);
+    box-shadow: inset 2px 0 0 var(--live-bar);
+  }
+  9% {
+    opacity: 1;
+  }
+  40% {
+    background-color: var(--live-tint);
+    box-shadow: inset 2px 0 0 var(--live-bar);
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: inset 2px 0 0 transparent;
+  }
+}
+
+/* An arrival (MARK_MS = 3 s). `backwards`: nothing is held after the fade, so the row's own background returns. */
+[data-live='new'] {
+  --live-tint: var(--live-new-tint);
+  --live-bar: var(--live-new-bar);
+  animation: cc-live-in 2.8s ease-out backwards;
+}
+[data-live='new'][data-live-tone='ai'] {
+  --live-tint: var(--live-ai-tint);
+  --live-bar: var(--live-ai-bar);
+}
+
+@keyframes cc-live-out {
+  0% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 0.4;
+    max-height: 240px;
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+    padding-block: 0;
+    margin-block: 0;
+    border-width: 0;
+  }
+}
+
+/* A row that left elsewhere (LINGER_MS = 1.8 s): it fades in place, then collapses, never yanked from under you. */
+[data-live='leaving'] {
+  animation: cc-live-out 1.8s ease-in forwards;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* The row open in the panel left elsewhere: it stays, dimmed, until you move on (the panel says what happened). */
+[data-live='gone'] {
+  opacity: 0.55;
+}
+
+@keyframes cc-live-tick {
+  0% {
+    opacity: 0.35;
+    transform: translateY(-3px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* A count that changed in place. */
+[data-live-tick] {
+  animation: cc-live-tick 360ms ease-out;
+}
+
+@keyframes cc-live-pill {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.cc-live-pill {
+  animation: cc-live-pill 200ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-live='new'] {
+    box-shadow: inset 2px 0 0 var(--live-bar);
+  }
+  [data-live='leaving'] {
+    opacity: 0.4;
+  }
+}

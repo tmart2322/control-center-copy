@@ -1,0 +1,43 @@
+{
+  "id": "pulse-footprint",
+  "name": "Pulse Footprint",
+  "description": "Reconstruct a customer org's Data 360 footprint from Pulse (Superset) data and render dashboards plus PowerPoint, Excel and Lucid exports.",
+  "icon": "activity",
+  "version": 1,
+  "launch": { "kind": "http", "baseUrl": "http://localhost:4318", "port": 4318 },
+  "lifecycle": {
+    "startCommand": "npm run dev",
+    "cwd": "~/Projects/greg-playground",
+    "env": { "PORT": "4318" },
+    "readyTimeoutSec": 45
+  },
+  "input": {
+    "fields": [
+      { "key": "orgId", "type": "string", "label": "Salesforce org id (15 or 18 chars)", "required": true, "pattern": "^[a-zA-Z0-9]{15}([a-zA-Z0-9]{3})?$", "prefill": "{{workItem.account.orgId}}" },
+      { "key": "account", "type": "entity_ref", "entity": "account", "label": "Account (for linking the run)", "required": false },
+      { "key": "windowDays", "type": "number", "label": "Window (days)", "required": false, "integer": true, "min": 1, "max": 365 },
+      { "key": "asOf", "type": "string", "label": "As of (YYYY-MM-DD)", "required": false, "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+      { "key": "dryRun", "type": "boolean", "label": "Tool dry run (no Pulse queries)", "required": false, "default": false, "help": "Passes dryRun to the tool: the engine skips every Superset query and writes no CSVs." }
+    ]
+  },
+  "output": {
+    "kind": "both",
+    "link": { "urlTemplate": "http://localhost:4318/", "label": "Open Pulse footprint (select the org chip)" },
+    "artifacts": [
+      { "pathTemplate": "~/Projects/greg-playground/bin/pulse-reproduction/pulse-reproduction-output/{{orgId15}}", "label": "Pulse CSV output (customer data)", "revealable": true }
+    ]
+  },
+  "health": { "type": "http", "url": "http://localhost:4318/api/orgs", "expectStatus": 200, "timeoutMs": 2500 },
+  "progress": { "protocol": "sse", "path": "/api/orgs/{{orgId15}}/run" },
+  "estimatedDuration": { "minSec": 30, "maxSec": 600 },
+  "privacy": {
+    "note": "The run queries the Pulse Superset host using the Superset session cookie the tool reads from the local Chrome store (first run may show a macOS Keychain prompt). Control Center never sees or passes the cookie. Results stay in the tool's output folder and contain customer data.",
+    "dataClass": "customer",
+    "network": "localhost-only",
+    "writes": ["~/Projects/greg-playground/bin/pulse-reproduction/pulse-reproduction-output", "~/Projects/greg-playground/exports"],
+    "externalCalls": [
+      { "service": "Pulse Superset", "kind": "read", "note": "SQL fan-out per metric family; needs a signed-in Chrome session or PULSE_SESSION_COOKIE" }
+    ],
+    "requiresConfirm": true
+  }
+}

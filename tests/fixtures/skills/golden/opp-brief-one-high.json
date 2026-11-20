@@ -1,0 +1,31 @@
+{
+  "summary": "The opportunity's next step changed from a discovery follow-up to a pricing call with the CFO. Stage, close date and amount are unchanged. Sam asked you to get the reference architecture deck to Dana by Friday, because the CFO wants it before the pricing call. Sam also updated the mutual close plan; no action is needed on that. The internal ACME weekly sync was held.",
+  "nothingNew": false,
+  "highlights": [
+    {
+      "title": "Sam needs the reference architecture deck to Dana by Friday",
+      "body": "The CFO wants it before the pricing call, which is now the opportunity's next step.",
+      "level": "high",
+      "reasons": [
+        { "kind": "mentions_me", "featureKey": "mention:me", "explanation": "Sam asked you directly" },
+        { "kind": "my_opportunity", "featureKey": "opportunity:opp_acme_d360", "explanation": "You're the SE on the ACME expansion" }
+      ],
+      "evidenceIds": ["o_1"],
+      "suggestedAction": "task",
+      "topicKey": "slack:acme-deal:o_1",
+      "entity": { "accountId": "acc_acme", "opportunityId": "opp_acme_d360", "initiativeId": null }
+    },
+    {
+      "title": "Next step is now the CFO pricing call",
+      "body": "NextStep changed from 'Discovery follow-up' to 'Pricing call with CFO'.",
+      "level": "medium",
+      "reasons": [{ "kind": "org62_change", "featureKey": "org62:NextStep", "explanation": "Org62 next step changed on your opportunity" }],
+      "evidenceIds": ["opp_acme_d360"],
+      "suggestedAction": "ignore",
+      "topicKey": "opp:opp_acme_d360:NextStep",
+      "entity": { "accountId": "acc_acme", "opportunityId": "opp_acme_d360", "initiativeId": null }
+    }
+  ],
+  "everythingElse": [{ "threadRef": "slack:acme-deal:o_2", "gist": "Mutual close plan updated; no action needed", "evidenceIds": ["o_2"] }],
+  "coverageNote": null
+}

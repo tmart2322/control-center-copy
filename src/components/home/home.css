@@ -1,0 +1,384 @@
+/*
+ * Home (design v2, "Morning paper"): docs/ui/DESIGN-V2.md + public/mockups/home-1-briefing.html.
+ * Tokens from src/styles/brand.css only (no raw hex). v2-only names fall back to v1 ones until V2-TOKENS lands.
+ * Layout reacts to #cc-main (the `main` container) and its data-panel attribute, never to the viewport.
+ */
+
+.cc-home {
+  /* the live pill (src/ui/Live.tsx, placement overlay) sits at the top without taking a flex gap */
+  position: relative;
+  --h-raised: var(--color-surface-raised);
+  --h-on-accent: var(--color-on-accent);
+  --h-accent-hover: var(--color-accent-hover);
+  --h-lead: var(--text-lead);
+  --h-lead-lh: var(--text-lead--line-height);
+  --h-hairline: 1px solid var(--color-line);
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 32px 12px;
+  color: var(--color-fg);
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+  font-variant-numeric: tabular-nums;
+  /* No page scroll at 1920×1000 and 2560×1300: the verb columns shrink (rows that don't fit wrap out of
+     sight) down to a floor; only below that floor (short windows) does #cc-main scroll. */
+  overflow: visible;
+}
+.cc-home * { box-sizing: border-box; }
+.cc-home h2, .cc-home h3 { margin: 0; color: var(--color-fg-heading); font-weight: 700; text-wrap: balance; }
+.cc-home p { margin: 0; text-wrap: pretty; }
+.cc-home button { font: inherit; }
+.cc-home .hm-muted { color: var(--color-muted); }
+.cc-home .hm-faint { color: var(--color-faint); }
+.cc-home .hm-trunc { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+
+/* ── primitives ── */
+.cc-home .hm-btn {
+  display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border-radius: var(--radius-md);
+  font-size: var(--text-body); font-weight: 700; border: 1px solid transparent; background: transparent; color: var(--color-link);
+  cursor: pointer; white-space: nowrap;
+}
+.cc-home .hm-btn:hover { background: var(--color-surface-muted); }
+.cc-home .hm-btn:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.cc-home .hm-btn[disabled] { opacity: .6; cursor: progress; }
+.cc-home .hm-btn.is-primary { background: var(--color-accent); color: var(--h-on-accent); }
+.cc-home .hm-btn.is-primary:hover { background: var(--h-accent-hover); }
+.cc-home .hm-btn.is-secondary { border-color: var(--color-line-strong); color: var(--color-fg); background: var(--color-surface); }
+.cc-home .hm-btn.is-quiet { color: var(--color-link); padding: 0 8px; height: 28px; font-size: var(--text-caption); }
+.cc-home .hm-btn.is-sm { height: 28px; padding: 0 12px; font-size: var(--text-caption); }
+.cc-home .hm-icon-btn {
+  width: 28px; height: 28px; display: grid; place-items: center; border-radius: var(--radius-sm); border: 1px solid transparent;
+  background: transparent; color: var(--color-muted); cursor: pointer; font-size: var(--text-caption);
+}
+.cc-home .hm-icon-btn:hover { background: var(--color-surface-muted); color: var(--color-fg); }
+
+.cc-home .hm-tag {
+  display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 8px; border-radius: var(--radius-sm);
+  font-size: var(--text-caption); font-weight: 700; white-space: nowrap; max-width: 22ch; overflow: hidden; text-overflow: ellipsis;
+  background: var(--color-surface-sunken); color: var(--color-fg); border: 1px solid var(--color-line-strong);
+}
+.cc-home .hm-badge {
+  display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 8px; border-radius: var(--radius-sm);
+  font-size: var(--text-caption); line-height: 1; font-weight: 700; white-space: nowrap; flex: none;
+  background: var(--s-50); color: var(--s-700); border: 1px solid var(--s-200);
+}
+.cc-home [data-tone="overdue"], .cc-home [data-tone="blocked"] { --s-50: var(--color-danger-50); --s-200: var(--color-danger-200); --s-500: var(--color-danger-500); --s-700: var(--color-danger-700); }
+.cc-home [data-tone="risk"] { --s-50: var(--color-warning-50); --s-200: var(--color-warning-200); --s-500: var(--color-warning-500); --s-700: var(--color-warning-700); }
+.cc-home [data-tone="ready"] { --s-50: var(--color-success-50); --s-200: var(--color-success-200); --s-500: var(--color-success-500); --s-700: var(--color-success-700); }
+.cc-home [data-tone="ai"] { --s-50: var(--color-ai-50); --s-200: var(--color-ai-200); --s-500: var(--color-ai-500); --s-700: var(--color-ai-700); }
+.cc-home [data-tone="now"] { --s-50: var(--color-selected); --s-200: var(--color-accent); --s-500: var(--color-accent); --s-700: var(--color-link); }
+.cc-home .hm-ai { display: inline-flex; align-items: center; gap: 6px; color: var(--color-ai-700); font-size: var(--text-caption); font-weight: 700; white-space: nowrap; }
+.cc-home .hm-ai::before { content: "✦"; }
+.cc-home .hm-readin { white-space: nowrap; }
+.cc-home .hm-readin [data-readin-badge] { font-size: inherit; }
+.cc-home .hm-readin-neutral [data-readin-badge] { color: var(--color-muted); font-weight: 400; }
+.cc-home .hm-dot { width: 8px; height: 8px; border-radius: 999px; display: inline-block; flex: none; background: var(--s-500, var(--color-faint)); }
+.cc-home .hm-edge { width: 3px; align-self: stretch; border-radius: 3px; background: var(--s-500, var(--color-line-strong)); flex: none; }
+.cc-home .hm-meter { position: relative; height: 6px; border-radius: 99px; background: var(--color-surface-sunken); overflow: hidden; }
+.cc-home .hm-meter > i { position: absolute; inset: 0 auto 0 0; background: var(--s-500, var(--color-accent)); border-radius: 99px; }
+.cc-home .hm-panel { background: var(--color-surface); border: 1px solid var(--color-line); border-radius: var(--radius-lg); min-width: 0; }
+.cc-home .hm-link { color: var(--color-link); font-weight: 700; text-decoration: none; background: none; border: 0; padding: 0; cursor: pointer; font-size: inherit; }
+.cc-home .hm-link:hover { text-decoration: underline; text-underline-offset: .2em; }
+.cc-home .hm-link:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; border-radius: 2px; }
+
+/* ── masthead ── */
+.cc-home .hm-mast { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "date" "head" "dek"; gap: 8px 48px; flex: none; }
+.cc-home .hm-mast-date { grid-area: date; display: flex; align-items: baseline; gap: 16px; font-size: var(--text-caption); line-height: var(--text-caption--line-height); color: var(--color-muted); }
+.cc-home .hm-mast-date b { color: var(--color-fg-heading); }
+.cc-home .hm-mast-date .hm-since { margin-left: auto; color: var(--color-faint); }
+.cc-home .hm-mast-date .hm-since b { color: var(--color-muted); }
+/* the since line is a button: it opens the Since you left list (quiet until hovered; neutral, not a state) */
+.cc-home .hm-mast-date .hm-since-btn { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; text-align: right; }
+.cc-home .hm-mast-date .hm-since-btn:hover { color: var(--color-muted); text-decoration: underline; text-underline-offset: .2em; }
+.cc-home .hm-mast-date .hm-since-btn:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; border-radius: 2px; }
+/* planning ahead: the Today / next-day toggle, the late-day nudge (neutral: a suggestion, not a state) */
+.cc-home .hm-mast-date { align-items: center; flex-wrap: wrap; row-gap: 4px; }
+.cc-home .hm-day-toggle { flex: none; display: inline-flex; }
+.cc-home .hm-plan-nudge { color: var(--color-muted); }
+.cc-home[aria-busy="true"] .hm-mast ~ * { opacity: .55; transition: opacity .15s; }
+.cc-home .hm-headline { grid-area: head; font-size: var(--text-heading); line-height: var(--text-heading--line-height); font-weight: 400; color: var(--color-fg); max-width: 68ch; letter-spacing: -0.01em; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.cc-home .hm-headline b, .cc-home .hm-dek b { color: var(--color-fg-heading); font-weight: 700; }
+.cc-home .hm-dek { grid-area: dek; font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height); color: var(--color-muted); max-width: 60ch; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.cc-home .hm-dek b { color: var(--color-fg); }
+.cc-home [data-mark="risk"] { color: var(--color-warning-700); }
+.cc-home [data-mark="overdue"] { color: var(--color-danger-700); }
+.cc-home [data-mark="now"] { color: var(--color-link); }
+
+/* ── day ribbon ── */
+.cc-home .hm-day { position: relative; display: flex; flex-direction: column; gap: 4px; flex: none; }
+/* The track is 44px; three or more overlapping meetings grow it so each lane keeps a readable line (≥ 18px). */
+.cc-home .hm-track {
+  position: relative; height: max(44px, calc(var(--max-lanes, 1) * 18px + (var(--max-lanes, 1) - 1) * 2px)); border-radius: var(--radius-sm); background: var(--color-surface-muted);
+  background-image: linear-gradient(to right, var(--color-line) 1px, transparent 1px);
+  background-size: var(--hour-w) 100%; background-repeat: repeat-x; background-position: var(--hour-x) 0;
+}
+.cc-home .hm-ev {
+  position: absolute; top: 0; bottom: 0; z-index: 2; display: flex; flex-direction: column; justify-content: center; gap: 0;
+  padding: 0 8px; overflow: hidden; border-radius: var(--radius-sm); white-space: nowrap; cursor: default;
+  background: var(--s-50, var(--color-surface-sunken)); box-shadow: inset 3px 0 0 var(--s-500, var(--color-line-strong)); color: var(--color-fg);
+  border: 0; text-align: left; font: inherit;
+}
+.cc-home button.hm-ev { cursor: pointer; }
+.cc-home button.hm-ev:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 1px; z-index: 5; }
+.cc-home .hm-ev .t { font-size: var(--text-micro); line-height: var(--text-micro--line-height); color: var(--s-700, var(--color-muted)); font-weight: 700; overflow: hidden; text-overflow: ellipsis; }
+.cc-home .hm-ev .n { font-size: var(--text-caption); line-height: var(--text-caption--line-height); font-weight: 700; overflow: hidden; text-overflow: ellipsis; }
+.cc-home .hm-ev.is-declined { z-index: 1; padding: 0 5px; background: var(--color-surface-muted); box-shadow: none; border: 1px dashed var(--color-line-strong); color: var(--color-faint); }
+.cc-home .hm-ev.is-declined .t { color: var(--color-faint); text-decoration: line-through; }
+.cc-home .hm-ev.is-declined .n { font-size: var(--text-micro); line-height: var(--text-micro--line-height); font-weight: 400; color: var(--color-faint); }
+.cc-home .hm-ev.is-open { z-index: 1; background: transparent; box-shadow: none; border: 1px dashed var(--color-line-strong); }
+.cc-home .hm-ev.is-open .n { color: var(--color-muted); font-weight: 400; }
+.cc-home .hm-ev.is-short { padding: 0 4px 0 8px; }
+.cc-home .hm-ev.is-short .n { font-size: var(--text-micro); line-height: var(--text-micro--line-height); font-weight: 400; text-overflow: clip; }
+.cc-home .hm-ev.is-spill { overflow: visible; }
+.cc-home .hm-ev.is-spill .n, .cc-home .hm-ev.is-spill .t { width: max-content; max-width: calc(var(--spill, 100%) - 12px); overflow: hidden; text-overflow: ellipsis; }
+.cc-home .hm-ev.is-agent { background: var(--color-ai-50); box-shadow: inset 3px 0 0 var(--color-ai-500); }
+/*
+ * Lanes (ribbonLayout): overlapping blocks split the track height with a 2px gap and carry one line,
+ * "09:30 Title". A block over a declined band leaves the bottom 6px for it.
+ */
+.cc-home .hm-ev { --band-r: 0px; }
+.cc-home .hm-ev.is-over-band { --band-r: 6px; }
+.cc-home .hm-ev.is-stacked, .cc-home .hm-ev.is-over-band {
+  bottom: auto;
+  top: calc(var(--lane, 0) * (100% - var(--band-r) + 2px) / var(--lanes, 1));
+  height: calc((100% - var(--band-r) - (var(--lanes, 1) - 1) * 2px) / var(--lanes, 1));
+}
+/* One line: "09:30 ▲ Title". Under 100px the time steps aside (the axis and the tooltip have it) so the title shows. */
+.cc-home .hm-ev.is-stacked { container: hm-ev / inline-size; flex-direction: row; align-items: center; justify-content: flex-start; gap: 4px; padding: 0 6px 0 8px; }
+.cc-home .hm-ev.is-stacked .t { flex: none; display: inline-flex; gap: 3px; max-width: 100%; }
+.cc-home .hm-ev.is-stacked .n { flex: 0 1 auto; min-width: 0; font-size: var(--text-micro); line-height: var(--text-micro--line-height); }
+.cc-home .hm-ev.is-stacked.is-declined .n { font-weight: 400; }
+@container hm-ev (max-width: 100px) {
+  .cc-home .hm-ev .tm { display: none; }
+}
+/* A declined ghost beside a real meeting: a thin dashed band in the strip the meeting leaves free. */
+.cc-home .hm-ev.is-band { top: auto; bottom: 0; height: 4px; padding: 0; border-radius: 2px; background: transparent; border: 1px dashed var(--color-line-strong); }
+.cc-home .hm-past { position: absolute; top: 0; bottom: 0; left: 0; z-index: 0; background: color-mix(in srgb, var(--color-bg) 45%, transparent); border-radius: var(--radius-sm) 0 0 var(--radius-sm); pointer-events: none; }
+.cc-home .hm-nowline { position: absolute; z-index: 1; top: -6px; bottom: -6px; width: 2px; margin-left: -1px; background: var(--color-fg-heading); border-radius: 2px; pointer-events: none; }
+.cc-home .hm-axis { position: relative; height: 20px; font-size: var(--text-micro); line-height: var(--text-micro--line-height); color: var(--color-faint); }
+.cc-home .hm-axis span { position: absolute; top: 2px; transform: translateX(-50%); white-space: nowrap; }
+.cc-home .hm-axis span.is-start { transform: none; }
+.cc-home .hm-axis span.is-end { transform: translateX(-100%); }
+.cc-home .hm-axis span.is-now { color: var(--color-fg-heading); font-weight: 700; z-index: 1; padding: 0 4px; background: var(--color-bg); }
+
+/* ── Do now ── */
+.cc-home .hm-lead-wrap { display: flex; flex-direction: column; gap: 12px; flex: none; }
+.cc-home .hm-lead-head { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.cc-home .hm-lead-head h2 { font-size: var(--h-lead); line-height: var(--h-lead-lh); white-space: nowrap; }
+.cc-home .hm-lead-head .hm-note { font-size: var(--text-caption); color: var(--color-muted); min-width: 0; }
+/* SETTLE-1: "✓ Closed 12 for you since you left · Review": quiet, the ✓ is the one colour (done). */
+.cc-home .hm-closed { display: inline-flex; align-items: baseline; gap: 6px; min-width: 0; flex: 0 1 auto; font-size: var(--text-caption); line-height: var(--text-caption--line-height); color: var(--color-muted); white-space: nowrap; }
+.cc-home .hm-closed-mark { color: var(--color-success-700); font-weight: 700; }
+.cc-home .hm-cap { margin-left: auto; display: flex; align-items: center; gap: 12px; font-size: var(--text-caption); line-height: var(--text-caption--line-height); color: var(--color-muted); white-space: nowrap; }
+.cc-home .hm-cap b { color: var(--color-fg-heading); font-size: var(--text-body-lg); }
+.cc-home .hm-wide-only { display: none; }
+.cc-home .hm-lead { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 24px; }
+.cc-home .hm-card {
+  position: relative; display: flex; flex-direction: column; gap: 8px; padding: 16px 24px; cursor: pointer; text-align: left; min-width: 0;
+  outline: none;
+}
+.cc-home .hm-card:hover { border-color: var(--color-line-strong); }
+.cc-home .hm-card.is-first { background: var(--h-raised); border-color: var(--color-line-strong); box-shadow: inset 0 3px 0 var(--color-accent); }
+.cc-home .hm-card.is-selected { border-color: var(--color-accent); }
+.cc-home .hm-card:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.cc-home .hm-card.is-open { border-color: var(--color-accent); }
+.cc-home .hm-card-top { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.cc-home .hm-card-top .hm-badge, .cc-home .hm-card-top .hm-ai { margin-left: auto; }
+.cc-home .hm-card-top .hm-push { margin-left: auto; }
+.cc-home .hm-card-slot { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.cc-home .hm-card-slot > article { flex: 1 1 auto; }
+/* One muted why line on the lead cards (two on #1), so the verb columns keep their three rows. */
+.cc-home .hm-rank { font-size: var(--text-caption); font-weight: 700; color: var(--color-faint); min-width: 12px; }
+.cc-home .hm-card.is-first .hm-rank { color: var(--color-fg-heading); }
+.cc-home .hm-card h3 { font-size: var(--h-lead); line-height: var(--h-lead-lh); }
+.cc-home .hm-card.is-first h3 { font-size: var(--text-title); line-height: var(--text-title--line-height); }
+.cc-home .hm-card .hm-why { color: var(--color-muted); max-width: 60ch; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.cc-home .hm-card.is-first .hm-why { -webkit-line-clamp: 2; }
+.cc-home .hm-card h3 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.cc-home .hm-card-foot { margin-top: auto; padding-top: 4px; display: flex; align-items: center; gap: 12px; font-size: var(--text-caption); color: var(--color-muted); min-width: 0; }
+.cc-home .hm-card-foot > .hm-foot-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.cc-home .hm-card-foot .hm-spacer { flex: 1; }
+.cc-home .hm-card-foot .hm-ai-inline { color: var(--color-ai-700); font-weight: 700; }
+.cc-home .hm-prep { display: flex; flex-wrap: nowrap; gap: 4px 16px; font-size: var(--text-caption); line-height: var(--text-caption--line-height); color: var(--color-faint); min-width: 0; overflow: hidden; }
+.cc-home .hm-prep > span { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cc-home .hm-prep > span:first-child { flex: none; }
+.cc-home .hm-prep .is-done { color: var(--color-muted); }
+.cc-home .hm-prep .is-todo { color: var(--color-fg-heading); font-weight: 700; }
+.cc-home .hm-carried { font-size: var(--text-caption); line-height: var(--text-caption--line-height); color: var(--color-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cc-home .hm-context { font-size: var(--text-caption); line-height: var(--text-caption--line-height); color: var(--color-faint); }
+.cc-home .hm-drafts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.cc-home .hm-drafts li { display: block; min-width: 0; }
+/* Each draft row opens that draft in the panel (the card's queue): a quiet full-width button. */
+.cc-home .hm-draft {
+  display: grid; grid-template-columns: minmax(48px, auto) minmax(0, 1fr) auto; gap: 8px; align-items: baseline; min-width: 0;
+  margin: 0 -4px; padding: 0 4px; width: calc(100% + 8px); border: 0; border-radius: var(--radius-sm); background: none; text-align: left; cursor: pointer;
+  font: inherit; font-size: var(--text-caption); line-height: var(--text-caption--line-height); color: var(--color-muted);
+}
+.cc-home .hm-draft:hover { background: var(--color-surface-muted); }
+.cc-home .hm-draft:hover .hm-trunc { color: var(--color-fg); }
+.cc-home .hm-draft:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 0; }
+.cc-home .hm-draft[aria-current="true"] { background: var(--color-selected, var(--color-surface-muted)); }
+.cc-home .hm-draft[aria-current="true"] .hm-trunc { color: var(--color-fg); }
+.cc-home .hm-draft-more { font-size: var(--text-caption); line-height: var(--text-caption--line-height); font-weight: 400; }
+.cc-home .hm-drafts .who { display: inline-flex; align-items: center; gap: 6px; color: var(--color-fg); font-weight: 700; white-space: nowrap; }
+.cc-home .hm-drafts .who::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--color-faint); flex: none; }
+.cc-home .hm-drafts .age { color: var(--color-faint); }
+.cc-home .hm-card-empty { display: flex; align-items: center; justify-content: center; color: var(--color-faint); font-size: var(--text-caption); border-style: dashed; cursor: default; }
+
+/* ── sections: one surface, verb columns ── */
+.cc-home .hm-sections { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: minmax(0, 1fr); flex: 0 1 auto; min-height: 300px; overflow: hidden; }
+.cc-home .hm-sec { position: relative; min-width: 0; min-height: 0; display: flex; flex-direction: column; padding: 16px 16px 12px; container-type: inline-size; overflow: hidden; }
+.cc-home .hm-sec + .hm-sec { border-left: var(--h-hairline); }
+.cc-home .hm-sec-head { display: flex; align-items: baseline; gap: 8px; padding-bottom: 4px; min-width: 0; }
+.cc-home .hm-sec-head h2 { font-size: var(--h-lead); line-height: var(--h-lead-lh); white-space: nowrap; }
+.cc-home .hm-sec-head .hm-count { color: var(--color-muted); }
+.cc-home .hm-sec-head .hm-sub { margin-left: auto; font-size: var(--text-caption); color: var(--color-faint); white-space: nowrap; }
+.cc-home .hm-sec-head .hm-batch { margin-left: auto; }
+.cc-home .hm-sec-foot { margin-top: auto; padding-top: 4px; font-size: var(--text-caption); }
+.cc-home .hm-sec-empty { padding: 12px 0; color: var(--color-faint); font-size: var(--text-caption); }
+.cc-home .hm-sec.is-initiatives { display: none; }
+
+.cc-home .hm-rows, .cc-home .hm-sec > [role="grid"] { display: flex; flex-direction: column; flex-wrap: wrap; align-content: flex-start; flex: 0 1 auto; min-height: 0; overflow: hidden; }
+.cc-home .hm-sec > [role="grid"] > .hm-inits { width: 100%; }
+.cc-home .hm-strip-slot { margin: 4px 0; }
+.cc-home .hm-row {
+  position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 12px; align-items: start;
+  padding: 8px 12px; width: 100%; border-radius: var(--radius-md); cursor: pointer; outline: none; min-width: 0;
+}
+.cc-home .hm-row + .hm-row { border-top: var(--h-hairline); }
+.cc-home .hm-row:hover { background: var(--color-surface-muted); }
+.cc-home .hm-row.is-selected { background: var(--color-selected); border-top-color: transparent; }
+.cc-home .hm-row.is-selected + .hm-row { border-top-color: transparent; }
+.cc-home .hm-row:focus-visible { box-shadow: 0 0 0 2px var(--color-focus); }
+.cc-home .hm-row .hm-edge { grid-row: 1 / span 3; }
+.cc-home .hm-row-title { grid-column: 2; font-size: var(--text-body-lg); line-height: 1.5rem; font-weight: 700; color: var(--color-fg-heading); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.cc-home .hm-row-line { grid-column: 2; display: flex; flex-direction: column; align-items: flex-start; gap: 0; min-width: 0; }
+.cc-home .hm-row-line .hm-why { min-width: 0; max-width: 100%; font-size: var(--text-caption); line-height: 1.5rem; color: var(--color-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cc-home .hm-row-line .hm-why .hm-badge { height: 22px; vertical-align: 1px; margin-right: 8px; }
+.cc-home .hm-row-line .hm-acts { display: flex; align-items: center; gap: 4px; margin-left: -8px; }
+.cc-home .hm-row .hm-act-primary { display: none; }
+.cc-home .hm-row.is-primary .hm-act-primary { display: inline-flex; }
+.cc-home .hm-row.is-primary .hm-act-quiet { display: none; }
+.cc-home .hm-row .hm-hover-acts { position: absolute; top: 6px; right: 6px; display: none; gap: 2px; padding: 2px; border-radius: var(--radius-sm); background: var(--color-surface-muted); }
+.cc-home .hm-row:hover .hm-hover-acts, .cc-home .hm-row.is-selected .hm-hover-acts, .cc-home .hm-row:focus-within .hm-hover-acts { display: flex; }
+.cc-home .hm-row.is-selected .hm-hover-acts { background: var(--color-selected); }
+.cc-home .hm-row .hm-err { grid-column: 2; font-size: var(--text-caption); color: var(--color-danger-700); }
+.cc-home .hm-row .hm-err button { margin-left: 6px; }
+.cc-home .hm-meter-line { grid-column: 2; display: flex; align-items: center; gap: 12px; margin: 2px 0; min-width: 0; }
+.cc-home .hm-meter-line .hm-meter { flex: 1; }
+@container (min-width: 320px) {
+  .cc-home .hm-row-line { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 8px; }
+  .cc-home .hm-row-line .hm-acts { margin-left: 0; }
+  .cc-home .hm-strip .lbl.is-minor { visibility: visible; }
+}
+
+/* 14-day strip */
+.cc-home .hm-strip { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: 3px; margin: 4px 0; }
+.cc-home .hm-strip .d { display: flex; flex-direction: column; gap: 2px; align-items: stretch; }
+.cc-home .hm-strip .bars { height: 23px; display: flex; flex-direction: column-reverse; gap: 2px; overflow: hidden; }
+.cc-home .hm-strip .bars i { height: 4px; flex: none; border-radius: 2px; background: var(--color-line-strong); }
+.cc-home .hm-strip .bars i.is-risk { background: var(--color-warning-500); }
+.cc-home .hm-strip .lbl { font-size: var(--text-micro); line-height: var(--text-micro--line-height); text-align: center; color: var(--color-muted); }
+.cc-home .hm-strip .lbl.is-minor { visibility: hidden; }
+.cc-home .hm-strip .is-we .lbl { color: var(--color-faint); }
+.cc-home .hm-strip .is-we .bars { opacity: .7; }
+.cc-home .hm-strip .is-big .lbl { color: var(--color-fg-heading); font-weight: 700; }
+
+/* initiatives (compact list) */
+.cc-home .hm-inits { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; flex-wrap: wrap; align-content: flex-start; flex: 0 1 auto; min-height: 0; overflow: hidden; }
+.cc-home .hm-inits li { width: 100%; }
+.cc-home .hm-inits li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto 48px; gap: 0 8px; align-items: center; min-height: 40px; padding: 2px 4px; border-radius: var(--radius-sm); cursor: pointer; outline: none; }
+.cc-home .hm-inits li + li { border-top: var(--h-hairline); }
+.cc-home .hm-inits li:hover { background: var(--color-surface-muted); }
+.cc-home .hm-inits li.is-selected { background: var(--color-selected); }
+.cc-home .hm-inits li:focus-visible { box-shadow: 0 0 0 2px var(--color-focus); }
+.cc-home .hm-inits .nm { font-weight: 700; color: var(--color-fg-heading); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cc-home .hm-inits .nx { font-size: var(--text-caption); color: var(--color-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 16ch; text-align: right; }
+.cc-home .hm-inits .nx.is-hot { color: var(--color-fg-heading); font-weight: 700; }
+.cc-home .hm-inits .nx.is-risk { color: var(--color-warning-700); font-weight: 700; }
+.cc-home .hm-inits .nx.is-paused, .cc-home .hm-inits .nm.is-paused { color: var(--color-faint); }
+.cc-home .hm-inits .dt { font-size: var(--text-caption); color: var(--color-muted); text-align: right; white-space: nowrap; }
+
+/* ── the end ── */
+/* LD-1: Looks done: confirm. One compact line (flex: none, pulled up into the gap) so the verb columns keep their
+   height at 1920×1000; green edge + ✓ badge = ready. Items sit side by side, split by hairlines. */
+.cc-home .hm-ld { flex: none; display: flex; align-items: center; gap: 12px; min-height: 40px; margin-top: -12px; padding: 2px 8px 2px 12px; border-left: 3px solid var(--s-500); min-width: 0; }
+.cc-home .hm-ld-rows { list-style: none; margin: 0; padding: 0; flex: 1 1 auto; min-width: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); }
+.cc-home .hm-ld-row { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 0 12px; }
+.cc-home .hm-ld-row + .hm-ld-row { border-left: var(--h-hairline); }
+.cc-home .hm-ld-name { flex: 0 1 auto; max-width: 45%; font-weight: 700; color: var(--color-fg-heading); text-decoration: none; }
+.cc-home .hm-ld-name:hover { text-decoration: underline; text-underline-offset: .2em; }
+.cc-home .hm-ld-name:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; border-radius: 2px; }
+.cc-home .hm-ld-ev { flex: 1 1 0; font-size: var(--text-caption); color: var(--color-muted); }
+.cc-home .hm-ld-ev.is-err { color: var(--color-danger-700); font-weight: 700; }
+.cc-home .hm-ld-acts { display: inline-flex; flex: none; align-items: center; gap: 4px; }
+.cc-home .hm-ld-confirm { color: var(--s-700); border-color: var(--s-200); }
+.cc-home .hm-ld-confirm:hover { background: var(--s-50); }
+.cc-home .hm-ld-more { flex: none; font-size: var(--text-caption); white-space: nowrap; }
+.cc-home .hm-end { display: flex; align-items: baseline; gap: 24px; padding: 0 4px; margin-top: -8px; flex: none; min-width: 0; }
+.cc-home .hm-end-title { font-size: var(--text-body-lg); font-weight: 700; color: var(--color-fg-heading); white-space: nowrap; }
+.cc-home .hm-end-status { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: var(--text-caption); color: var(--color-faint); min-width: 0; }
+.cc-home .hm-end-status .hm-part { display: inline-flex; align-items: baseline; gap: 8px; white-space: nowrap; }
+.cc-home .hm-end-status .is-warn { color: var(--color-danger-700); font-weight: 700; }
+.cc-home .hm-end-status .hm-part.hm-chase-link { display: none; }
+
+/* ── states ── */
+.cc-home .hm-skel { border-radius: var(--radius-sm); background: var(--color-surface-sunken); animation: hm-pulse 1.4s ease-in-out infinite; }
+@keyframes hm-pulse { 50% { opacity: .55; } }
+.cc-home .hm-error { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.cc-home .hm-inline-err { font-size: var(--text-caption); color: var(--color-danger-700); }
+.cc-home .hm-stale { font-size: var(--text-caption); color: var(--color-warning-700); }
+
+/* ─────────────────── widths: the `main` container (an open panel makes it narrower) ─────────────────── */
+@container main (max-width: 1191px) {
+  .cc-home .hm-sections { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; overflow: visible; }
+  .cc-home .hm-rows, .cc-home .hm-inits, .cc-home .hm-sec > [role="grid"] { flex-wrap: nowrap; overflow: visible; }
+  .cc-home .hm-sec:nth-child(3) { border-left: 0; }
+  .cc-home .hm-sec:nth-child(n + 3) { border-top: var(--h-hairline); }
+  .cc-home .hm-lead { grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .cc-home { height: auto; min-height: 100%; }
+}
+@container main (min-width: 1432px) {
+  .cc-home .hm-mast { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); grid-template-areas: "head date" "head dek"; align-items: end; row-gap: 4px; }
+  .cc-home .hm-mast-date { align-self: start; }
+  .cc-home .hm-dek { padding-bottom: 4px; }
+  .cc-home .hm-wide-only { display: inline; }
+}
+@container main (min-width: 2000px) {
+  .cc-home .hm-headline { font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height); }
+  .cc-home .hm-sections { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .cc-home .hm-sec.is-initiatives { display: flex; }
+}
+
+/* Panel open (V2-SHELL sets data-panel on #cc-main): one consistent condensed layout, still no page scroll. */
+#cc-main[data-panel="open"] .cc-home .hm-card.is-open .hm-card-foot .hm-btn.is-primary { background: transparent; color: var(--color-link); border-color: transparent; padding: 0 8px; }
+#cc-main[data-panel="open"] .cc-home .hm-row.is-open .hm-act-primary { display: none; }
+#cc-main[data-panel="open"] .cc-home .hm-row.is-open .hm-act-quiet { display: inline-flex; }
+@container main (max-width: 1563px) {
+  #cc-main[data-panel="open"] .cc-home { gap: 16px; }
+  #cc-main[data-panel="open"] .cc-home .hm-lead-wrap { gap: 8px; }
+  #cc-main[data-panel="open"] .cc-home .hm-mast { row-gap: 4px; }
+  #cc-main[data-panel="open"] .cc-home .hm-sections { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: minmax(0, 1fr); overflow: hidden; }
+  #cc-main[data-panel="open"] .cc-home .hm-rows, #cc-main[data-panel="open"] .cc-home .hm-inits, #cc-main[data-panel="open"] .cc-home .hm-sec > [role="grid"] { flex-wrap: wrap; overflow: hidden; }
+  #cc-main[data-panel="open"] .cc-home .hm-sec:nth-child(3) { border-left: var(--h-hairline); }
+  #cc-main[data-panel="open"] .cc-home .hm-sec:nth-child(n + 3) { border-top: 0; }
+  #cc-main[data-panel="open"] .cc-home .hm-sec.is-chase { display: none; }
+  #cc-main[data-panel="open"] .cc-home .hm-end-status .hm-part.hm-chase-link { display: inline-flex; }
+  #cc-main[data-panel="open"] .cc-home .hm-dek,
+  #cc-main[data-panel="open"] .cc-home .hm-mast-date .hm-since,
+  #cc-main[data-panel="open"] .cc-home .hm-card .hm-prep,
+  #cc-main[data-panel="open"] .cc-home .hm-card .hm-context,
+  #cc-main[data-panel="open"] .cc-home .hm-card-foot .hm-wide-only,
+  #cc-main[data-panel="open"] .cc-home .hm-end-status .is-opt,
+  #cc-main[data-panel="open"] .cc-home .hm-lead-head .hm-note { display: none; }
+  #cc-main[data-panel="open"] .cc-home .hm-lead { grid-template-columns: 1.2fr 1fr 1fr; gap: 16px; }
+  #cc-main[data-panel="open"] .cc-home .hm-card .hm-why { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  #cc-main[data-panel="open"] .cc-home { height: 100%; }
+}
+@container main (min-width: 2000px) {
+  #cc-main[data-panel="open"] .cc-home .hm-sections { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  #cc-main[data-panel="open"] .cc-home .hm-sec.is-initiatives { display: none; }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "talk-track",
+  "name": "Talk Track",
+  "description": "Generate a talk track (slides plus live-demo script) for an event or customer session from reference material.",
+  "icon": "presentation",
+  "version": 1,
+  "launch": { "kind": "http", "baseUrl": "http://localhost:4320", "port": 4320 },
+  "lifecycle": {
+    "startCommand": "npm start",
+    "cwd": "~/Projects/talk-track",
+    "env": { "PORT": "4320" },
+    "readyTimeoutSec": 30
+  },
+  "input": {
+    "fields": [
+      { "key": "name", "type": "string", "label": "Talk track name", "required": true, "maxLength": 200, "prefill": "{{workItem.event.title}}" },
+      { "key": "customer", "type": "string", "label": "Customer", "required": true, "maxLength": 200, "prefill": "{{workItem.account.name}}" },
+      { "key": "account", "type": "entity_ref", "entity": "account", "label": "Account (for linking the run)", "required": false },
+      { "key": "context", "type": "text", "label": "Context bundle (becomes a generated .md reference)", "required": true, "maxLength": 200000, "help": "Calendar description, prior notes, VDP summary. The tool needs at least one reference with extractable text before it can generate.", "prefill": "{{context.bundle.md}}" },
+      { "key": "references", "type": "file", "label": "Extra reference files", "required": false, "multiple": true, "accept": [".txt", ".md", ".pdf"] },
+      { "key": "presenterContext", "type": "text", "label": "Who presents what", "required": false, "maxLength": 4000 }
+    ]
+  },
+  "output": {
+    "kind": "both",
+    "link": { "urlTemplate": "http://localhost:4320/#/t/{{trackId}}/references", "label": "Open talk track" },
+    "artifacts": [
+      { "pathTemplate": "~/Projects/talk-track/talk-tracks/{{trackId}}/talk-track.json", "label": "talk-track.json", "mime": "application/json", "revealable": true }
+    ]
+  },
+  "health": { "type": "http", "url": "http://localhost:4320/api/talk-tracks", "expectStatus": 200, "timeoutMs": 1500 },
+  "progress": { "protocol": "ndjson", "path": "/api/talk-tracks/{{trackId}}/jobs/{{jobId}}/stream" },
+  "estimatedDuration": { "minSec": 120, "maxSec": 900 },
+  "privacy": {
+    "note": "Runs entirely on this machine. The tool shells out to the local `claude` CLI, so the reference text you supply is sent to the model like any Claude session. Nothing is posted to Slack, Drive or Org62.",
+    "dataClass": "customer",
+    "network": "localhost-only",
+    "writes": ["~/Projects/talk-track/talk-tracks"],
+    "externalCalls": [
+      { "service": "claude CLI (Anthropic API)", "kind": "llm", "note": "outline and per-segment generation read the reference text" }
+    ],
+    "requiresConfirm": false
+  }
+}

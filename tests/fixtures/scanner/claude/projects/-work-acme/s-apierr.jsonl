@@ -1,0 +1,2 @@
+{"type": "user", "isSidechain": false, "sessionId": "s-apierr", "cwd": "/work/acme", "gitBranch": "HEAD", "entrypoint": "claude-desktop", "timestamp": "2026-03-10T17:00:00.000Z", "uuid": "u-00019", "message": {"role": "user", "content": "Go"}, "origin": {"kind": "human"}}
+{"type": "system", "isSidechain": false, "sessionId": "s-apierr", "cwd": "/work/acme", "gitBranch": "HEAD", "entrypoint": "claude-desktop", "timestamp": "2026-03-10T17:01:00.000Z", "uuid": "u-00020", "subtype": "api_error", "content": "API connection error"}

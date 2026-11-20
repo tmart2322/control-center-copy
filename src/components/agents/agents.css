@@ -1,0 +1,35 @@
+/* Agents page: a subtle repaint when a run's state changes in place (UI-SPEC §10: nothing moves under the cursor). */
+@keyframes cc-run-flash {
+  from {
+    background-color: var(--color-brand-100);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+.cc-run-flash {
+  animation: cc-run-flash 1.6s ease-out 1;
+}
+
+@keyframes cc-run-waiting {
+  0% {
+    box-shadow: inset 3px 0 0 0 var(--color-warning-500);
+    background-color: var(--color-warning-50);
+  }
+  100% {
+    box-shadow: inset 3px 0 0 0 var(--color-warning-500);
+    background-color: transparent;
+  }
+}
+
+.cc-run-waiting {
+  animation: cc-run-waiting 2.4s ease-out 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-run-flash,
+  .cc-run-waiting {
+    animation: none;
+  }
+}

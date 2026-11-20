@@ -1,0 +1,1010 @@
+/*
+ * Today v2: layout, the day timeline and run-of-day rows (DESIGN-V2; visual target public/mockups/today.html).
+ * Tokens from src/styles/brand.css only (no raw hex). Panes condense with `@container main` queries on
+ * #cc-main, so the page reflows the same way when the right panel opens.
+ * This sheet is unlayered, so it beats Tailwind utilities: never mix a .td-* rule and a utility that set
+ * the same property on one element (give the state its own class instead).
+ * Color is an indicator only: blue = selected / now, red = blocked or broken, amber = at risk, violet = AI.
+ */
+
+/* ── page ── */
+.td-root {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 20px;
+  height: 100%;
+  min-height: 620px;
+  padding: 20px 24px 24px;
+}
+.td-panes {
+  position: relative;
+  display: grid;
+  gap: 20px;
+  min-height: 0;
+  grid-template-columns: clamp(440px, 32cqi, 640px) minmax(0, 1fr) clamp(360px, 24cqi, 460px);
+}
+.td-pane {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+}
+.td-pane-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 18px 20px 10px;
+  min-width: 0;
+}
+.td-pane-head h2 {
+  font-size: var(--text-title);
+  line-height: var(--text-title--line-height);
+  font-weight: 700;
+  color: var(--color-fg-heading);
+  white-space: nowrap;
+}
+.td-pane-head .td-count {
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  color: var(--color-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.td-pane-head .td-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+.td-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  scrollbar-gutter: stable;
+  padding: 4px 20px 20px;
+}
+
+/* ── header line ── */
+.td-head {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  min-width: 0;
+}
+.td-date {
+  font-size: var(--text-heading-lg);
+  line-height: var(--text-heading-lg--line-height);
+  font-weight: 700;
+  color: var(--color-fg-heading);
+  white-space: nowrap;
+  letter-spacing: -0.015em;
+}
+.td-verdict {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: var(--color-muted);
+  max-width: 68ch;
+}
+.td-verdict b {
+  color: var(--color-fg-heading);
+}
+.td-cap {
+  margin-left: auto;
+  flex: 0 0 auto;
+  width: 320px;
+  display: grid;
+  gap: 8px;
+}
+.td-capbar {
+  display: flex;
+  gap: 2px;
+  height: 8px;
+  border-radius: 99px;
+  overflow: hidden;
+  background: var(--color-surface-sunken);
+}
+.td-capbar > i {
+  display: block;
+  background: var(--color-fg);
+}
+.td-capbar > i[data-over] {
+  background: var(--color-danger-500);
+}
+
+/* ── timeline ── */
+.td-legend {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  color: var(--color-muted);
+}
+.td-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.td-legend i {
+  width: 16px;
+  height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+}
+.td-legend .lg-mtg {
+  background: var(--color-surface-sunken);
+  border-left: 3px solid var(--color-line-input);
+}
+.td-legend .lg-work {
+  border: 1px dashed var(--color-line-input);
+  border-left: 3px solid var(--color-line-input);
+}
+.td-legend .lg-agent {
+  background: var(--color-ai-50);
+  border: 1px dashed var(--color-ai-200);
+  border-left: 3px solid var(--color-ai-500);
+}
+/* the day pane: its head drops the legend before it would squeeze the meeting count or the zoom */
+.td-day {
+  container: tdday / inline-size;
+}
+@container tdday (max-width: 600px) {
+  .td-pane-head .td-tl-legend {
+    display: none;
+  }
+}
+.td-tl {
+  flex: 1;
+  min-height: 0;
+  padding: 12px 20px 22px 16px;
+  overflow: hidden;
+}
+/* zoomed past "Fit": the grid scrolls inside its pane (never the page) */
+.td-tl[data-zoomed] {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.td-tl-grid {
+  position: relative;
+  height: 100%;
+}
+/* zoom: − level + (the level resets to Fit) */
+.td-zoom {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 1px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  flex: none;
+}
+.td-zoom-v {
+  min-width: 44px;
+  height: 28px;
+  padding: 0 6px;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-caption);
+  line-height: 28px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-fg);
+  text-align: center;
+  cursor: pointer;
+}
+.td-zoom-v:hover:not(:disabled) {
+  background: var(--color-surface-muted);
+  color: var(--color-fg-heading);
+}
+.td-zoom-v:disabled {
+  cursor: default;
+  color: var(--color-muted);
+}
+.td-zoom-v:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 1px;
+}
+/* outside working hours: recessed to the canvas tone (context, not a state) */
+.td-off {
+  position: absolute;
+  left: 60px;
+  right: 0;
+  z-index: 0;
+  pointer-events: none;
+  /* a fine neutral hatch over the canvas tone (agent time is the violet hatch the other way) */
+  background:
+    repeating-linear-gradient(45deg, color-mix(in oklab, var(--color-line-strong) 45%, transparent) 0 1px, transparent 1px 9px),
+    color-mix(in oklab, var(--color-bg) 85%, transparent);
+  border-radius: var(--radius-sm);
+}
+.td-hr {
+  position: absolute;
+  left: 60px;
+  right: 0;
+  border-top: 1px solid var(--color-line);
+}
+.td-hr[data-half] {
+  border-top-style: dashed;
+  border-color: color-mix(in oklab, var(--color-line) 70%, transparent);
+}
+.td-hr[data-quarter] {
+  border-color: color-mix(in oklab, var(--color-line) 45%, transparent);
+}
+.td-hr i {
+  position: absolute;
+  left: -60px;
+  top: -10px;
+  width: 52px;
+  font-style: normal;
+  font-size: var(--text-caption);
+  line-height: 20px;
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+.td-hr[data-past] i {
+  color: var(--color-faint);
+}
+.td-track {
+  position: absolute;
+  left: 60px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.td-ev {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 4px 10px 4px 12px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  --edge: var(--color-line-input);
+}
+button.td-ev {
+  cursor: pointer;
+}
+.td-ev:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 1px;
+  z-index: 7;
+}
+.td-ev > * {
+  position: relative;
+  z-index: 1;
+}
+.td-ev[data-short] {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+/* too short for any label at this zoom: the block, its tooltip and a click to Details */
+.td-ev[data-tiny] {
+  padding: 0;
+}
+.td-ev[data-kind='meeting'] {
+  background: color-mix(in oklab, var(--color-surface-sunken) 70%, var(--color-surface));
+  border: 1px solid var(--color-line);
+  border-left: 3px solid var(--edge);
+}
+.td-ev[data-kind='work'] {
+  background: var(--color-surface);
+  border: 1px dashed var(--color-line-input);
+  border-left: 3px solid var(--edge);
+}
+.td-ev[data-kind='work'][data-active] {
+  --edge: var(--color-accent);
+  background: var(--color-selected);
+  border-color: var(--color-accent);
+}
+.td-ev[data-hl] {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 1px;
+  z-index: 3;
+}
+.td-ev[data-tone='blocked'] {
+  --edge: var(--color-danger-500);
+}
+.td-ev[data-tone='risk'] {
+  --edge: var(--color-warning-500);
+}
+.td-ev[data-tone='ready'] {
+  --edge: var(--color-success-500);
+}
+.td-ev[data-kind='agent'] {
+  background: var(--color-ai-50);
+  border: 1px dashed var(--color-ai-200);
+  border-left: 3px solid var(--color-ai-500);
+}
+.td-ev[data-kind='agent'] .td-ev-t {
+  font-size: var(--text-caption);
+  color: var(--color-ai-700);
+}
+.td-ev[data-kind='suggest'] {
+  z-index: 2;
+  background: transparent;
+  border: 1px dashed var(--color-line-strong);
+  border-left: 3px solid var(--color-line-strong);
+}
+.td-ev[data-kind='suggest'] .td-ev-t {
+  font-weight: 400;
+  color: var(--color-muted);
+}
+.td-ev[data-side] {
+  z-index: 0;
+}
+.td-ev[data-declined] {
+  background: transparent;
+  border: 1px dashed var(--color-line);
+  padding-top: 4px;
+}
+.td-ev[data-declined] .td-ev-t {
+  font-size: var(--text-caption);
+  font-weight: 400;
+  color: var(--color-faint);
+  text-decoration: line-through;
+}
+.td-ev[data-declined] .td-ev-m {
+  color: var(--color-faint);
+}
+.td-ev[data-live] {
+  z-index: 5;
+}
+.td-ev[data-live]::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: calc(var(--elapsed) * 100%);
+  background: color-mix(in oklab, var(--color-surface) 45%, transparent);
+  pointer-events: none;
+}
+.td-ev-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.td-ev-t {
+  font-size: var(--text-body);
+  line-height: 20px;
+  font-weight: 700;
+  color: var(--color-fg-heading);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex: 0 1 auto;
+}
+.td-ev-m {
+  font-size: var(--text-caption);
+  line-height: 20px;
+  color: var(--color-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex: 0 1000 auto;
+}
+.td-ev .td-badge {
+  margin-left: auto;
+  flex: none;
+}
+/* A block too narrow for its title and its badge (overlap columns, the panel open) keeps the title: the prep
+   state stays as the edge, the meta line ("prep: …") and the tooltip. */
+.td-ev[data-kind='meeting'] {
+  container: tdev / inline-size;
+}
+@container tdev (max-width: 200px) {
+  .td-ev .td-badge {
+    display: none;
+  }
+}
+.td-ev[data-dragging] {
+  z-index: 8;
+  box-shadow: var(--shadow-pop);
+  cursor: grabbing;
+}
+.td-gap {
+  position: absolute;
+  z-index: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 12px 6px;
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  color: var(--color-faint);
+  border-radius: var(--radius-sm);
+}
+.td-gap[data-tail] {
+  align-items: flex-start;
+}
+/* too short for its label (pixelLayout): the gap keeps its tooltip and the fit-in highlight */
+.td-gap[data-collapsed] {
+  padding: 0;
+}
+.td-gap span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.td-gap b {
+  color: var(--color-muted);
+  font-weight: 700;
+}
+.td-gap[data-tail] b {
+  color: var(--color-fg);
+}
+.td-gap[data-hl] {
+  outline: 2px dashed var(--color-focus);
+  outline-offset: -2px;
+  color: var(--color-muted);
+}
+.td-past {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -12px;
+  z-index: 4;
+  pointer-events: none;
+  background: color-mix(in oklab, var(--color-surface) 58%, transparent);
+}
+.td-now {
+  position: absolute;
+  left: 56px;
+  right: 0;
+  z-index: 6;
+  border-top: 2px solid var(--color-fg-heading);
+  pointer-events: none;
+}
+.td-now::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: -6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 99px;
+  background: var(--color-fg-heading);
+}
+.td-now b {
+  position: absolute;
+  left: -58px;
+  top: -12px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: var(--radius-sm);
+  background: var(--color-fg-heading);
+  color: var(--color-bg);
+  font-size: var(--text-caption);
+  line-height: 22px;
+  font-variant-numeric: tabular-nums;
+}
+.td-endmark {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  padding-top: 4px;
+  font-size: var(--text-caption);
+  color: var(--color-faint);
+}
+
+/* ── badges (icon + word; one color signal per row) ── */
+.td-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-caption);
+  line-height: 1;
+  font-weight: 700;
+  white-space: nowrap;
+  border: 1px solid var(--b-200);
+  background: var(--b-50);
+  color: var(--b-700);
+}
+.td-badge[data-tone='success'] { --b-50: var(--color-success-50); --b-200: var(--color-success-200); --b-700: var(--color-success-700); }
+.td-badge[data-tone='warning'] { --b-50: var(--color-warning-50); --b-200: var(--color-warning-200); --b-700: var(--color-warning-700); }
+.td-badge[data-tone='danger'] { --b-50: var(--color-danger-50); --b-200: var(--color-danger-200); --b-700: var(--color-danger-700); }
+.td-badge[data-tone='ai'] { --b-50: var(--color-ai-50); --b-200: var(--color-ai-200); --b-700: var(--color-ai-700); }
+.td-badge[data-tone='neutral'] { --b-50: var(--color-surface-sunken); --b-200: var(--color-line); --b-700: var(--color-fg); }
+
+/* ── rows: when · edge · title / why / meta + action ── */
+.td-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.td-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4.25rem 3px minmax(0, 1fr) auto;
+  gap: 2px 14px;
+  align-items: center;
+  padding: 12px;
+  margin: 0 -12px;
+  border-radius: var(--radius-md);
+  cursor: default;
+  outline: none;
+}
+.td-row + .td-row {
+  border-top: 1px solid var(--color-line);
+}
+.td-row:hover {
+  background: var(--color-surface-muted);
+}
+.td-row[data-selected] {
+  background: var(--color-selected);
+  border-top-color: transparent;
+}
+.td-row[data-selected] + .td-row {
+  border-top-color: transparent;
+}
+.td-row:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--color-focus);
+}
+.td-row[data-hl]:not([data-selected]) {
+  background: var(--color-surface-muted);
+}
+.td-when {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  padding-top: 2px;
+  font-variant-numeric: tabular-nums;
+}
+.td-when b {
+  font-size: var(--text-body-lg);
+  line-height: var(--text-body-lg--line-height);
+  color: var(--color-fg-heading);
+}
+.td-when span {
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+.td-edge {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  width: 3px;
+  align-self: stretch;
+  border-radius: 3px;
+  background: var(--color-line-strong);
+}
+.td-row[data-tone='blocked'] .td-edge,
+.td-row[data-tone='overdue'] .td-edge {
+  background: var(--color-danger-500);
+}
+.td-row[data-tone='risk'] .td-edge {
+  background: var(--color-warning-500);
+}
+.td-row[data-selected]:not([data-tone='blocked']):not([data-tone='overdue']) .td-edge {
+  background: var(--color-accent);
+}
+.td-title {
+  grid-column: 3 / span 2;
+  grid-row: 1;
+  font-size: var(--text-body-lg);
+  line-height: var(--text-body-lg--line-height);
+  font-weight: 700;
+  color: var(--color-fg-heading);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.td-why {
+  grid-column: 3 / span 2;
+  grid-row: 2;
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+  color: var(--color-muted);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.td-row[data-expanded] .td-why {
+  white-space: normal;
+}
+.td-meta {
+  grid-column: 3;
+  grid-row: 3;
+  justify-self: start;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  color: var(--color-muted);
+  white-space: nowrap;
+  min-width: 0;
+  overflow: hidden;
+}
+.td-meta > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.td-act {
+  grid-column: 4;
+  grid-row: 3;
+  justify-self: end;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.td-row .td-hover {
+  display: none;
+  gap: 2px;
+}
+.td-row:hover .td-hover,
+.td-row:focus-within .td-hover,
+.td-row[data-selected] .td-hover {
+  display: flex;
+}
+.td-row[data-filled] .td-act .td-quiet-verb {
+  display: none;
+}
+.td-row[data-filled] .td-act .td-hover {
+  display: none;
+}
+.td-sel {
+  grid-column: 3 / span 2;
+  grid-row: 4;
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding-top: 8px;
+}
+.td-row[data-filled] .td-sel {
+  display: flex;
+}
+.td-row[data-filled] .td-when,
+.td-row[data-filled] .td-edge {
+  grid-row: 1 / span 4;
+}
+.td-row .td-err {
+  grid-column: 3 / span 2;
+  grid-row: 5;
+}
+.td-row .td-inline {
+  grid-column: 1 / span 4;
+  grid-row: 6;
+}
+
+/* compact rows: fit-ins, pull forward, promises (title line + why line) */
+.td-compact .td-row {
+  padding: 10px 12px;
+}
+.td-compact .td-when,
+.td-compact .td-edge {
+  grid-row: 1 / span 2;
+}
+.td-compact .td-when b {
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+}
+.td-compact .td-title {
+  grid-column: 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+}
+.td-compact .td-title > .td-t {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+.td-compact .td-title > .td-ctx {
+  font-weight: 400;
+  color: var(--color-faint);
+  flex: none;
+}
+.td-compact .td-act {
+  grid-column: 4;
+  grid-row: 1;
+  position: relative;
+}
+.td-compact .td-why {
+  grid-column: 3 / span 2;
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+}
+.td-compact .td-row .td-hover {
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 4px 0 12px;
+  background: var(--color-surface-muted);
+}
+.td-compact .td-row[data-selected] .td-hover {
+  background: var(--color-selected);
+}
+.td-compact .td-row[data-filled] .td-sel {
+  display: none;
+}
+.td-compact .td-row .td-fill {
+  display: none;
+}
+.td-compact .td-row[data-filled] .td-fill {
+  display: inline-flex;
+}
+.td-compact .td-row[data-filled] .td-act .td-quiet-verb {
+  display: none;
+}
+.td-compact .td-row[data-filled] .td-act .td-hover {
+  display: flex;
+}
+
+.td-sub {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 28px 0 4px;
+}
+.td-sub h3 {
+  font-size: var(--text-body-lg);
+  line-height: var(--text-body-lg--line-height);
+  font-weight: 700;
+  color: var(--color-fg-heading);
+}
+.td-sub span {
+  font-size: var(--text-caption);
+  color: var(--color-muted);
+}
+.td-dayend {
+  margin-top: 16px;
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  color: var(--color-faint);
+}
+
+/* ── agent's plan (pattern 8: the plan as a diff) ── */
+.td-plan {
+  border: 1px solid transparent;
+  background: linear-gradient(var(--color-surface), var(--color-surface)) padding-box, var(--gradient-agentic-border) border-box;
+}
+.td-diff {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.td-d {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  gap: 2px 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--color-line);
+  align-items: start;
+  border-radius: var(--radius-sm);
+}
+.td-d:hover {
+  background: color-mix(in oklab, var(--color-surface-muted) 60%, transparent);
+}
+.td-d .td-mk {
+  grid-row: 1 / span 3;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  display: grid;
+  place-items: center;
+  background: var(--color-surface-sunken);
+  color: var(--color-fg-heading);
+  border: 1px solid var(--color-line);
+  font-weight: 700;
+  font-size: var(--text-body);
+}
+.td-d-t {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--color-fg-heading);
+  min-width: 0;
+  text-align: left;
+}
+.td-d-t span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.td-d-when {
+  grid-column: 2 / span 2;
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  color: var(--color-fg);
+}
+.td-d-when s {
+  color: var(--color-faint);
+}
+.td-d-why {
+  grid-column: 2 / span 2;
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  color: var(--color-muted);
+}
+.td-d-err {
+  grid-column: 2 / span 2;
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  color: var(--color-danger-700);
+}
+.td-d .td-undo {
+  grid-column: 3;
+  grid-row: 1;
+  margin-top: -4px;
+}
+.td-d[data-excluded] .td-d-t span,
+.td-d[data-excluded] .td-d-when {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+.td-d[data-hl] {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 1px;
+}
+
+.td-plan-tab {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+  cursor: pointer;
+  color: var(--color-fg-heading);
+  font-weight: 700;
+  background: linear-gradient(var(--color-surface), var(--color-surface)) padding-box, var(--gradient-agentic-border) border-box;
+}
+.td-plan-tab .td-vt {
+  writing-mode: vertical-rl;
+  font-size: var(--text-body);
+}
+.td-plan-tab:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+@keyframes td-reeval {
+  0%, 100% { background-color: transparent; }
+  50% { background-color: var(--color-ai-50); }
+}
+.td-reeval {
+  animation: td-reeval 1.6s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* ── condense by the main container's width (the right panel shrinks it too) ── */
+/* the mockup's ≥ 2400 px viewport tier: a 2,560 px screen leaves ~2,300 px of main beside the sidebar */
+@container main (min-width: 2200px) {
+  .td-panes {
+    grid-template-columns: 640px minmax(0, 1fr) 520px;
+  }
+  .td-run:not(.td-compact) .td-row {
+    padding: 18px 12px;
+  }
+  .td-run:not(.td-compact) .td-title {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  .td-run:not(.td-compact) .td-why {
+    font-size: var(--text-body-lg);
+    line-height: var(--text-body-lg--line-height);
+  }
+  .td-compact .td-title {
+    font-size: var(--text-body-lg);
+    line-height: var(--text-body-lg--line-height);
+  }
+  .td-compact .td-why {
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+  }
+  .td-compact .td-row {
+    padding: 14px 12px;
+  }
+  .td-d {
+    padding: 16px 0;
+  }
+  .td-d-t {
+    font-size: var(--text-body-lg);
+  }
+  .td-d-when,
+  .td-d-why {
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+  }
+}
+@container main (max-width: 1599px) {
+  .td-panes {
+    grid-template-columns: clamp(380px, 36cqi, 520px) minmax(0, 1fr) 52px;
+  }
+  .td-plan-tab {
+    display: flex;
+  }
+  .td-plan {
+    display: none;
+  }
+  .td-root[data-plan-open] .td-plan {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 72px;
+    bottom: 0;
+    width: min(400px, 60cqi);
+    z-index: 30;
+    box-shadow: var(--shadow-pop);
+  }
+  .td-verdict {
+    font-size: var(--text-body-lg);
+    line-height: var(--text-body-lg--line-height);
+  }
+  .td-pane-head .td-tl-legend {
+    display: none;
+  }
+  .td-ev[data-short][data-narrow] .td-ev-m {
+    display: none;
+  }
+}
+@container main (max-width: 1199px) {
+  .td-panes {
+    grid-template-columns: 340px minmax(0, 1fr) 52px;
+    gap: 16px;
+  }
+  .td-root {
+    padding: 16px 16px 20px;
+    gap: 16px;
+  }
+  .td-head {
+    gap: 20px;
+  }
+  .td-date {
+    font-size: var(--text-heading);
+    line-height: var(--text-heading--line-height);
+  }
+  .td-cap {
+    width: 260px;
+  }
+  .td-bgrun {
+    display: none;
+  }
+}
+@container main (max-width: 899px) {
+  .td-panes {
+    grid-template-columns: 280px minmax(0, 1fr) 44px;
+  }
+  .td-cap {
+    width: 200px;
+  }
+  .td-verdict {
+    display: none;
+  }
+}

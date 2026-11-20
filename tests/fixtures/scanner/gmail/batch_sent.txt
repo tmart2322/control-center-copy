@@ -1,0 +1,22 @@
+Retrieved 1 messages:
+
+Message ID: 18f0000000000004
+Subject: Re: ACME_CORP data cloud workshop agenda
+From: ME <me@example.com>
+Date: Tue, 10 Mar 2026 16:55:00 +0000
+Message-ID: <msg-0004@mail.example.com>
+In-Reply-To: <msg-0001@mail.example.com>
+To: AE_1 <ae.one@example.com>
+Cc: SE_2 <se.two@example.com>
+Web Link: https://mail.google.com/mail/u/0/#all/18f0000000000004
+
+--- BODY ---
+Hi AE_1,
+
+Deck attached, see also https://docs.google.com/presentation/d/1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789/edit. The architecture slide now shows the zero-copy flow.
+
+Thanks,
+ME
+
+On Tue, Mar 10, 2026 at 4:05 PM AE_1 <ae.one@example.com> wrote:
+> Can you send the updated deck for the workshop by Thursday?
