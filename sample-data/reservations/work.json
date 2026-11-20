@@ -1,0 +1,177 @@
+[
+ {
+  "table": "claude_sessions",
+  "key": "cs-04",
+  "note": "Claude session the work item closes on (claude_session_completed); keys cs-NN as in CAST-sources"
+ },
+ {
+  "table": "claude_sessions",
+  "key": "cs-02",
+  "note": "Claude session the work item closes on (claude_session_completed); keys cs-NN as in CAST-sources"
+ },
+ {
+  "table": "claude_sessions",
+  "key": "cs-06",
+  "note": "Claude session the work item closes on (claude_session_completed); keys cs-NN as in CAST-sources"
+ },
+ {
+  "table": "drafts",
+  "key": "rev-saltmere-blueprint-email",
+  "note": "Draft created from NBA wi-003:v3 (send_email); drafts.work_item_id = wi-003, drafts.nba_id = wi-003:v3"
+ },
+ {
+  "table": "activity_entries",
+  "key": "nba-wi003-focus-log",
+  "note": "Proposed activity entry (or batch anchor) behind NBA wi-003:v4 (log_activity); status proposed or logged"
+ },
+ {
+  "table": "drafts",
+  "key": "rev-elderglen-demo-reply",
+  "note": "Draft created from NBA wi-031:v1 (reply); drafts.work_item_id = wi-031, drafts.nba_id = wi-031:v1"
+ },
+ {
+  "table": "claude_sessions",
+  "key": "cs-07",
+  "note": "Claude session cs-07 linked from NBA wi-032:v1 (CAST-sources claude_sessions list)"
+ },
+ {
+  "table": "tool_runs",
+  "key": "tr-oms-check",
+  "note": "Tool run oms-sandbox-check started from NBA wi-105:v1; status waiting for inputs"
+ },
+ {
+  "table": "drafts",
+  "key": "wi006-reply-soojin",
+  "note": "Draft created from NBA wi-006:v2 (reply); drafts.work_item_id = wi-006, drafts.nba_id = wi-006:v2"
+ },
+ {
+  "table": "drafts",
+  "key": "wi014-status-email",
+  "note": "Draft created from NBA wi-014:v2 (send_email); drafts.work_item_id = wi-014, drafts.nba_id = wi-014:v2"
+ },
+ {
+  "table": "claude_sessions",
+  "key": "cs-11",
+  "note": "Claude session cs-11 linked from NBA wi-020:v1 (CAST-sources claude_sessions list)"
+ },
+ {
+  "table": "tool_runs",
+  "key": "tr-hv-export-load",
+  "note": "Tool run demo-org-loader started from NBA wi-020:v2; status running"
+ },
+ {
+  "table": "drafts",
+  "key": "wi030-reply-hana",
+  "note": "Draft created from NBA wi-030:v1 (reply); drafts.work_item_id = wi-030, drafts.nba_id = wi-030:v1"
+ },
+ {
+  "table": "drafts",
+  "key": "wi042-nudge-recap",
+  "note": "Draft created from NBA wi-042:v1 (nudge); drafts.work_item_id = wi-042, drafts.nba_id = wi-042:v1"
+ },
+ {
+  "table": "drafts",
+  "key": "wi008-nudge-1",
+  "note": "Draft created from NBA wi-008:v2 (nudge); drafts.work_item_id = wi-008, drafts.nba_id = wi-008:v2"
+ },
+ {
+  "table": "drafts",
+  "key": "wi008-nudge-3",
+  "note": "Draft created from NBA wi-008:v3 (nudge); drafts.work_item_id = wi-008, drafts.nba_id = wi-008:v3"
+ },
+ {
+  "table": "drafts",
+  "key": "wi022-nudge-theo",
+  "note": "Draft created from NBA wi-022:v2 (nudge); drafts.work_item_id = wi-022, drafts.nba_id = wi-022:v2"
+ },
+ {
+  "table": "drafts",
+  "key": "wi103-agenda-email",
+  "note": "Draft created from NBA wi-103:v1 (send_email); drafts.work_item_id = wi-103, drafts.nba_id = wi-103:v1"
+ },
+ {
+  "table": "activity_entries",
+  "key": "dc-harrowgate-maintenance-agent",
+  "note": "Proposed activity entry (or batch anchor) behind NBA wi-049:v1 (log_activity); status proposed or logged"
+ },
+ {
+  "table": "drafts",
+  "key": "wi007-sizing-reply",
+  "note": "Draft created from NBA wi-007:v2 (reply); drafts.work_item_id = wi-007, drafts.nba_id = wi-007:v2"
+ },
+ {
+  "table": "drafts",
+  "key": "wi088-email-lars",
+  "note": "Draft created from NBA wi-088:v1 (send_email); drafts.work_item_id = wi-088, drafts.nba_id = wi-088:v1"
+ },
+ {
+  "table": "activity_entries",
+  "key": "nba-wi090-week-1116",
+  "note": "Proposed activity entry (or batch anchor) behind NBA wi-090:v1 (log_activity); status proposed or logged"
+ },
+ {
+  "table": "activity_entries",
+  "key": "nba-wi086-week-1026",
+  "note": "Proposed activity entry (or batch anchor) behind NBA wi-086:v1 (log_activity); status proposed or logged"
+ },
+ {
+  "table": "activity_entries",
+  "key": "canvas-batch-1113",
+  "note": "Proposed activity entry (or batch anchor) behind NBA wi-089:v1 (log_activity); status proposed or logged"
+ },
+ {
+  "table": "drafts",
+  "key": "wi060-reply-valentina",
+  "note": "Draft created from NBA wi-060:v3 (reply); drafts.work_item_id = wi-060, drafts.nba_id = wi-060:v3"
+ },
+ {
+  "table": "drafts",
+  "key": "wi058-email-gustavo",
+  "note": "Draft created from NBA wi-058:v1 (send_email); drafts.work_item_id = wi-058, drafts.nba_id = wi-058:v1"
+ },
+ {
+  "table": "drafts",
+  "key": "wi013-outline-email",
+  "note": "Draft created from NBA wi-013:v1 (send_email); drafts.work_item_id = wi-013, drafts.nba_id = wi-013:v1"
+ },
+ {
+  "table": "drafts",
+  "key": "wi046-email-zainab",
+  "note": "Draft created from NBA wi-046:v1 (send_email); drafts.work_item_id = wi-046, drafts.nba_id = wi-046:v1"
+ },
+ {
+  "table": "claude_sessions",
+  "key": "cs-01",
+  "note": "Claude session cs-01 linked from NBA wi-047:v1 (CAST-sources claude_sessions list)"
+ },
+ {
+  "table": "drafts",
+  "key": "wi056-email-samir",
+  "note": "Draft created from NBA wi-056:v1 (send_email); drafts.work_item_id = wi-056, drafts.nba_id = wi-056:v1"
+ },
+ {
+  "table": "drafts",
+  "key": "wi075-email-lars",
+  "note": "Draft created from NBA wi-075:v1 (send_email); drafts.work_item_id = wi-075, drafts.nba_id = wi-075:v1"
+ },
+ {
+  "table": "drafts",
+  "key": "wi041-reply-tobias",
+  "note": "Draft created from NBA wi-041:v1 (reply); drafts.work_item_id = wi-041, drafts.nba_id = wi-041:v1"
+ },
+ {
+  "table": "claude_sessions",
+  "key": "cs-03",
+  "note": "Claude session cs-03 (CAST-sources claude_sessions list); linked to initiative hv-blueprint and to work items"
+ },
+ {
+  "table": "claude_sessions",
+  "key": "cs-08",
+  "note": "Claude session cs-08 (CAST-sources claude_sessions list); linked to initiative hv-blueprint and to work items"
+ },
+ {
+  "table": "claude_sessions",
+  "key": "cs-05",
+  "note": "Claude session cs-05 (CAST-sources claude_sessions list); linked to initiative qp-arch and to work items"
+ }
+]

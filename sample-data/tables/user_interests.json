@@ -1,0 +1,14 @@
+[
+  {"id":"6615311c-167d-5e6f-a254-28f47e77dc21","owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","kind":"product","value":"Data 360","weight":3,"source":"role_template","created_at":"2026-10-18T17:10:00.000Z"},
+  {"id":"daeec42c-59b3-57e6-89b1-a5bf5d5fc5b5","owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","kind":"product","value":"Agentforce","weight":3,"source":"role_template","created_at":"2026-10-18T17:11:00.000Z"},
+  {"id":"13955b73-1eaa-5ef4-a85e-c7e34f7efd77","owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","kind":"skill","value":"solution architecture","weight":2,"source":"user","created_at":"2026-10-18T17:12:00.000Z"},
+  {"id":"7c651602-7392-5eac-8332-5ddff71fda50","owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","kind":"skill","value":"demo engineering","weight":2,"source":"user","created_at":"2026-10-18T17:13:00.000Z"},
+  {"id":"b7d00f32-b92c-5696-876d-5968777c4cec","owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","kind":"topic","value":"healthcare payer interoperability","weight":2,"source":"user","created_at":"2026-10-18T17:14:00.000Z"},
+  {"id":"ceb8af03-989d-5faa-a736-0c8e6bcba138","owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","kind":"topic","value":"retrieval-augmented generation","weight":2,"source":"learned","created_at":"2026-10-18T17:15:00.000Z"},
+  {"id":"b8a63076-714f-5384-9f5f-df177928a0ee","owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","kind":"topic","value":"identity resolution","weight":1.5,"source":"learned","created_at":"2026-10-18T17:16:00.000Z"},
+  {"id":"71fbf369-d54d-593a-8e25-eb2798f3deb4","owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","kind":"keyword","value":"blueprint","weight":2,"source":"user","created_at":"2026-10-18T17:17:00.000Z"},
+  {"id":"1156bd10-15fe-5b23-80cb-8dc558a88328","owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","kind":"keyword","value":"POC","weight":2,"source":"user","created_at":"2026-10-18T17:18:00.000Z"},
+  {"id":"adda8034-4f17-55d2-81a0-60efc0a0da05","owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","kind":"keyword","value":"consumption estimate","weight":1.5,"source":"learned","created_at":"2026-10-18T17:19:00.000Z"},
+  {"id":"6f704aa1-6d63-5f52-a918-e0338b7c234d","owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","kind":"keyword","value":"security review","weight":1,"source":"learned","created_at":"2026-10-18T17:20:00.000Z"},
+  {"id":"09504410-9ee5-5110-bec8-5aad18662798","owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","kind":"product","value":"Slack","weight":0.5,"source":"learned","created_at":"2026-10-18T17:21:00.000Z"}
+]

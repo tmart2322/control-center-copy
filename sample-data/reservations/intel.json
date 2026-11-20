@@ -1,0 +1,117 @@
+[
+ {
+  "table": "activity_entries",
+  "key": "nba-wi003-focus-log",
+  "note": "row the chat logging batch staged (domain 05 owns the row)"
+ },
+ {
+  "table": "drafts",
+  "key": "wi030-reply-hana",
+  "note": "chat draft card: the Outbox draft chat_draft created (domain 05 owns the row)"
+ },
+ {
+  "table": "drafts",
+  "key": "rev-elderglen-demo-reply",
+  "note": "provenance target"
+ },
+ {
+  "table": "drafts",
+  "key": "rev-saltmere-blueprint-email",
+  "note": "provenance target"
+ },
+ {
+  "table": "drafts",
+  "key": "wi006-reply-soojin",
+  "note": "provenance target"
+ },
+ {
+  "table": "drafts",
+  "key": "wi014-status-email",
+  "note": "provenance target"
+ },
+ {
+  "table": "drafts",
+  "key": "wi042-nudge-recap",
+  "note": "provenance target"
+ },
+ {
+  "table": "drafts",
+  "key": "wi008-nudge-1",
+  "note": "provenance target"
+ },
+ {
+  "table": "drafts",
+  "key": "wi008-nudge-3",
+  "note": "provenance target"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-22",
+  "note": "provenance target"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-32",
+  "note": "provenance target"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-33",
+  "note": "provenance target"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-34",
+  "note": "provenance target"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-35",
+  "note": "provenance target"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-36",
+  "note": "provenance target"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-37",
+  "note": "provenance target"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-38",
+  "note": "provenance target"
+ },
+ {
+  "table": "activity_entries",
+  "key": "dc-harrowgate-maintenance-agent",
+  "note": "provenance target"
+ },
+ {
+  "table": "activity_entries",
+  "key": "nba-wi090-week-1116",
+  "note": "provenance target"
+ },
+ {
+  "table": "activity_entries",
+  "key": "nba-wi086-week-1026",
+  "note": "provenance target"
+ },
+ {
+  "table": "activity_entries",
+  "key": "canvas-batch-1113",
+  "note": "provenance target"
+ },
+ {
+  "table": "tool_runs",
+  "key": "tr-oms-check",
+  "note": "provenance target"
+ },
+ {
+  "table": "tool_runs",
+  "key": "tr-hv-export-load",
+  "note": "provenance target"
+ }
+]

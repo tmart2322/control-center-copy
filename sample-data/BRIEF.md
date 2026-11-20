@@ -32,10 +32,10 @@ is a fictional Solutions Engineer at a fictional software vendor. **Nothing may 
   `skills/*.md` (the prompts the app uses: they show what a Slack scan, a triage or a brief looks like).
 - Realistic *synthetic* examples already in the repo: `tests/fixtures/**`, `src/mock/seed.example.json`, `src/mock/*.ts`.
   Read these for tone and structure; do not copy their id values.
-  (`<SCRATCH>` = `/private/tmp/claude-501/-Users-tristan-martin--claude-spares-spare-uqkX8K/b3e93d77-f66b-4251-8fb6-c168dc434861/scratchpad`)
+  (`<SCRATCH>` = `<build-notes folder>`)
 
 ## Mechanics
-- Work in `/Users/tristan.martin/Projects/control-center-copy`. Import helpers from `sample-data/lib/kit.ts`
+- Work in `<repo root>`. Import helpers from `sample-data/lib/kit.ts`
   (`uid`, `OWNER`, `at`, `day`, `NOW`, `rng`, `sfId`, `slackUser`, `writeTable`, `readTable`, …). Read that file first.
 - Row ids: `uid('<table_name>', '<stable-slug-key>')`. This is how generators reference each other's rows **without
   coordination**: if a table you do not own needs a row of yours, reference it by the key from `sample-data/WORLD.md`.

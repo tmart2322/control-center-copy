@@ -1,0 +1,127 @@
+[
+ {
+  "table": "opportunity_snapshots",
+  "key": "saltmere-data360-poc:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "saltmere-claims-copilot:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "saltmere-provider-directory:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "yarrowdale-enterprise-data:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "yarrowdale-platform-renewal:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "yarrowdale-mg-patient-engagement:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "yarrowdale-bh-intake:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "elderglen-outdoors-renewal-expansion:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "elderglen-outdoors-loyalty:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "elderglen-home-personalization:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "elderglen-enterprise-identity:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "halvergate-route-exceptions-agent:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "halvergate-dispatch-data:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "ferrowpay-fraud-agent:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "ferrowpay-data360-foundation:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "harrowgate-maintenance-agent:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "harrowgate-plant-data:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "cascadia-citizen-assistant:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "cascadia-permits-data:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "oakhallow-claims-agent:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "oakhallow-underwriting-assist:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "voltmere-outage-insights:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "voltmere-service-agent:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "contoso-seller-agent:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ },
+ {
+  "table": "opportunity_snapshots",
+  "key": "contoso-realtime-recs:latest",
+  "note": "newest Org62 snapshot of this open opportunity (domain 02 creates one per open opp; snapshot.opportunity_id = uid(opportunities, key))"
+ }
+]

@@ -1,0 +1,82 @@
+[
+ {
+  "table": "drafts",
+  "key": "rev-elderglen-demo-reply",
+  "note": "the unapproved slack_reply draft answering the AE's demo ask in elderglen-outdoors-deal; doc_json MUST equal the last content_revisions row (field doc_json) for this draft, status ready, never sent"
+ },
+ {
+  "table": "drafts",
+  "key": "rev-saltmere-blueprint-email",
+  "note": "customer email to the Saltmere champion about the blueprint (due Friday); doc_json MUST equal the last content_revisions row (field doc_json) for this draft; edited by the user before approval"
+ },
+ {
+  "table": "chat_messages",
+  "key": "llm-chat-01",
+  "note": "assistant message produced by llm_calls id 284; chat: reweight priorities (policy v2); created_at 2026-11-06T22:44:46.973Z; chat_messages.llm_call_id = 284"
+ },
+ {
+  "table": "chat_messages",
+  "key": "llm-chat-02",
+  "note": "assistant message produced by llm_calls id 285; chat: reweight priorities (policy v2); created_at 2026-11-06T22:49:56.875Z; chat_messages.llm_call_id = 285"
+ },
+ {
+  "table": "chat_messages",
+  "key": "llm-chat-03",
+  "note": "assistant message produced by llm_calls id 286; chat: apply policy v2; created_at 2026-11-06T22:59:13.763Z; chat_messages.llm_call_id = 286"
+ },
+ {
+  "table": "chat_messages",
+  "key": "llm-chat-04",
+  "note": "assistant message produced by llm_calls id 355; chat: log last week; created_at 2026-11-09T23:20:25.520Z; chat_messages.llm_call_id = 355"
+ },
+ {
+  "table": "chat_messages",
+  "key": "llm-chat-05",
+  "note": "assistant message produced by llm_calls id 518; chat: identity merge question; created_at 2026-11-12T17:15:28.077Z; chat_messages.llm_call_id = 518"
+ },
+ {
+  "table": "chat_messages",
+  "key": "llm-chat-06",
+  "note": "assistant message produced by llm_calls id 522; chat: identity merge answer; created_at 2026-11-12T17:19:54.565Z; chat_messages.llm_call_id = 522"
+ },
+ {
+  "table": "chat_messages",
+  "key": "llm-chat-07",
+  "note": "assistant message produced by llm_calls id 577; chat: why were some Slack items late on 11-12; created_at 2026-11-14T16:05:28.377Z; chat_messages.llm_call_id = 577"
+ },
+ {
+  "table": "chat_messages",
+  "key": "llm-chat-08",
+  "note": "assistant message produced by llm_calls id 622; chat: Saltmere blueprint outline; created_at 2026-11-16T20:10:51.650Z; chat_messages.llm_call_id = 622"
+ },
+ {
+  "table": "chat_messages",
+  "key": "llm-chat-09",
+  "note": "assistant message produced by llm_calls id 623; chat: Saltmere blueprint outline; created_at 2026-11-16T20:16:43.241Z; chat_messages.llm_call_id = 623"
+ },
+ {
+  "table": "chat_messages",
+  "key": "llm-chat-10",
+  "note": "assistant message produced by llm_calls id 643; chat: plan the day; created_at 2026-11-17T14:48:16.590Z; chat_messages.llm_call_id = 643"
+ },
+ {
+  "table": "chat_messages",
+  "key": "llm-chat-11",
+  "note": "assistant message produced by llm_calls id 644; chat: plan the day; created_at 2026-11-17T14:52:27.991Z; chat_messages.llm_call_id = 644"
+ },
+ {
+  "table": "chat_messages",
+  "key": "llm-chat-12",
+  "note": "assistant message produced by llm_calls id 676; chat: what is due this week; created_at 2026-11-18T15:44:43.352Z; chat_messages.llm_call_id = 676"
+ },
+ {
+  "table": "chat_messages",
+  "key": "llm-chat-13",
+  "note": "assistant message produced by llm_calls id 677; chat: what is due this week; created_at 2026-11-18T15:47:49.851Z; chat_messages.llm_call_id = 677"
+ },
+ {
+  "table": "chat_messages",
+  "key": "llm-chat-14",
+  "note": "assistant message produced by llm_calls id 693; chat: what is due this week; created_at 2026-11-18T15:51:20.252Z; chat_messages.llm_call_id = 693"
+ }
+]

@@ -1,0 +1,4 @@
+[
+  {"work_item_id":"0111e09d-4afb-5ca0-aa6c-3b566c6cc64c","provider":"internal_lms","course_title":"Data Handling and Privacy Refresh","course_url":"https://learning.example/courses/data-handling-privacy-refresh","external_course_id":"smpl-lms-dhpr-2026","mandatory":true,"required_by":"2026-11-22T06:59:00.000Z","estimated_minutes":45,"progress_pct":40,"completed_at":null,"completion_source_item_id":null},
+  {"work_item_id":"deb7f327-568b-5e5a-9029-ee02153d2b30","provider":"workday_learning","course_title":"Agentforce testing center workshop (recording)","course_url":null,"external_course_id":null,"mandatory":false,"required_by":null,"estimated_minutes":90,"progress_pct":0,"completed_at":null,"completion_source_item_id":null}
+]

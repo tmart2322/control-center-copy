@@ -1,0 +1,77 @@
+[
+ {
+  "table": "activity_entries",
+  "key": "act-o62-22",
+  "note": "activity entry whose canvas row landed this Org62 event (source item meta.ccKey); status logged or verified (the deleted-in-Org62 one is act-o62-22)"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-32",
+  "note": "activity entry whose canvas row landed this Org62 event (source item meta.ccKey); status logged or verified (the deleted-in-Org62 one is act-o62-22)"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-33",
+  "note": "activity entry whose canvas row landed this Org62 event (source item meta.ccKey); status logged or verified (the deleted-in-Org62 one is act-o62-22)"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-34",
+  "note": "activity entry whose canvas row landed this Org62 event (source item meta.ccKey); status logged or verified (the deleted-in-Org62 one is act-o62-22)"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-35",
+  "note": "activity entry whose canvas row landed this Org62 event (source item meta.ccKey); status logged or verified (the deleted-in-Org62 one is act-o62-22)"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-36",
+  "note": "activity entry whose canvas row landed this Org62 event (source item meta.ccKey); status logged or verified (the deleted-in-Org62 one is act-o62-22)"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-37",
+  "note": "activity entry whose canvas row landed this Org62 event (source item meta.ccKey); status logged or verified (the deleted-in-Org62 one is act-o62-22)"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-38",
+  "note": "activity entry whose canvas row landed this Org62 event (source item meta.ccKey); status logged or verified (the deleted-in-Org62 one is act-o62-22)"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-39",
+  "note": "activity entry whose canvas row landed this Org62 event (source item meta.ccKey); status logged or verified (the deleted-in-Org62 one is act-o62-22)"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-40",
+  "note": "activity entry whose canvas row landed this Org62 event (source item meta.ccKey); status logged or verified (the deleted-in-Org62 one is act-o62-22)"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-41",
+  "note": "activity entry whose canvas row landed this Org62 event (source item meta.ccKey); status logged or verified (the deleted-in-Org62 one is act-o62-22)"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-42",
+  "note": "activity entry whose canvas row landed this Org62 event (source item meta.ccKey); status logged or verified (the deleted-in-Org62 one is act-o62-22)"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-43",
+  "note": "activity entry whose canvas row landed this Org62 event (source item meta.ccKey); status logged or verified (the deleted-in-Org62 one is act-o62-22)"
+ },
+ {
+  "table": "activity_entries",
+  "key": "act-o62-45",
+  "note": "activity entry whose canvas row landed this Org62 event (source item meta.ccKey); status logged or verified (the deleted-in-Org62 one is act-o62-22)"
+ },
+ {
+  "table": "extractors",
+  "key": "link-resolver:1",
+  "note": "LLM link resolver (kind llm, haiku tier) behind every source_item_links row with method llm"
+ }
+]

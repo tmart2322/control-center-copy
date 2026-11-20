@@ -1,0 +1,9 @@
+[
+  {"id":"3a0b0143-6e8c-5305-bf21-4596f731c0c9","tool_run_id":"a7ea854a-2562-5596-9f6e-a104ae73ac39","kind":"asset","label":"Blueprint outline (Drive doc)","url":null,"asset_id":"e1500c47-08ba-5d78-a018-d3f0be4db0c5","local_path":null,"created_at":"2026-11-10T23:10:05.000Z"},
+  {"id":"503d9fc0-dd38-51ef-9f1b-b260a66d216f","tool_run_id":"a7ea854a-2562-5596-9f6e-a104ae73ac39","kind":"text","label":"Outline summary: 9 sections, 3 open questions","url":null,"asset_id":null,"local_path":".cc/runs/bp-run-smpl-0007/summary.md","created_at":"2026-11-10T23:10:05.000Z"},
+  {"id":"e8a8af30-b19b-5573-b10a-ac65bb4a1a32","tool_run_id":"8580bce6-bb54-5a6f-babe-8604f6f07990","kind":"url","label":"Outline diff vs 11-10","url":"https://docs.example.com/document/d/1smplhvblueprint/edit?tab=outline-diff","asset_id":null,"local_path":null,"created_at":"2026-11-12T16:01:48.000Z"},
+  {"id":"0c651c54-77e6-5742-9163-8f87da6513ac","tool_run_id":"bd73239c-57cf-57f2-821b-a93c4309dca0","kind":"text","label":"Repo status table","url":null,"asset_id":null,"local_path":".cc/runs/rs-run-smpl-0004/status.txt","created_at":"2026-11-13T15:43:22.000Z"},
+  {"id":"ea41bea2-b9a2-514e-8e49-608a64a04671","tool_run_id":"81860554-e530-5cd0-ac43-32c869e13734","kind":"file","label":"Section 6 draft","url":null,"asset_id":null,"local_path":"docs/blueprint/section-6-data-model.md","created_at":"2026-11-15T22:15:00.000Z"},
+  {"id":"5f92ed77-2f58-518c-bacf-4fe05646cbf6","tool_run_id":"4bd9b8fc-f166-573a-bbde-0ec14893505f","kind":"asset","label":"Ferrowpay consumption estimate (sheet)","url":null,"asset_id":"b621f2a1-724f-53b0-a2b1-38f53227e559","local_path":null,"created_at":"2026-11-10T20:41:30.000Z"},
+  {"id":"bf58a37f-534c-55dd-a053-201669fd8e87","tool_run_id":"ab941d4a-efc3-5f4b-8b0a-d29412210f1a","kind":"file","label":"Rejected rows (running tally)","url":null,"asset_id":null,"local_path":".cc/runs/load-run-smpl-0014/rejected.csv","created_at":"2026-11-18T15:52:00.000Z"}
+]

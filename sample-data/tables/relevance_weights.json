@@ -1,0 +1,22 @@
+[
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"account:4644f186-afbc-53ed-a342-11ab36dfc61d","weight":0.083,"positive_count":1,"negative_count":0,"updated_at":"2026-11-13T15:44:00.000Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"interest:Agentforce","weight":0.083,"positive_count":3,"negative_count":1,"updated_at":"2026-11-13T16:16:00.000Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"interest:Data 360","weight":0.292,"positive_count":4,"negative_count":0,"updated_at":"2026-11-12T15:23:00.000Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"interest:identity resolution","weight":0.438,"positive_count":2,"negative_count":0,"updated_at":"2026-11-17T21:36:23.647Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"keyword:payer automation","weight":-0.333,"positive_count":0,"negative_count":1,"updated_at":"2026-10-30T15:35:00.000Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"keyword:prior authorization","weight":0.313,"positive_count":2,"negative_count":0,"updated_at":"2026-10-30T15:33:00.000Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"keyword:readout","weight":0.313,"positive_count":2,"negative_count":0,"updated_at":"2026-11-12T15:23:00.000Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"opp:8faf4762-d11c-5e5b-8baf-ecd82f948946","weight":0.35,"positive_count":8,"negative_count":0,"updated_at":"2026-11-13T15:44:00.000Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"org62:CloseDate","weight":0.3,"positive_count":3,"negative_count":0,"updated_at":"2026-11-13T15:43:00.000Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"org62:Stage","weight":-0.333,"positive_count":0,"negative_count":1,"updated_at":"2026-11-12T15:25:00.000Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"person:24ba665d-60a2-531c-a3a1-aaffa6704f7d","weight":0.313,"positive_count":2,"negative_count":0,"updated_at":"2026-11-12T15:23:00.000Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"person:2fe5483c-25f6-5f61-853c-9a82599ece6b","weight":0.313,"positive_count":2,"negative_count":0,"updated_at":"2026-11-13T16:16:00.000Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"person:54f0caad-236f-52df-80ce-78aceef601f6","weight":0.083,"positive_count":1,"negative_count":0,"updated_at":"2026-11-05T15:22:00.000Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"person:61e47506-26d8-5d51-891b-b3dcb5cb92c6","weight":0.125,"positive_count":2,"negative_count":0,"updated_at":"2026-11-12T15:22:00.000Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"person:6384c44c-18b8-5ada-8a68-913edaf1e8e8","weight":0.083,"positive_count":1,"negative_count":0,"updated_at":"2026-10-30T15:12:00.000Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"person:7ecd73bd-1cfc-5e8f-9686-84858ae8de42","weight":0.438,"positive_count":2,"negative_count":0,"updated_at":"2026-11-17T21:36:23.647Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"person:cb76fb2e-4e4c-5b2b-aa7b-8c391d57d8a8","weight":0.125,"positive_count":2,"negative_count":0,"updated_at":"2026-11-12T15:24:00.000Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"person:f469ecc7-0651-56e8-83df-09bc6c1ae2d8","weight":0.313,"positive_count":2,"negative_count":0,"updated_at":"2026-11-11T15:01:00.000Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"rule:r_customer","weight":0.417,"positive_count":4,"negative_count":0,"updated_at":"2026-11-13T15:43:00.000Z"},
+  {"owner_user_id":"f4f3657f-9ad3-5a38-a3bc-98cd13b1dd1b","feature_key":"topic:healthcare payer interoperability","weight":0.313,"positive_count":2,"negative_count":0,"updated_at":"2026-10-30T15:33:00.000Z"}
+]
